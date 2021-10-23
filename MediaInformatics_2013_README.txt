@@ -1,0 +1,5 @@
+GERMAN
+Die Präsentationsfolien benutzen die Schriftarten LMU Compatil Fact und LMU Sabon Next Demi. Wir dürfen diese Schriftarten nicht mit in das Starterpaket packen. Im PowerPoint-Template sollten sie so enthalten sein, dass man sie benutzten kann in Keynote geht das nicht. Bitte schaut euch daszu das PDF an und schaut ob die Schriftarten so wie im PDF bei euch dragestellt werden. Ansonsten benutzt bitte alternative Schriftarten (z.B. Times New Roman und Verdana).
+
+ENGLISH
+The slides of our slide template use the fonts LMU Compatil Fact and LMU Sabon Next Demi. We are not allowed to include these fonts for you in the Starterparket. In the PowerPoint-Teamplates they should be included but for Keynote this is impossible. Please see the PDF file to see how the fonts should actually look. If they don't look like this on your machine please consider replacing them by something that looks similar (e.g. Times New Roman and Verdana).
