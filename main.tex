@@ -33,7 +33,7 @@
 
 
 \usepackage[
-  title={Text-zu-spielbarem-Klang: Entwicklung eines Synthesizer basierend auf Latent-Diffusion-Technologie}, % Do not forget to capitalize your title correctly, you may use the following page to help you: https://capitalizemytitle.com/
+  title={Text-zu-spielbarem-Klang: Synthesizer basierend auf Latent-Diffusion-Technologie}, % Do not forget to capitalize your title correctly, you may use the following page to help you: https://capitalizemytitle.com/
   author={Pierre-Louis Wolgang Léon Suckrow},
   orcid=0000-0000-0000-0000, % get your own ORCID via https://orcid.org/
   email={P.Suckrow@campus.lmu.de},
@@ -245,6 +245,9 @@
 \chapter{Einleitung}
 \label{sec:introduction}
 
+\glqq Es gibt keine theoretischen Grenzen für den Computer als Quelle für musikalische Klänge, im Gegensatz zu herkömmlichen Instrumenten \grqq\, 
+\cite{mathews_digital_1963} Mit diesen Worten leitete Max Vernon Mathews 1963 seinen Artikel ``The Digital Computer as a Musical Instrument'' ein und legte mit seiner Arbeit an den Bell Laboratories die Grundlagen für die heutige Musikproduktion und Klangerzeugen am Computer. \cite{mathews_music_2004}. Getreu den Gedanken M. V. Mathews soll in dieser Arbeit das Implementieren eines Synthesizer mittels neuer Latenter Diffusions Technologie untersucht werden.  
+
 This is a typical human-computer interaction thesis structure for an introduction which is structured in four paragraphs as follows:
 % First Paragraph
 % CORE MESSAGE OF THIS PARAGRAPH:
@@ -275,6 +278,39 @@ Describe relevant scientific literature related to your work.
 \chapter{Ziel}
 
 \chapter{Methoden}
+
+\section{Klangsynthese und Musikproduktion}
+
+\subsection{Mathematische und physikalische Modellierung von Musik und Klang}
+\glqq Musik ist eine Kunstform und kulturelle Aktivität, deren Medium der in Zeit organisierte Klang ist\grqq \, \cite{tsuji_physics_2021}. Im Gegensatz zu Rauschen weisen die Klänge, die Musik aufbauen, Strukturen und Zusammenhänge auf, welche für das menschliche Gehör als angenehm empfunden werden \cite{parker_good_2009}.  
+
+
+\emph{Klang} ist ein intrinsisches Zusammenspiel aus physikalischen und perzeptiven Elementen. Physikalisch beschrieben ist Klang eine Welle, ausgelöst durch einen schwingenden Korpus, welche von einem Ort zum anderen propagiert. Diese Welle setzt sich aus einem Grundton und mehreren resonierenden Einzeltönen zusammen. Der daraus resultierende Klang weist eine Reihe von Obertönen auf und erzeugt die charakteristischen klanglichen Eigenschaften oder \emph{Klangfarben} \cite{tsuji_physics_2021, parker_good_2009}.
+
+Diese verschiedenen \emph{Töne} sind periodische Schwingungen definiert durch eine \emph{Tonhöhe/Frequenz} $\omega$ (in $Hz$), welche als die Anzahl an Kompressionen eines bestimmen Punktes pro Sekunde gesehen werden kann. Der Kehrwert der Frequenz wird als \emph{Periode} $T=\frac{1}{\omega}$ (in $s$) bezeichnet und beschreibt die Zeit, welche eine Kompression braucht um zwei identische Punkte zu passieren. Unsere Wahrnehmung, lassen Töne mit einer niedrigen Frequenz tief und dumpf klingen, während hohe Frequenzen leicht, schwebend, durchdringend klingen. Die \emph{Amplitude} der Schwingung berschreibt die transportierte Energie und somit die Lautstärke eines Tones. Diese wird auf Grund des Abstandsgesetz von einer Tonquelle über die logarithmischen \emph{Dezibel-Skala} ($dB$) angegeben \cite{tsuji_physics_2021, parker_good_2009}.
+
+Ein Klang wird als \emph{Rauschen} bezeichnet, wenn es ein kontinuierliches Frequenzspektrum aufweist, das viele Arten von Geräuschen aus verschiedenen Quellen umfasst \cite{tsuji_physics_2021}.
+
+Die Untersuchung des Aufbau eines Klang beschäftigt sich mit der Relation und Zusammenhang der verschiedenen Töne, die den Klang aufbauen. Die simpelste Form eines Tones ist der Sinuston, dessen Schwingung durch eine Sinuskurve beschrieben wird. Alle anderen Töne bauen sich, gemäß Fouriertheorems durch verschiedene Sinustöne zusammen, wobei die tiefste dominante Frequenz als \emph{Grundton} bezeichnet wird, und die höherer Frequenzen als \emph{Obertöne}. Ist die Frequenz eines Obertones ein vielfaches des Grundtones, wird dieser als \emph{harmonischer} Oberton bezeichnet. In dem Fall, dass der Oberton kein Vielfaches des Grundtones ist, sprechen wir von einem \emph{inharmonischen} Oberton. Wenn somit die gleiche Note an unterschiedlichen Instrumenten gespielt wird haben diese die gleiche Grundschwingung, jedoch unterschiedliche harmonische und inharmonische Obertöne \cite{parker_good_2009, white_physics_2014}.
+
+Über ein Spektogramm kann die Zusammensetzung der Töne eines Klanges und die daraus resultierende Klangfarbe visualisieren werden. Über eine Fouriertransformation werden die Amplituden der verschiedenen Töne 
+\subsection{Digitale Audiorepräsentation und Sampling}
+\subsection{Synthesizer}
+
+\section{Synthetisierung mittels Diffusion}
+\subsection{Latente Diffsuion}
+\subsection{AudioLDM}
+\subsection{Finetuning}
+\section{Implementierung des Neuronalen Synthesizers}
+\subsection{Audioprogrammierung}
+\subsection{JUCE Framework}
+\glqq\emph{JUCE} ist das am häufigsten verwendete Framework für die Entwicklung von Audioanwendungen und -Plugins. Es handelt sich dabei um eine Open-Source-C++-Codebasis, die zur Erstellung eigenständiger Software auf Windows, macOS, Linux, iOS und Android sowie VST-, VST3-, AU-, AUv3-, AAX- und LV2-Plugins verwendet werden kann.\grqq \cite{noauthor_juce_nodate}
+
+Es bietet eine Abstraktion für die Verarbeitung von Audiosamples und MIDI von den nativen Audiogeräten auf jeder Plattform oder einer Host-DAW. Mit der Bibliothek von \emph{digitalen Signalverarbeitungs-(DSP)-Bausteinen}, die JUCE bereitstellt, können unterschiedliche Audioeffekte, Filter, Instrumente und Generatoren schnell prototypisiert und eingesetzt werden. \cite{noauthor_juce_nodate} So umfasst wa eine breite Palette von Klassen, die häufig auftretende Probleme bei der Entwicklung von Audioprojekten lösen. Dazu gehören die Behandlung von Grafiken, Sound, Benutzerinteraktion und Netzwerken. \cite{robinson_getting_2013}
+
+In dieser Arbeit wird das JUCE-Framework mittels \emph{CMake}, \glqq eine Open-Source-, plattformübergreifende Werkzeugfamilie, die zur Erstellung, zum Testen und zum Verpacken von Software entwickelt wurde\grqq \cite{noauthor_cmake_nodate} benutzt, um die durch das Diffusionsnetz erstellten Klänge spielbar und manipulierbar zu gestalten. 
+\subsection{ONNX}
+\subsection{Design}
 
 \chapter{Ergebnisse}
 
