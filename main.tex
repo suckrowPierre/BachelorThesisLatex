@@ -44,7 +44,7 @@
   examiner={Prof.\ Dr.\ Sylvia Rothe},
   supervisor={Dipl.-Inf.\ Christoph Weber},
   startdate={Mai 31, 2023},
-  enddate={August 9, 2023},
+  enddate={August 19, 2023},
   % Falls keine Lizenz gewünscht wird bitte auf "none" setzen
   % Die Lizenz erlaubt es zu nichtkommerziellen Zwecken die Arbeit zu
   % vervielfältigen und Kopien zu machen. Dabei muss aber immer der Autor
@@ -245,9 +245,11 @@
 \chapter{Einleitung}
 \label{sec:introduction}
 
-\glqq Es gibt keine theoretischen Grenzen für den Computer als Quelle für musikalische Klänge, im Gegensatz zu herkömmlichen Instrumenten \grqq\, 
-\cite{mathews_digital_1963} Mit diesen Worten leitete Max Vernon Mathews 1963 seinen Artikel ``The Digital Computer as a Musical Instrument'' ein und legte mit seiner Arbeit an den Bell Laboratories die Grundlagen für die heutige Musikproduktion und Klangerzeugen am Computer. \cite{mathews_music_2004}. Getreu den Gedanken M. V. Mathews soll in dieser Arbeit das Implementieren eines Synthesizer mittels neuer Latenter Diffusions Technologie untersucht werden.  
+\glqq Es gibt keine theoretischen Grenzen für den Computer als Quelle für musikalische Klänge, im Gegensatz zu herkömmlichen Instrumenten\grqq, \cite{mathews_digital_1963}. Mit diesen wegweisenden Worten eröffnete Max Vernon Mathews im Jahr 1963 seinen Artikel "The Digital Computer as a Musical Instrument" und legte durch seine Arbeit an den Bell Laboratories den Grundstein für die heutige Musikproduktion und Klangsynthese am Computer \cite{mathews_music_2004}.
 
+In Anlehnung an die Gedanken von M. V. Mathews fokussiert sich diese Arbeit auf die Implementierung eines Synthesizers mittels neuer Latenter Diffusionstechnologie. Das Ziel ist es, einem Nutzer durch die Nutzung dieses digitalen Instruments die Generierung von Klängen nach seinen individuellen Vorstellungen zu ermöglichen, die anschließend manipuliert und spielbar sein sollen. Weiterhin soll das Instrument nahtlos in den modernen Musikproduktionsprozess integriert werden können und Musikern die Erschließung neuer Klangwelten ermöglichen. Durch die Erzeugung neuer, gezielter Klänge können zudem rechtliche Probleme vermieden werden, die durch die Verwendung von Samples entstehen könnten.
+
+Verschiedene ML-Modelle wie (Beispiele) beschäftigen sich mit der Erzeugung von Musikalischen 
 This is a typical human-computer interaction thesis structure for an introduction which is structured in four paragraphs as follows:
 % First Paragraph
 % CORE MESSAGE OF THIS PARAGRAPH:
@@ -282,20 +284,23 @@ Describe relevant scientific literature related to your work.
 \section{Klangsynthese und Musikproduktion}
 
 \subsection{Mathematische und physikalische Modellierung von Musik und Klang}
-\glqq Musik ist eine Kunstform und kulturelle Aktivität, deren Medium der in Zeit organisierte Klang ist\grqq \, \cite{tsuji_physics_2021}. Im Gegensatz zu Rauschen weisen die Klänge, die Musik aufbauen, Strukturen und Zusammenhänge auf, welche für das menschliche Gehör als angenehm empfunden werden \cite{parker_good_2009}.  
+\glqq Musik ist eine Kunstform und kulturelle Aktivität, deren Medium der in Zeit organisierte Klang ist\grqq \, \cite{tsuji_physics_2021}. Im Gegensatz zu Rauschen weisen die Klänge, die Musik aufbauen, Strukturen und Zusammenhänge auf, welche für das menschliche Gehör als angenehm wahrgenommen werden \cite{parker_good_2009}.  
 
+\emph{Klang} stellt ein intrinsisches Zusammenspiel aus physikalischen und perzeptiven Elementen dar. Auf physikalischer Ebene handelt es sich bei Klang um eine durch einen schwingenden Körper erzeugte Welle, die sich von einem Ort zum anderen propagiert. Diese Welle besteht aus einem Grundton und mehreren resonierenden Einzeltönen. Der resultierende Klang besitzt eine Vielzahl von Obertönen, die die charakteristischen klanglichen Eigenschaften oder \emph{Klangfarben} hervorbringen \cite{tsuji_physics_2021, parker_good_2009}.
 
-\emph{Klang} ist ein intrinsisches Zusammenspiel aus physikalischen und perzeptiven Elementen. Physikalisch beschrieben ist Klang eine Welle, ausgelöst durch einen schwingenden Korpus, welche von einem Ort zum anderen propagiert. Diese Welle setzt sich aus einem Grundton und mehreren resonierenden Einzeltönen zusammen. Der daraus resultierende Klang weist eine Reihe von Obertönen auf und erzeugt die charakteristischen klanglichen Eigenschaften oder \emph{Klangfarben} \cite{tsuji_physics_2021, parker_good_2009}.
+Diese verschiedenen \emph{Töne} sind periodische Schwingungen, definiert durch eine \emph{Tonhöhe/Frequenz} $\omega$ (in $Hz$), welche als die Anzahl der Kompressionen an einem bestimmten Punkt pro Sekunde interpretiert werden kann. Der Kehrwert der Frequenz wird als \emph{Periode} $T=\frac{1}{\omega}$ (in $s$) bezeichnet und beschreibt die Zeit, die eine Kompression benötigt, um zwei identische Punkte zu passieren. Unsere Wahrnehmung lässt Töne mit niedriger Frequenz tief und dumpf klingen, während hohe Frequenzen als leicht, schwebend und durchdringend wahrgenommen werden. Die \emph{Amplitude} der Schwingung beschreibt die transportierte Energie und somit die Lautstärke eines Tones. Aufgrund des Abstandsgesetzes wird diese von einer Schallquelle über die logarithmische \emph{Dezibel-Skala} (dB) angegeben.  \cite{tsuji_physics_2021, parker_good_2009}
 
-Diese verschiedenen \emph{Töne} sind periodische Schwingungen definiert durch eine \emph{Tonhöhe/Frequenz} $\omega$ (in $Hz$), welche als die Anzahl an Kompressionen eines bestimmen Punktes pro Sekunde gesehen werden kann. Der Kehrwert der Frequenz wird als \emph{Periode} $T=\frac{1}{\omega}$ (in $s$) bezeichnet und beschreibt die Zeit, welche eine Kompression braucht um zwei identische Punkte zu passieren. Unsere Wahrnehmung, lassen Töne mit einer niedrigen Frequenz tief und dumpf klingen, während hohe Frequenzen leicht, schwebend, durchdringend klingen. Die \emph{Amplitude} der Schwingung berschreibt die transportierte Energie und somit die Lautstärke eines Tones. Diese wird auf Grund des Abstandsgesetz von einer Tonquelle über die logarithmischen \emph{Dezibel-Skala} ($dB$) angegeben \cite{tsuji_physics_2021, parker_good_2009}.
+Die Untersuchung der Struktur eines Klangs befasst sich mit den Relationen und Zusammenhängen der verschiedenen Töne, aus denen der Klang besteht. Die einfachste Form eines Tones ist der Sinuston, dessen Schwingung durch eine Sinuskurve dargestellt wird. Gemäß dem Fouriertheorem setzt sich jeder andere Ton aus verschiedenen Sinustönen zusammen, wobei die tiefste dominante Frequenz als \emph{Grundton} und die höheren Frequenzen als \emph{Obertöne} bezeichnet werden. Die Obertöne unterscheiden sich in Frequenz, Amplitude und zeitlichem Auf- und Abbau. Wenn die Frequenz eines Obertones ein ganzzahliges Vielfaches des Grundtones ist, wird dieser als \emph{harmonischer} Oberton bezeichnet. Im Falle, dass der Oberton kein ganzzahliges Vielfaches des Grundtones ist, spricht man von einem \emph{inharmonischen} Oberton. Daher erzeugen unterschiedliche Instrumente, die die gleiche Note spielen, die gleiche Grundschwingung, weisen jedoch unterschiedliche harmonische und inharmonische Obertöne auf. \cite{parker_good_2009, white_physics_2014, ruschkowski_elektronische_2019}
 
-Ein Klang wird als \emph{Rauschen} bezeichnet, wenn es ein kontinuierliches Frequenzspektrum aufweist, das viele Arten von Geräuschen aus verschiedenen Quellen umfasst \cite{tsuji_physics_2021}.
+Die Struktur eines Klangs kann durch die Amplitudenfaktoren und zugehörigen Frequenzen der einzelnen Töne beschrieben und in einem \emph{Frequenzspektrum} visualisiert werden. Dies erlaubt die Bestimmung, welche Frequenzen oder Frequenzbereiche im Signal besonders stark enthalten sind und ermöglicht eine Darstellung der Klangfarbe bzw. der Charakteristik. Mit einer \emph{Fourier-Transformation} kann für jedes beliebige Signal das entsprechende Spektrum ermittelt und durch die \emph{Inverse Fourier-Transformation} das Signal eines Spektrums berechnet werden \cite{raffaseder_audiodesign_2010}. Zur Berechnung einer \emph{Diskreten Fourier-Transformation (DFT)} hat sich die \emph{Fast Fourier-Transformation (FFT)} als effizienter Algorithmus etabliert \cite{heideman_gauss_1985}. Ein \emph{Spektrogramm} ermöglicht die Betrachtung eines Signals sowohl im Zeit- als auch im Frequenzbereich, allerdings nicht in beliebiger Genauigkeit. Da hier das Signal in kurze zeitliche Abschnitte unterteilt und für diese das Spektrum berechnet wird, verlieren längere Abschnitte Informationen über die zeitliche Auflösung, weisen jedoch eine bessere Frequenzauflösung auf. Kurze Abschnitte hingegen besitzen eine bessere zeitliche Auflösung, lösen jedoch weniger genau im Frequenzbereich auf. \cite{raffaseder_audiodesign_2010}
 
-Die Untersuchung des Aufbau eines Klang beschäftigt sich mit der Relation und Zusammenhang der verschiedenen Töne, die den Klang aufbauen. Die simpelste Form eines Tones ist der Sinuston, dessen Schwingung durch eine Sinuskurve beschrieben wird. Alle anderen Töne bauen sich, gemäß Fouriertheorems durch verschiedene Sinustöne zusammen, wobei die tiefste dominante Frequenz als \emph{Grundton} bezeichnet wird, und die höherer Frequenzen als \emph{Obertöne}. Ist die Frequenz eines Obertones ein vielfaches des Grundtones, wird dieser als \emph{harmonischer} Oberton bezeichnet. In dem Fall, dass der Oberton kein Vielfaches des Grundtones ist, sprechen wir von einem \emph{inharmonischen} Oberton. Wenn somit die gleiche Note an unterschiedlichen Instrumenten gespielt wird haben diese die gleiche Grundschwingung, jedoch unterschiedliche harmonische und inharmonische Obertöne \cite{parker_good_2009, white_physics_2014}.
+Ein Klang wird als \emph{Rauschen} bezeichnet, wenn er ein kontinuierliches Frequenzspektrum aufweist, das viele Arten von Geräuschen aus unterschiedlichen Quellen umfasst.  
+\cite{tsuji_physics_2021}
 
-Über ein Spektogramm kann die Zusammensetzung der Töne eines Klanges und die daraus resultierende Klangfarbe visualisieren werden. Über eine Fouriertransformation werden die Amplituden der verschiedenen Töne 
-\subsection{Digitale Audiorepräsentation und Sampling}
-\subsection{Synthesizer}
+Der durch das menschliche Gehör erfassbare Frequenzbereich wird in drei Bereiche (\emph{Bässe, Mitten, Höhen}) unterteilt. Bässe sind in einem Bereich von 20$Hz$ bis 250$Hz$ auffindbar, während tiefe Mitten den Bereich von 250$Hz$ bis 2000$Hz$ umschließen. Hohen Mitten erstrecken sich von 2$kHZ$ bis 4$kHz$. Die Höhen liegen oberhalb von 4$kHz$. \cite{raffaseder_audiodesign_2010}
+\subsection{Digitale Audiorepräsentation und Sampling}. 
+\subsection{Synthetisierung und Klangformung}
+
 
 \section{Synthetisierung mittels Diffusion}
 \subsection{Latente Diffsuion}
