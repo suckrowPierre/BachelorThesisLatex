@@ -1,4 +1,747 @@
 
+@misc{raffel_exploring_2020,
+	title = {Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer},
+	url = {http://arxiv.org/abs/1910.10683},
+	abstract = {Transfer learning, where a model is first pre-trained on a data-rich task before being fine-tuned on a downstream task, has emerged as a powerful technique in natural language processing ({NLP}). The effectiveness of transfer learning has given rise to a diversity of approaches, methodology, and practice. In this paper, we explore the landscape of transfer learning techniques for {NLP} by introducing a unified framework that converts all text-based language problems into a text-to-text format. Our systematic study compares pre-training objectives, architectures, unlabeled data sets, transfer approaches, and other factors on dozens of language understanding tasks. By combining the insights from our exploration with scale and our new ``Colossal Clean Crawled Corpus'', we achieve state-of-the-art results on many benchmarks covering summarization, question answering, text classification, and more. To facilitate future work on transfer learning for {NLP}, we release our data set, pre-trained models, and code.},
+	number = {{arXiv}:1910.10683},
+	publisher = {{arXiv}},
+	author = {Raffel, Colin and Shazeer, Noam and Roberts, Adam and Lee, Katherine and Narang, Sharan and Matena, Michael and Zhou, Yanqi and Li, Wei and Liu, Peter J.},
+	urldate = {2023-08-19},
+	date = {2020-07-28},
+	eprinttype = {arxiv},
+	eprint = {1910.10683 [cs, stat]},
+	keywords = {Computer Science - Computation and Language, Computer Science - Machine Learning, Statistics - Machine Learning},
+}
+
+@video{espen_kraft_akai_2018,
+	title = {Akai S700 Sampler - Pure magic for next to nothing!},
+	url = {https://www.youtube.com/watch?v=uLZ3_XKqYFw},
+	abstract = {My first sampler (Akai X7000) in module form.  With one of the more warm and creamy analog filters of any sampler. Even if the filter is not resonant and even if the sampler has no {ADSR} envelopes, just a release, it has a nice deep low end and a magic sound to it.
+It can be had for next to nothing these days and well worth picking up and use. In fact it should cost a lot more based on sound only.
+I judge a samplers filter based on how it sound on a synth string type of sound so you'll hear no beats in this demo. ;-)},
+	author = {{Espen Kraft}},
+	urldate = {2023-08-19},
+	date = {2018-11-16},
+	langid = {english},
+}
+
+@misc{kong_panns_2020,
+	title = {{PANNs}: Large-Scale Pretrained Audio Neural Networks for Audio Pattern Recognition},
+	url = {http://arxiv.org/abs/1912.10211},
+	shorttitle = {{PANNs}},
+	abstract = {Audio pattern recognition is an important research topic in the machine learning area, and includes several tasks such as audio tagging, acoustic scene classification, music classification, speech emotion classification and sound event detection. Recently, neural networks have been applied to tackle audio pattern recognition problems. However, previous systems are built on specific datasets with limited durations. Recently, in computer vision and natural language processing, systems pretrained on large-scale datasets have generalized well to several tasks. However, there is limited research on pretraining systems on large-scale datasets for audio pattern recognition. In this paper, we propose pretrained audio neural networks ({PANNs}) trained on the large-scale {AudioSet} dataset. These {PANNs} are transferred to other audio related tasks. We investigate the performance and computational complexity of {PANNs} modeled by a variety of convolutional neural networks. We propose an architecture called Wavegram-Logmel-{CNN} using both log-mel spectrogram and waveform as input feature. Our best {PANN} system achieves a state-of-the-art mean average precision ({mAP}) of 0.439 on {AudioSet} tagging, outperforming the best previous system of 0.392. We transfer {PANNs} to six audio pattern recognition tasks, and demonstrate state-of-the-art performance in several of those tasks. We have released the source code and pretrained models of {PANNs}: https://github.com/qiuqiangkong/audioset\_tagging\_cnn.},
+	number = {{arXiv}:1912.10211},
+	publisher = {{arXiv}},
+	author = {Kong, Qiuqiang and Cao, Yin and Iqbal, Turab and Wang, Yuxuan and Wang, Wenwu and Plumbley, Mark D.},
+	urldate = {2023-08-19},
+	date = {2020-08-23},
+	eprinttype = {arxiv},
+	eprint = {1912.10211 [cs, eess]},
+	keywords = {Computer Science - Sound, Electrical Engineering and Systems Science - Audio and Speech Processing},
+}
+
+@misc{chen_hts-at_2022,
+	title = {{HTS}-{AT}: A Hierarchical Token-Semantic Audio Transformer for Sound Classification and Detection},
+	url = {http://arxiv.org/abs/2202.00874},
+	shorttitle = {{HTS}-{AT}},
+	abstract = {Audio classification is an important task of mapping audio samples into their corresponding labels. Recently, the transformer model with self-attention mechanisms has been adopted in this field. However, existing audio transformers require large {GPU} memories and long training time, meanwhile relying on pretrained vision models to achieve high performance, which limits the model's scalability in audio tasks. To combat these problems, we introduce {HTS}-{AT}: an audio transformer with a hierarchical structure to reduce the model size and training time. It is further combined with a token-semantic module to map final outputs into class featuremaps, thus enabling the model for the audio event detection (i.e. localization in time). We evaluate {HTS}-{AT} on three datasets of audio classification where it achieves new state-of-the-art ({SOTA}) results on {AudioSet} and {ESC}-50, and equals the {SOTA} on Speech Command V2. It also achieves better performance in event localization than the previous {CNN}-based models. Moreover, {HTS}-{AT} requires only 35\% model parameters and 15\% training time of the previous audio transformer. These results demonstrate the high performance and high efficiency of {HTS}-{AT}.},
+	number = {{arXiv}:2202.00874},
+	publisher = {{arXiv}},
+	author = {Chen, Ke and Du, Xingjian and Zhu, Bilei and Ma, Zejun and Berg-Kirkpatrick, Taylor and Dubnov, Shlomo},
+	urldate = {2023-08-19},
+	date = {2022-02-01},
+	eprinttype = {arxiv},
+	eprint = {2202.00874 [cs, eess]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Information Retrieval, Computer Science - Machine Learning, Computer Science - Sound, Electrical Engineering and Systems Science - Audio and Speech Processing},
+}
+
+@misc{agarap_deep_2019,
+	title = {Deep Learning using Rectified Linear Units ({ReLU})},
+	url = {http://arxiv.org/abs/1803.08375},
+	abstract = {We introduce the use of rectified linear units ({ReLU}) as the classification function in a deep neural network ({DNN}). Conventionally, {ReLU} is used as an activation function in {DNNs}, with Softmax function as their classification function. However, there have been several studies on using a classification function other than Softmax, and this study is an addition to those. We accomplish this by taking the activation of the penultimate layer \$h\_\{n - 1\}\$ in a neural network, then multiply it by weight parameters \${\textbackslash}theta\$ to get the raw scores \$o\_\{i\}\$. Afterwards, we threshold the raw scores \$o\_\{i\}\$ by \$0\$, i.e. \$f(o) = {\textbackslash}max(0, o\_\{i\})\$, where \$f(o)\$ is the {ReLU} function. We provide class predictions \${\textbackslash}hat\{y\}\$ through argmax function, i.e. argmax \$f(x)\$.},
+	number = {{arXiv}:1803.08375},
+	publisher = {{arXiv}},
+	author = {Agarap, Abien Fred},
+	urldate = {2023-08-19},
+	date = {2019-02-07},
+	eprinttype = {arxiv},
+	eprint = {1803.08375 [cs, stat]},
+	keywords = {Computer Science - Computer Vision and Pattern Recognition, Computer Science - Machine Learning, Computer Science - Neural and Evolutionary Computing, Statistics - Machine Learning},
+}
+
+@misc{drossos_clotho_2019,
+	title = {Clotho: An Audio Captioning Dataset},
+	url = {http://arxiv.org/abs/1910.09387},
+	shorttitle = {Clotho},
+	abstract = {Audio captioning is the novel task of general audio content description using free text. It is an intermodal translation task (not speech-to-text), where a system accepts as an input an audio signal and outputs the textual description (i.e. the caption) of that signal. In this paper we present Clotho, a dataset for audio captioning consisting of 4981 audio samples of 15 to 30 seconds duration and 24 905 captions of eight to 20 words length, and a baseline method to provide initial results. Clotho is built with focus on audio content and caption diversity, and the splits of the data are not hampering the training or evaluation of methods. All sounds are from the Freesound platform, and captions are crowdsourced using Amazon Mechanical Turk and annotators from English speaking countries. Unique words, named entities, and speech transcription are removed with post-processing. Clotho is freely available online (https://zenodo.org/record/3490684).},
+	number = {{arXiv}:1910.09387},
+	publisher = {{arXiv}},
+	author = {Drossos, Konstantinos and Lipping, Samuel and Virtanen, Tuomas},
+	urldate = {2023-08-19},
+	date = {2019-10-21},
+	eprinttype = {arxiv},
+	eprint = {1910.09387 [cs, eess]},
+	keywords = {Computer Science - Computation and Language, Computer Science - Machine Learning, Computer Science - Sound, Electrical Engineering and Systems Science - Audio and Speech Processing},
+}
+
+@online{noauthor_logic_nodate,
+	title = {Logic Pro for Mac},
+	url = {https://www.apple.com/logic-pro/},
+	abstract = {Logic Pro is a complete professional recording studio on the Mac. And it has everything musicians need to go from first note to final master.},
+	titleaddon = {Apple},
+	urldate = {2023-08-14},
+	langid = {american},
+}
+
+@online{noauthor_ableton_nodate,
+	title = {Ableton},
+	url = {https://www.ableton.com/},
+	abstract = {Ableton entwickelt Software, Hardware und kreative Ressourcen für eine weltweite Community von Musikschaffenden.},
+	urldate = {2023-08-14},
+	langid = {german},
+}
+
+@online{noauthor_creative_nodate,
+	title = {Creative tools for music makers {\textbar} Ableton},
+	url = {https://www.ableton.com/en/},
+	abstract = {Ableton makes software, hardware and other creative tools for a global community of music makers.},
+	urldate = {2023-08-14},
+	langid = {english},
+}
+
+@misc{kong_hifi-gan_2020,
+	title = {{HiFi}-{GAN}: Generative Adversarial Networks for Efficient and High Fidelity Speech Synthesis},
+	url = {http://arxiv.org/abs/2010.05646},
+	shorttitle = {{HiFi}-{GAN}},
+	abstract = {Several recent work on speech synthesis have employed generative adversarial networks ({GANs}) to produce raw waveforms. Although such methods improve the sampling efficiency and memory usage, their sample quality has not yet reached that of autoregressive and flow-based generative models. In this work, we propose {HiFi}-{GAN}, which achieves both efficient and high-fidelity speech synthesis. As speech audio consists of sinusoidal signals with various periods, we demonstrate that modeling periodic patterns of an audio is crucial for enhancing sample quality. A subjective human evaluation (mean opinion score, {MOS}) of a single speaker dataset indicates that our proposed method demonstrates similarity to human quality while generating 22.05 {kHz} high-fidelity audio 167.9 times faster than real-time on a single V100 {GPU}. We further show the generality of {HiFi}-{GAN} to the mel-spectrogram inversion of unseen speakers and end-to-end speech synthesis. Finally, a small footprint version of {HiFi}-{GAN} generates samples 13.4 times faster than real-time on {CPU} with comparable quality to an autoregressive counterpart.},
+	number = {{arXiv}:2010.05646},
+	publisher = {{arXiv}},
+	author = {Kong, Jungil and Kim, Jaehyeon and Bae, Jaekyoung},
+	urldate = {2023-08-14},
+	date = {2020-10-23},
+	eprinttype = {arxiv},
+	eprint = {2010.05646 [cs, eess]},
+	keywords = {Computer Science - Machine Learning, Computer Science - Sound, Electrical Engineering and Systems Science - Audio and Speech Processing},
+}
+
+@misc{kingma_auto-encoding_2022,
+	title = {Auto-Encoding Variational Bayes},
+	url = {http://arxiv.org/abs/1312.6114},
+	abstract = {How can we perform efficient inference and learning in directed probabilistic models, in the presence of continuous latent variables with intractable posterior distributions, and large datasets? We introduce a stochastic variational inference and learning algorithm that scales to large datasets and, under some mild differentiability conditions, even works in the intractable case. Our contributions are two-fold. First, we show that a reparameterization of the variational lower bound yields a lower bound estimator that can be straightforwardly optimized using standard stochastic gradient methods. Second, we show that for i.i.d. datasets with continuous latent variables per datapoint, posterior inference can be made especially efficient by fitting an approximate inference model (also called a recognition model) to the intractable posterior using the proposed lower bound estimator. Theoretical advantages are reflected in experimental results.},
+	number = {{arXiv}:1312.6114},
+	publisher = {{arXiv}},
+	author = {Kingma, Diederik P. and Welling, Max},
+	urldate = {2023-08-14},
+	date = {2022-12-10},
+	eprinttype = {arxiv},
+	eprint = {1312.6114 [cs, stat]},
+	keywords = {Computer Science - Machine Learning, Statistics - Machine Learning},
+}
+
+@misc{rombach_high-resolution_2022,
+	title = {High-Resolution Image Synthesis with Latent Diffusion Models},
+	url = {http://arxiv.org/abs/2112.10752},
+	abstract = {By decomposing the image formation process into a sequential application of denoising autoencoders, diffusion models ({DMs}) achieve state-of-the-art synthesis results on image data and beyond. Additionally, their formulation allows for a guiding mechanism to control the image generation process without retraining. However, since these models typically operate directly in pixel space, optimization of powerful {DMs} often consumes hundreds of {GPU} days and inference is expensive due to sequential evaluations. To enable {DM} training on limited computational resources while retaining their quality and flexibility, we apply them in the latent space of powerful pretrained autoencoders. In contrast to previous work, training diffusion models on such a representation allows for the first time to reach a near-optimal point between complexity reduction and detail preservation, greatly boosting visual fidelity. By introducing cross-attention layers into the model architecture, we turn diffusion models into powerful and flexible generators for general conditioning inputs such as text or bounding boxes and high-resolution synthesis becomes possible in a convolutional manner. Our latent diffusion models ({LDMs}) achieve a new state of the art for image inpainting and highly competitive performance on various tasks, including unconditional image generation, semantic scene synthesis, and super-resolution, while significantly reducing computational requirements compared to pixel-based {DMs}. Code is available at https://github.com/{CompVis}/latent-diffusion .},
+	number = {{arXiv}:2112.10752},
+	publisher = {{arXiv}},
+	author = {Rombach, Robin and Blattmann, Andreas and Lorenz, Dominik and Esser, Patrick and Ommer, Björn},
+	urldate = {2023-08-14},
+	date = {2022-04-13},
+	eprinttype = {arxiv},
+	eprint = {2112.10752 [cs]},
+	keywords = {Computer Science - Computer Vision and Pattern Recognition},
+}
+
+@misc{liu_roberta_2019,
+	title = {{RoBERTa}: A Robustly Optimized {BERT} Pretraining Approach},
+	url = {http://arxiv.org/abs/1907.11692},
+	shorttitle = {{RoBERTa}},
+	abstract = {Language model pretraining has led to significant performance gains but careful comparison between different approaches is challenging. Training is computationally expensive, often done on private datasets of different sizes, and, as we will show, hyperparameter choices have significant impact on the final results. We present a replication study of {BERT} pretraining (Devlin et al., 2019) that carefully measures the impact of many key hyperparameters and training data size. We find that {BERT} was significantly undertrained, and can match or exceed the performance of every model published after it. Our best model achieves state-of-the-art results on {GLUE}, {RACE} and {SQuAD}. These results highlight the importance of previously overlooked design choices, and raise questions about the source of recently reported improvements. We release our models and code.},
+	number = {{arXiv}:1907.11692},
+	publisher = {{arXiv}},
+	author = {Liu, Yinhan and Ott, Myle and Goyal, Naman and Du, Jingfei and Joshi, Mandar and Chen, Danqi and Levy, Omer and Lewis, Mike and Zettlemoyer, Luke and Stoyanov, Veselin},
+	urldate = {2023-08-14},
+	date = {2019-07-26},
+	eprinttype = {arxiv},
+	eprint = {1907.11692 [cs]},
+	keywords = {Computer Science - Computation and Language},
+}
+
+@misc{dai_why_2023,
+	title = {Why Can {GPT} Learn In-Context? Language Models Implicitly Perform Gradient Descent as Meta-Optimizers},
+	url = {http://arxiv.org/abs/2212.10559},
+	shorttitle = {Why Can {GPT} Learn In-Context?},
+	abstract = {Large pretrained language models have shown surprising in-context learning ({ICL}) ability. With a few demonstration input-label pairs, they can predict the label for an unseen input without parameter updates. Despite the great success in performance, its working mechanism still remains an open question. In this paper, we explain language models as meta-optimizers and understand in-context learning as implicit finetuning. Theoretically, we figure out that Transformer attention has a dual form of gradient descent. On top of it, we understand {ICL} as follows: {GPT} first produces meta-gradients according to the demonstration examples, and then these meta-gradients are applied to the original {GPT} to build an {ICL} model. We comprehensively compare the behaviors of in-context learning and explicit finetuning on real tasks to provide empirical evidence that supports our understanding. Experimental results show that in-context learning behaves similarly to explicit finetuning from multiple perspectives. Inspired by the dual form between Transformer attention and gradient descent, we design a momentum-based attention by analogy with gradient descent with momentum. The improved performance over vanilla attention further supports our understanding from another perspective, and more importantly, shows the potential to utilize our understanding for future model design. The code is available at {\textbackslash}url\{https://aka.ms/icl\}.},
+	number = {{arXiv}:2212.10559},
+	publisher = {{arXiv}},
+	author = {Dai, Damai and Sun, Yutao and Dong, Li and Hao, Yaru and Ma, Shuming and Sui, Zhifang and Wei, Furu},
+	urldate = {2023-08-13},
+	date = {2023-05-15},
+	eprinttype = {arxiv},
+	eprint = {2212.10559 [cs]},
+	keywords = {Computer Science - Computation and Language},
+}
+
+@misc{chung_scaling_2022,
+	title = {Scaling Instruction-Finetuned Language Models},
+	url = {http://arxiv.org/abs/2210.11416},
+	abstract = {Finetuning language models on a collection of datasets phrased as instructions has been shown to improve model performance and generalization to unseen tasks. In this paper we explore instruction finetuning with a particular focus on (1) scaling the number of tasks, (2) scaling the model size, and (3) finetuning on chain-of-thought data. We find that instruction finetuning with the above aspects dramatically improves performance on a variety of model classes ({PaLM}, T5, U-{PaLM}), prompting setups (zero-shot, few-shot, {CoT}), and evaluation benchmarks ({MMLU}, {BBH}, {TyDiQA}, {MGSM}, open-ended generation). For instance, Flan-{PaLM} 540B instruction-finetuned on 1.8K tasks outperforms {PALM} 540B by a large margin (+9.4\% on average). Flan-{PaLM} 540B achieves state-of-the-art performance on several benchmarks, such as 75.2\% on five-shot {MMLU}. We also publicly release Flan-T5 checkpoints, which achieve strong few-shot performance even compared to much larger models, such as {PaLM} 62B. Overall, instruction finetuning is a general method for improving the performance and usability of pretrained language models.},
+	number = {{arXiv}:2210.11416},
+	publisher = {{arXiv}},
+	author = {Chung, Hyung Won and Hou, Le and Longpre, Shayne and Zoph, Barret and Tay, Yi and Fedus, William and Li, Yunxuan and Wang, Xuezhi and Dehghani, Mostafa and Brahma, Siddhartha and Webson, Albert and Gu, Shixiang Shane and Dai, Zhuyun and Suzgun, Mirac and Chen, Xinyun and Chowdhery, Aakanksha and Castro-Ros, Alex and Pellat, Marie and Robinson, Kevin and Valter, Dasha and Narang, Sharan and Mishra, Gaurav and Yu, Adams and Zhao, Vincent and Huang, Yanping and Dai, Andrew and Yu, Hongkun and Petrov, Slav and Chi, Ed H. and Dean, Jeff and Devlin, Jacob and Roberts, Adam and Zhou, Denny and Le, Quoc V. and Wei, Jason},
+	urldate = {2023-08-13},
+	date = {2022-12-06},
+	eprinttype = {arxiv},
+	eprint = {2210.11416 [cs]},
+	keywords = {Computer Science - Computation and Language, Computer Science - Machine Learning},
+}
+
+@inproceedings{kim_audiocaps_2019,
+	location = {Minneapolis, Minnesota},
+	title = {{AudioCaps}: Generating Captions for Audios in The Wild},
+	url = {https://aclanthology.org/N19-1011},
+	doi = {10.18653/v1/N19-1011},
+	shorttitle = {{AudioCaps}},
+	abstract = {We explore the problem of Audio Captioning: generating natural language description for any kind of audio in the wild, which has been surprisingly unexplored in previous research. We contribute a large-scale dataset of 46K audio clips with human-written text pairs collected via crowdsourcing on the {AudioSet} dataset. Our thorough empirical studies not only show that our collected captions are indeed faithful to audio inputs but also discover what forms of audio representation and captioning models are effective for the audio captioning. From extensive experiments, we also propose two novel components that help improve audio captioning performance: the top-down multi-scale encoder and aligned semantic attention.},
+	eventtitle = {{NAACL}-{HLT} 2019},
+	pages = {119--132},
+	booktitle = {Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers)},
+	publisher = {Association for Computational Linguistics},
+	author = {Kim, Chris Dongjoo and Kim, Byeongchang and Lee, Hyunmin and Kim, Gunhee},
+	urldate = {2023-08-12},
+	date = {2019-06},
+}
+
+@inproceedings{gemmeke_audio_2017,
+	location = {New Orleans, {LA}},
+	title = {Audio Set: An ontology and human-labeled dataset for audio events},
+	isbn = {978-1-5090-4117-6},
+	url = {http://ieeexplore.ieee.org/document/7952261/},
+	doi = {10.1109/ICASSP.2017.7952261},
+	shorttitle = {Audio Set},
+	eventtitle = {2017 {IEEE} International Conference on Acoustics, Speech and Signal Processing ({ICASSP})},
+	pages = {776--780},
+	booktitle = {2017 {IEEE} International Conference on Acoustics, Speech and Signal Processing ({ICASSP})},
+	publisher = {{IEEE}},
+	author = {Gemmeke, Jort F. and Ellis, Daniel P. W. and Freedman, Dylan and Jansen, Aren and Lawrence, Wade and Moore, R. Channing and Plakal, Manoj and Ritter, Marvin},
+	urldate = {2023-08-12},
+	date = {2017-03},
+}
+
+@misc{kumar_melgan_2019,
+	title = {{MelGAN}: Generative Adversarial Networks for Conditional Waveform Synthesis},
+	url = {http://arxiv.org/abs/1910.06711},
+	shorttitle = {{MelGAN}},
+	abstract = {Previous works (Donahue et al., 2018a; Engel et al., 2019a) have found that generating coherent raw audio waveforms with {GANs} is challenging. In this paper, we show that it is possible to train {GANs} reliably to generate high quality coherent waveforms by introducing a set of architectural changes and simple training techniques. Subjective evaluation metric (Mean Opinion Score, or {MOS}) shows the effectiveness of the proposed approach for high quality mel-spectrogram inversion. To establish the generality of the proposed techniques, we show qualitative results of our model in speech synthesis, music domain translation and unconditional music synthesis. We evaluate the various components of the model through ablation studies and suggest a set of guidelines to design general purpose discriminators and generators for conditional sequence synthesis tasks. Our model is non-autoregressive, fully convolutional, with significantly fewer parameters than competing models and generalizes to unseen speakers for mel-spectrogram inversion. Our pytorch implementation runs at more than 100x faster than realtime on {GTX} 1080Ti {GPU} and more than 2x faster than real-time on {CPU}, without any hardware specific optimization tricks.},
+	number = {{arXiv}:1910.06711},
+	publisher = {{arXiv}},
+	author = {Kumar, Kundan and Kumar, Rithesh and de Boissiere, Thibault and Gestin, Lucas and Teoh, Wei Zhen and Sotelo, Jose and de Brebisson, Alexandre and Bengio, Yoshua and Courville, Aaron},
+	urldate = {2023-08-12},
+	date = {2019-12-08},
+	eprinttype = {arxiv},
+	eprint = {1910.06711 [cs, eess]},
+	keywords = {Computer Science - Computation and Language, Computer Science - Machine Learning, Computer Science - Sound, Electrical Engineering and Systems Science - Audio and Speech Processing},
+}
+
+@misc{austin_structured_2023,
+	title = {Structured Denoising Diffusion Models in Discrete State-Spaces},
+	url = {http://arxiv.org/abs/2107.03006},
+	abstract = {Denoising diffusion probabilistic models ({DDPMs}) (Ho et al. 2020) have shown impressive results on image and waveform generation in continuous state spaces. Here, we introduce Discrete Denoising Diffusion Probabilistic Models (D3PMs), diffusion-like generative models for discrete data that generalize the multinomial diffusion model of Hoogeboom et al. 2021, by going beyond corruption processes with uniform transition probabilities. This includes corruption with transition matrices that mimic Gaussian kernels in continuous space, matrices based on nearest neighbors in embedding space, and matrices that introduce absorbing states. The third allows us to draw a connection between diffusion models and autoregressive and mask-based generative models. We show that the choice of transition matrix is an important design decision that leads to improved results in image and text domains. We also introduce a new loss function that combines the variational lower bound with an auxiliary cross entropy loss. For text, this model class achieves strong results on character-level text generation while scaling to large vocabularies on {LM}1B. On the image dataset {CIFAR}-10, our models approach the sample quality and exceed the log-likelihood of the continuous-space {DDPM} model.},
+	number = {{arXiv}:2107.03006},
+	publisher = {{arXiv}},
+	author = {Austin, Jacob and Johnson, Daniel D. and Ho, Jonathan and Tarlow, Daniel and Berg, Rianne van den},
+	urldate = {2023-08-11},
+	date = {2023-02-22},
+	eprinttype = {arxiv},
+	eprint = {2107.03006 [cs]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computation and Language, Computer Science - Computer Vision and Pattern Recognition, Computer Science - Machine Learning},
+}
+
+@misc{sohl-dickstein_deep_2015,
+	title = {Deep Unsupervised Learning using Nonequilibrium Thermodynamics},
+	url = {http://arxiv.org/abs/1503.03585},
+	abstract = {A central problem in machine learning involves modeling complex data-sets using highly flexible families of probability distributions in which learning, sampling, inference, and evaluation are still analytically or computationally tractable. Here, we develop an approach that simultaneously achieves both flexibility and tractability. The essential idea, inspired by non-equilibrium statistical physics, is to systematically and slowly destroy structure in a data distribution through an iterative forward diffusion process. We then learn a reverse diffusion process that restores structure in data, yielding a highly flexible and tractable generative model of the data. This approach allows us to rapidly learn, sample from, and evaluate probabilities in deep generative models with thousands of layers or time steps, as well as to compute conditional and posterior probabilities under the learned model. We additionally release an open source reference implementation of the algorithm.},
+	number = {{arXiv}:1503.03585},
+	publisher = {{arXiv}},
+	author = {Sohl-Dickstein, Jascha and Weiss, Eric A. and Maheswaranathan, Niru and Ganguli, Surya},
+	urldate = {2023-08-11},
+	date = {2015-11-18},
+	eprinttype = {arxiv},
+	eprint = {1503.03585 [cond-mat, q-bio, stat]},
+	keywords = {Computer Science - Machine Learning, Condensed Matter - Disordered Systems and Neural Networks, Quantitative Biology - Neurons and Cognition, Statistics - Machine Learning},
+}
+
+@misc{oord_neural_2018,
+	title = {Neural Discrete Representation Learning},
+	url = {http://arxiv.org/abs/1711.00937},
+	abstract = {Learning useful representations without supervision remains a key challenge in machine learning. In this paper, we propose a simple yet powerful generative model that learns such discrete representations. Our model, the Vector Quantised-Variational {AutoEncoder} ({VQ}-{VAE}), differs from {VAEs} in two key ways: the encoder network outputs discrete, rather than continuous, codes; and the prior is learnt rather than static. In order to learn a discrete latent representation, we incorporate ideas from vector quantisation ({VQ}). Using the {VQ} method allows the model to circumvent issues of "posterior collapse" -- where the latents are ignored when they are paired with a powerful autoregressive decoder -- typically observed in the {VAE} framework. Pairing these representations with an autoregressive prior, the model can generate high quality images, videos, and speech as well as doing high quality speaker conversion and unsupervised learning of phonemes, providing further evidence of the utility of the learnt representations.},
+	number = {{arXiv}:1711.00937},
+	publisher = {{arXiv}},
+	author = {Oord, Aaron van den and Vinyals, Oriol and Kavukcuoglu, Koray},
+	urldate = {2023-08-10},
+	date = {2018-05-30},
+	eprinttype = {arxiv},
+	eprint = {1711.00937 [cs]},
+	keywords = {Computer Science - Machine Learning},
+}
+
+@misc{liu_conditional_2021,
+	title = {Conditional Sound Generation Using Neural Discrete Time-Frequency Representation Learning},
+	url = {http://arxiv.org/abs/2107.09998},
+	abstract = {Deep generative models have recently achieved impressive performance in speech and music synthesis. However, compared to the generation of those domain-specific sounds, generating general sounds (such as siren, gunshots) has received less attention, despite their wide applications. In previous work, the {SampleRNN} method was considered for sound generation in the time domain. However, {SampleRNN} is potentially limited in capturing long-range dependencies within sounds as it only back-propagates through a limited number of samples. In this work, we propose a method for generating sounds via neural discrete time-frequency representation learning, conditioned on sound classes. This offers an advantage in efficiently modelling long-range dependencies and retaining local fine-grained structures within sound clips. We evaluate our approach on the {UrbanSound}8K dataset, compared to {SampleRNN}, with the performance metrics measuring the quality and diversity of generated sounds. Experimental results show that our method offers comparable performance in quality and significantly better performance in diversity.},
+	number = {{arXiv}:2107.09998},
+	publisher = {{arXiv}},
+	author = {Liu, Xubo and Iqbal, Turab and Zhao, Jinzheng and Huang, Qiushi and Plumbley, Mark D. and Wang, Wenwu},
+	urldate = {2023-08-10},
+	date = {2021-10-06},
+	eprinttype = {arxiv},
+	eprint = {2107.09998 [cs, eess]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Sound, Electrical Engineering and Systems Science - Audio and Speech Processing},
+}
+
+@misc{iashin_taming_2021,
+	title = {Taming Visually Guided Sound Generation},
+	url = {http://arxiv.org/abs/2110.08791},
+	abstract = {Recent advances in visually-induced audio generation are based on sampling short, low-fidelity, and one-class sounds. Moreover, sampling 1 second of audio from the state-of-the-art model takes minutes on a high-end {GPU}. In this work, we propose a single model capable of generating visually relevant, high-fidelity sounds prompted with a set of frames from open-domain videos in less time than it takes to play it on a single {GPU}. We train a transformer to sample a new spectrogram from the pre-trained spectrogram codebook given the set of video features. The codebook is obtained using a variant of {VQGAN} trained to produce a compact sampling space with a novel spectrogram-based perceptual loss. The generated spectrogram is transformed into a waveform using a window-based {GAN} that significantly speeds up generation. Considering the lack of metrics for automatic evaluation of generated spectrograms, we also build a family of metrics called {FID} and {MKL}. These metrics are based on a novel sound classifier, called Melception, and designed to evaluate the fidelity and relevance of open-domain samples. Both qualitative and quantitative studies are conducted on small- and large-scale datasets to evaluate the fidelity and relevance of generated samples. We also compare our model to the state-of-the-art and observe a substantial improvement in quality, size, and computation time. Code, demo, and samples: v-iashin.github.io/{SpecVQGAN}},
+	number = {{arXiv}:2110.08791},
+	publisher = {{arXiv}},
+	author = {Iashin, Vladimir and Rahtu, Esa},
+	urldate = {2023-08-10},
+	date = {2021-10-17},
+	eprinttype = {arxiv},
+	eprint = {2110.08791 [cs, eess]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computer Vision and Pattern Recognition, Computer Science - Machine Learning, Computer Science - Sound, Electrical Engineering and Systems Science - Audio and Speech Processing},
+}
+
+@misc{radford_learning_2021,
+	title = {Learning Transferable Visual Models From Natural Language Supervision},
+	url = {http://arxiv.org/abs/2103.00020},
+	abstract = {State-of-the-art computer vision systems are trained to predict a fixed set of predetermined object categories. This restricted form of supervision limits their generality and usability since additional labeled data is needed to specify any other visual concept. Learning directly from raw text about images is a promising alternative which leverages a much broader source of supervision. We demonstrate that the simple pre-training task of predicting which caption goes with which image is an efficient and scalable way to learn {SOTA} image representations from scratch on a dataset of 400 million (image, text) pairs collected from the internet. After pre-training, natural language is used to reference learned visual concepts (or describe new ones) enabling zero-shot transfer of the model to downstream tasks. We study the performance of this approach by benchmarking on over 30 different existing computer vision datasets, spanning tasks such as {OCR}, action recognition in videos, geo-localization, and many types of fine-grained object classification. The model transfers non-trivially to most tasks and is often competitive with a fully supervised baseline without the need for any dataset specific training. For instance, we match the accuracy of the original {ResNet}-50 on {ImageNet} zero-shot without needing to use any of the 1.28 million training examples it was trained on. We release our code and pre-trained model weights at https://github.com/{OpenAI}/{CLIP}.},
+	number = {{arXiv}:2103.00020},
+	publisher = {{arXiv}},
+	author = {Radford, Alec and Kim, Jong Wook and Hallacy, Chris and Ramesh, Aditya and Goh, Gabriel and Agarwal, Sandhini and Sastry, Girish and Askell, Amanda and Mishkin, Pamela and Clark, Jack and Krueger, Gretchen and Sutskever, Ilya},
+	urldate = {2023-08-10},
+	date = {2021-02-26},
+	eprinttype = {arxiv},
+	eprint = {2103.00020 [cs]},
+	keywords = {Computer Science - Computer Vision and Pattern Recognition, Computer Science - Machine Learning},
+}
+
+@misc{devlin_bert_2019,
+	title = {{BERT}: Pre-training of Deep Bidirectional Transformers for Language Understanding},
+	url = {http://arxiv.org/abs/1810.04805},
+	shorttitle = {{BERT}},
+	abstract = {We introduce a new language representation model called {BERT}, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models, {BERT} is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained {BERT} model can be fine-tuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial task-specific architecture modifications. {BERT} is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the {GLUE} score to 80.5\% (7.7\% point absolute improvement), {MultiNLI} accuracy to 86.7\% (4.6\% absolute improvement), {SQuAD} v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and {SQuAD} v2.0 Test F1 to 83.1 (5.1 point absolute improvement).},
+	number = {{arXiv}:1810.04805},
+	publisher = {{arXiv}},
+	author = {Devlin, Jacob and Chang, Ming-Wei and Lee, Kenton and Toutanova, Kristina},
+	urldate = {2023-08-10},
+	date = {2019-05-24},
+	eprinttype = {arxiv},
+	eprint = {1810.04805 [cs]},
+	keywords = {Computer Science - Computation and Language},
+}
+
+@misc{chung_w2v-bert_2021,
+	title = {W2v-{BERT}: Combining Contrastive Learning and Masked Language Modeling for Self-Supervised Speech Pre-Training},
+	url = {http://arxiv.org/abs/2108.06209},
+	shorttitle = {W2v-{BERT}},
+	abstract = {Motivated by the success of masked language modeling{\textasciitilde}({MLM}) in pre-training natural language processing models, we propose w2v-{BERT} that explores {MLM} for self-supervised speech representation learning. w2v-{BERT} is a framework that combines contrastive learning and {MLM}, where the former trains the model to discretize input continuous speech signals into a finite set of discriminative speech tokens, and the latter trains the model to learn contextualized speech representations via solving a masked prediction task consuming the discretized tokens. In contrast to existing {MLM}-based speech pre-training frameworks such as {HuBERT}, which relies on an iterative re-clustering and re-training process, or vq-wav2vec, which concatenates two separately trained modules, w2v-{BERT} can be optimized in an end-to-end fashion by solving the two self-supervised tasks{\textasciitilde}(the contrastive task and {MLM}) simultaneously. Our experiments show that w2v-{BERT} achieves competitive results compared to current state-of-the-art pre-trained models on the {LibriSpeech} benchmarks when using the Libri-Light{\textasciitilde}60k corpus as the unsupervised data. In particular, when compared to published models such as conformer-based wav2vec{\textasciitilde}2.0 and {HuBERT}, our model shows{\textasciitilde}5{\textbackslash}\% to{\textasciitilde}10{\textbackslash}\% relative {WER} reduction on the test-clean and test-other subsets. When applied to the Google's Voice Search traffic dataset, w2v-{BERT} outperforms our internal conformer-based wav2vec{\textasciitilde}2.0 by more than{\textasciitilde}30{\textbackslash}\% relatively.},
+	number = {{arXiv}:2108.06209},
+	publisher = {{arXiv}},
+	author = {Chung, Yu-An and Zhang, Yu and Han, Wei and Chiu, Chung-Cheng and Qin, James and Pang, Ruoming and Wu, Yonghui},
+	urldate = {2023-08-07},
+	date = {2021-09-13},
+	eprinttype = {arxiv},
+	eprint = {2108.06209 [cs, eess]},
+	keywords = {Computer Science - Machine Learning, Computer Science - Sound, Electrical Engineering and Systems Science - Audio and Speech Processing},
+}
+
+@misc{zeghidour_soundstream_2021,
+	title = {{SoundStream}: An End-to-End Neural Audio Codec},
+	url = {http://arxiv.org/abs/2107.03312},
+	shorttitle = {{SoundStream}},
+	abstract = {We present {SoundStream}, a novel neural audio codec that can efficiently compress speech, music and general audio at bitrates normally targeted by speech-tailored codecs. {SoundStream} relies on a model architecture composed by a fully convolutional encoder/decoder network and a residual vector quantizer, which are trained jointly end-to-end. Training leverages recent advances in text-to-speech and speech enhancement, which combine adversarial and reconstruction losses to allow the generation of high-quality audio content from quantized embeddings. By training with structured dropout applied to quantizer layers, a single model can operate across variable bitrates from 3kbps to 18kbps, with a negligible quality loss when compared with models trained at fixed bitrates. In addition, the model is amenable to a low latency implementation, which supports streamable inference and runs in real time on a smartphone {CPU}. In subjective evaluations using audio at 24kHz sampling rate, {SoundStream} at 3kbps outperforms Opus at 12kbps and approaches {EVS} at 9.6kbps. Moreover, we are able to perform joint compression and enhancement either at the encoder or at the decoder side with no additional latency, which we demonstrate through background noise suppression for speech.},
+	number = {{arXiv}:2107.03312},
+	publisher = {{arXiv}},
+	author = {Zeghidour, Neil and Luebs, Alejandro and Omran, Ahmed and Skoglund, Jan and Tagliasacchi, Marco},
+	urldate = {2023-08-07},
+	date = {2021-07-07},
+	eprinttype = {arxiv},
+	eprint = {2107.03312 [cs, eess]},
+	keywords = {Computer Science - Machine Learning, Computer Science - Sound, Electrical Engineering and Systems Science - Audio and Speech Processing},
+}
+
+@misc{yang_diffsound_2023,
+	title = {Diffsound: Discrete Diffusion Model for Text-to-sound Generation},
+	url = {http://arxiv.org/abs/2207.09983},
+	shorttitle = {Diffsound},
+	abstract = {Generating sound effects that humans want is an important topic. However, there are few studies in this area for sound generation. In this study, we investigate generating sound conditioned on a text prompt and propose a novel text-to-sound generation framework that consists of a text encoder, a Vector Quantized Variational Autoencoder ({VQ}-{VAE}), a decoder, and a vocoder. The framework first uses the decoder to transfer the text features extracted from the text encoder to a mel-spectrogram with the help of {VQ}-{VAE}, and then the vocoder is used to transform the generated mel-spectrogram into a waveform. We found that the decoder significantly influences the generation performance. Thus, we focus on designing a good decoder in this study. We begin with the traditional autoregressive decoder, which has been proved as a state-of-the-art method in previous sound generation works. However, the {AR} decoder always predicts the mel-spectrogram tokens one by one in order, which introduces the unidirectional bias and accumulation of errors problems. Moreover, with the {AR} decoder, the sound generation time increases linearly with the sound duration. To overcome the shortcomings introduced by {AR} decoders, we propose a non-autoregressive decoder based on the discrete diffusion model, named Diffsound. Specifically, the Diffsound predicts all of the mel-spectrogram tokens in one step and then refines the predicted tokens in the next step, so the best-predicted results can be obtained after several steps. Our experiments show that our proposed Diffsound not only produces better text-to-sound generation results when compared with the {AR} decoder but also has a faster generation speed, e.g., {MOS}: 3.56 {\textbackslash}textit\{v.s\} 2.786, and the generation speed is five times faster than the {AR} decoder.},
+	number = {{arXiv}:2207.09983},
+	publisher = {{arXiv}},
+	author = {Yang, Dongchao and Yu, Jianwei and Wang, Helin and Wang, Wen and Weng, Chao and Zou, Yuexian and Yu, Dong},
+	urldate = {2023-08-04},
+	date = {2023-04-28},
+	eprinttype = {arxiv},
+	eprint = {2207.09983 [cs, eess]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Sound, Electrical Engineering and Systems Science - Audio and Speech Processing},
+}
+
+@misc{kreuk_audiogen_2023,
+	title = {{AudioGen}: Textually Guided Audio Generation},
+	url = {http://arxiv.org/abs/2209.15352},
+	shorttitle = {{AudioGen}},
+	abstract = {We tackle the problem of generating audio samples conditioned on descriptive text captions. In this work, we propose {AaudioGen}, an auto-regressive generative model that generates audio samples conditioned on text inputs. {AudioGen} operates on a learnt discrete audio representation. The task of text-to-audio generation poses multiple challenges. Due to the way audio travels through a medium, differentiating ``objects'' can be a difficult task (e.g., separating multiple people simultaneously speaking). This is further complicated by real-world recording conditions (e.g., background noise, reverberation, etc.). Scarce text annotations impose another constraint, limiting the ability to scale models. Finally, modeling high-fidelity audio requires encoding audio at high sampling rate, leading to extremely long sequences. To alleviate the aforementioned challenges we propose an augmentation technique that mixes different audio samples, driving the model to internally learn to separate multiple sources. We curated 10 datasets containing different types of audio and text annotations to handle the scarcity of text-audio data points. For faster inference, we explore the use of multi-stream modeling, allowing the use of shorter sequences while maintaining a similar bitrate and perceptual quality. We apply classifier-free guidance to improve adherence to text. Comparing to the evaluated baselines, {AudioGen} outperforms over both objective and subjective metrics. Finally, we explore the ability of the proposed method to generate audio continuation conditionally and unconditionally. Samples: https://felixkreuk.github.io/audiogen},
+	number = {{arXiv}:2209.15352},
+	publisher = {{arXiv}},
+	author = {Kreuk, Felix and Synnaeve, Gabriel and Polyak, Adam and Singer, Uriel and Défossez, Alexandre and Copet, Jade and Parikh, Devi and Taigman, Yaniv and Adi, Yossi},
+	urldate = {2023-08-04},
+	date = {2023-03-05},
+	eprinttype = {arxiv},
+	eprint = {2209.15352 [cs, eess]},
+	keywords = {Computer Science - Computation and Language, Computer Science - Machine Learning, Computer Science - Sound, Electrical Engineering and Systems Science - Audio and Speech Processing},
+}
+
+@misc{ghosal_text--audio_2023,
+	title = {Text-to-Audio Generation using Instruction-Tuned {LLM} and Latent Diffusion Model},
+	url = {http://arxiv.org/abs/2304.13731},
+	abstract = {The immense scale of the recent large language models ({LLM}) allows many interesting properties, such as, instruction- and chain-of-thought-based fine-tuning, that has significantly improved zero- and few-shot performance in many natural language processing ({NLP}) tasks. Inspired by such successes, we adopt such an instruction-tuned {LLM} Flan-T5 as the text encoder for text-to-audio ({TTA}) generation -- a task where the goal is to generate an audio from its textual description. The prior works on {TTA} either pre-trained a joint text-audio encoder or used a non-instruction-tuned model, such as, T5. Consequently, our latent diffusion model ({LDM})-based approach {TANGO} outperforms the state-of-the-art {AudioLDM} on most metrics and stays comparable on the rest on {AudioCaps} test set, despite training the {LDM} on a 63 times smaller dataset and keeping the text encoder frozen. This improvement might also be attributed to the adoption of audio pressure level-based sound mixing for training set augmentation, whereas the prior methods take a random mix.},
+	number = {{arXiv}:2304.13731},
+	publisher = {{arXiv}},
+	author = {Ghosal, Deepanway and Majumder, Navonil and Mehrish, Ambuj and Poria, Soujanya},
+	urldate = {2023-08-04},
+	date = {2023-05-29},
+	eprinttype = {arxiv},
+	eprint = {2304.13731 [cs, eess]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computation and Language, Computer Science - Sound, Electrical Engineering and Systems Science - Audio and Speech Processing},
+}
+
+@online{team_gradio_gradio_nodate,
+	title = {Gradio},
+	url = {https://gradio.app},
+	abstract = {Build \& Share Delightful Machine Learning Apps},
+	author = {Team Gradio},
+	urldate = {2023-08-03},
+	langid = {english},
+}
+
+@software{barney_hill_vroomai_2023,
+	title = {{VroomAI}},
+	rights = {Apache-2.0},
+	url = {https://github.com/vroomai/vst},
+	abstract = {Generate sounds from words. Directly in your {DAW}.},
+	publisher = {vroomai},
+	author = {{Barney Hill}},
+	urldate = {2023-07-28},
+	date = {2023-07-13},
+	note = {original-date: 2023-03-24T23:58:48Z},
+	keywords = {audio, generative-art, machine-learning, vst, vst3},
+}
+
+@online{qosmo_neutone_nodate,
+	title = {Neutone by Qosmo},
+	url = {https://neutone.space/},
+	abstract = {Neutone makes {AI} technologies accessible for any audio creators to experiment with. Our transformative {AI} audio instruments will spark endless possibilities for creators/performers to discover and produce music of the future.},
+	titleaddon = {Neutone by Qosmo},
+	author = {{Qosmo}},
+	urldate = {2023-07-28},
+	langid = {english},
+}
+
+@online{google_ai_nsynth_2017,
+	title = {{NSynth}: Neural Audio Synthesis},
+	url = {https://magenta.tensorflow.org/nsynth},
+	shorttitle = {{NSynth}},
+	abstract = {One of the goals of Magenta is to use machine learning to develop new avenues of human expression. And so today we are proud to announce {NSynth} (Neural Synth...},
+	titleaddon = {Magenta},
+	author = {{Google AI}},
+	urldate = {2023-07-28},
+	date = {2017-04-06},
+	langid = {english},
+}
+
+@misc{engel_neural_2017,
+	title = {Neural Audio Synthesis of Musical Notes with {WaveNet} Autoencoders},
+	url = {http://arxiv.org/abs/1704.01279},
+	abstract = {Generative models in vision have seen rapid progress due to algorithmic improvements and the availability of high-quality image datasets. In this paper, we offer contributions in both these areas to enable similar progress in audio modeling. First, we detail a powerful new {WaveNet}-style autoencoder model that conditions an autoregressive decoder on temporal codes learned from the raw audio waveform. Second, we introduce {NSynth}, a large-scale and high-quality dataset of musical notes that is an order of magnitude larger than comparable public datasets. Using {NSynth}, we demonstrate improved qualitative and quantitative performance of the {WaveNet} autoencoder over a well-tuned spectral autoencoder baseline. Finally, we show that the model learns a manifold of embeddings that allows for morphing between instruments, meaningfully interpolating in timbre to create new types of sounds that are realistic and expressive.},
+	number = {{arXiv}:1704.01279},
+	publisher = {{arXiv}},
+	author = {Engel, Jesse and Resnick, Cinjon and Roberts, Adam and Dieleman, Sander and Eck, Douglas and Simonyan, Karen and Norouzi, Mohammad},
+	urldate = {2023-07-28},
+	date = {2017-04-05},
+	eprinttype = {arxiv},
+	eprint = {1704.01279 [cs]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Machine Learning, Computer Science - Sound},
+}
+
+@online{midi_association_midi_nodate,
+	title = {{MIDI}},
+	url = {https://www.midi.org/},
+	titleaddon = {{MIDI}},
+	author = {{MIDI Association}},
+	urldate = {2023-07-28},
+}
+
+@book{russ_sound_2009,
+	location = {Amsterdam},
+	edition = {3. ed},
+	title = {Sound synthesis and sampling},
+	isbn = {978-0-240-52105-3},
+	pagetotal = {559},
+	publisher = {Elsevier, Focal Press},
+	author = {Russ, Martin},
+	date = {2009},
+}
+
+@online{young_gale_hugh_2013,
+	title = {Hugh Le Caine},
+	url = {https://www.thecanadianencyclopedia.ca/en/article/hugh-le-caine-emc},
+	titleaddon = {The Canadian Encyclopedia},
+	author = {{Young Gale} and {Ford Clifford}},
+	urldate = {2023-07-25},
+	date = {2013-12-16},
+}
+
+@video{haohe_liu_audioldm_2023,
+	title = {{AudioLDM}: Text-to-Audio Generation with Latent Diffusion Models},
+	volume = {40},
+	url = {https://www.youtube.com/watch?v=6qtL9_T8m3c},
+	abstract = {{AudioLDM}: Text-to-Audio Generation with Latent Diffusion Models [Haohe Liu, University of Surrey]},
+	author = {{Haohe Liu}},
+	urldate = {2023-07-25},
+	date = {2023-03-27},
+	langid = {english},
+}
+
+@misc{wu_large-scale_2023,
+	title = {Large-scale Contrastive Language-Audio Pretraining with Feature Fusion and Keyword-to-Caption Augmentation},
+	url = {http://arxiv.org/abs/2211.06687},
+	abstract = {Contrastive learning has shown remarkable success in the field of multimodal representation learning. In this paper, we propose a pipeline of contrastive language-audio pretraining to develop an audio representation by combining audio data with natural language descriptions. To accomplish this target, we first release {LAION}-Audio-630K, a large collection of 633,526 audio-text pairs from different data sources. Second, we construct a contrastive language-audio pretraining model by considering different audio encoders and text encoders. We incorporate the feature fusion mechanism and keyword-to-caption augmentation into the model design to further enable the model to process audio inputs of variable lengths and enhance the performance. Third, we perform comprehensive experiments to evaluate our model across three tasks: text-to-audio retrieval, zero-shot audio classification, and supervised audio classification. The results demonstrate that our model achieves superior performance in text-to-audio retrieval task. In audio classification tasks, the model achieves state-of-the-art performance in the zero-shot setting and is able to obtain performance comparable to models' results in the non-zero-shot setting. {LAION}-Audio-630K and the proposed model are both available to the public.},
+	number = {{arXiv}:2211.06687},
+	publisher = {{arXiv}},
+	author = {Wu, Yusong and Chen, Ke and Zhang, Tianyu and Hui, Yuchen and Berg-Kirkpatrick, Taylor and Dubnov, Shlomo},
+	urldate = {2023-07-18},
+	date = {2023-04-07},
+	eprinttype = {arxiv},
+	eprint = {2211.06687 [cs, eess]},
+	keywords = {Computer Science - Sound, Electrical Engineering and Systems Science - Audio and Speech Processing},
+}
+
+@online{dudenredaktion_synthesizer_nodate,
+	title = {Synthesizer auf Duden online},
+	url = {https://www.duden.de/rechtschreibung/Synthesizer},
+	abstract = {Definition, Rechtschreibung, Synonyme und Grammatik von 'Synthesizer' auf Duden online nachschlagen ✔️ Wörterbuch der deutschen Sprache.},
+	titleaddon = {Duden online},
+	author = {Dudenredaktion},
+	urldate = {2023-07-16},
+	langid = {german},
+}
+
+@online{walz_plugin_nodate,
+	title = {Plugin Gui Magic},
+	url = {https://foleysfinest.com/developer/pluginguimagic/},
+	abstract = {{PluginGuiMagic} allows you to design your audio plugin {GUI} with mouseclicks at runtime},
+	author = {Walz, Daniel},
+	urldate = {2023-07-15},
+	langid = {english},
+}
+
+@online{noauthor_huggingface_nodate,
+	title = {Huggingface {AudioLDM} Pipeline},
+	url = {https://huggingface.co/docs/diffusers/main/en/api/pipelines/audioldm},
+	abstract = {We’re on a journey to advance and democratize artificial intelligence through open source and open science.},
+	titleaddon = {Huggingface},
+	urldate = {2023-07-16},
+}
+
+@online{noauthor_fastapi_nodate,
+	title = {{FastAPI}},
+	url = {https://fastapi.tiangolo.com/},
+	abstract = {{FastAPI} framework, high performance, easy to learn, fast to code, ready for production},
+	urldate = {2023-07-16},
+	langid = {english},
+}
+
+@online{noauthor_torchscript_nodate,
+	title = {{TorchScript} — {PyTorch} 2.0 documentation},
+	url = {https://pytorch.org/docs/stable/jit.html},
+	urldate = {2023-07-16},
+}
+
+@video{oli_larkin_machine_2023,
+	title = {Machine Learning Audio Plug-ins with {iPlug}2 and {ONNX} Runtime},
+	url = {https://www.youtube.com/watch?v=t662qg12f_Y},
+	abstract = {Oli Larkin is the lead developer of the {iPlug}2 plug-in framework and a software engineer at Ableton. Oli will introduce the latest {iPlug}2 developments and show how it can be used with Microsoft’s Onnx runtime to perform inference on models exported from {ML} frameworks such as Tensorflow or {PyTorch}.},
+	publisher = {The Audio Programmer},
+	author = {{Oli Larkin}},
+	urldate = {2023-07-16},
+	date = {2023-04-12},
+	langid = {english},
+}
+
+@online{noauthor_onnx_nodate,
+	title = {{ONNX} Runtime},
+	url = {https://onnxruntime.ai/},
+	titleaddon = {{ONNX} Runtime},
+	urldate = {2023-07-16},
+}
+
+@online{noauthor_onnx_nodate-1,
+	title = {{ONNX}},
+	url = {https://onnx.ai/},
+	abstract = {{ONNX} is an open format built to represent machine learning models. {ONNX} defines a common set of operators - the building blocks of machine learning and deep learning models - and a common file format to enable {AI} developers to use models with a variety of frameworks, tools, runtimes, and compilers.},
+	titleaddon = {{ONNX}},
+	urldate = {2023-07-16},
+	langid = {english},
+}
+
+@book{meyers_effective_2014,
+	location = {Beijing ; Sebastopol, {CA}},
+	edition = {First edition},
+	title = {Effective modern C++: 42 specific ways to improve your use of C++11 and C++14},
+	isbn = {978-1-4919-0399-5},
+	shorttitle = {Effective modern C++},
+	abstract = {"Coming to grips with C++11 and C++14 is more than a matter of familiarizing yourself with the features they introduce (e.g., auto type declarations, move semantics, lambda expressions, and concurrency support). The challenge is learning to use those features effectively -- so that your software is correct, efficient, maintainable, and portable. That's where this practical book comes in. It describes how to write truly great software using C++11 and C++14 -- i.e. using modern C++ ...Effective Modern C++ follows the proven guideline-based, example-driven format of Scott Meyers' earlier books, but covers entirely new material"--Publisher's website},
+	pagetotal = {315},
+	publisher = {O'Reilly Media},
+	author = {Meyers, Scott},
+	date = {2014},
+	note = {{OCLC}: ocn884480640},
+	keywords = {C++ (Computer program language), Langages de programmation, Programmation informatique},
+}
+
+@book{stroustrup_c_1997,
+	location = {Reading, Mass},
+	edition = {3rd ed},
+	title = {The C++ programming language},
+	isbn = {978-0-201-88954-3},
+	pagetotal = {910},
+	publisher = {Addison-Wesley},
+	author = {Stroustrup, Bjarne},
+	date = {1997},
+	keywords = {C++ (Computer program language)},
+}
+
+@unpublished{doumler_c_2015,
+	location = {{CppCon}},
+	title = {C++ in the Audio Industry},
+	url = {https://www.youtube.com/watch?v=boPEO2auJj4},
+	abstract = {Sound is an essential medium for human-computer interaction and vital for applications such as games and music production software. In the audio industry, C++ is the dominating programming language. This talk provides an insight into the patterns and tools that C++ developers in the audio industry rely on. There are interesting lessons to be learned from this domain that can be useful to every C++ developer.
+
+Handling audio in real time presents interesting technical challenges. Techniques also used in other C++ domains have to be combined: real-time multithreading, lock-free programming, efficient {DSP}, {SIMD}, and low-latency hardware communication. C++ is the language of choice to tie all these requirements together. Clever leveraging of advanced C++ techniques, template metaprogramming, and the new C++11/14 standard makes these tasks more exciting than ever.
+— 
+Timur Doumler is Senior Software Developer at London-based technology company {ROLI}. He is working with Julian Storer to further develop {JUCE}, the leading cross-platform framework for creating audio applications that is used by hundreds of companies in the audio industry.
+
+After five years of writing high-performance code in Fortran, C, and C++ for numerical simulations of the cosmic structure formation, Timur became committed to audio and music production software. Before joining {ROLI}, he worked on various projects at market-leading company Native Instruments, such as {KONTAKT}, the industry standard sampling platform used by the majority of music producers and composers for film score, games, and contemporary popular music.
+
+Timur holds a {PhD} in astrophysics and is passionate about well-written code, modern C++ techniques, science-fiction, learning languages, and progressive rock music.},
+	note = {{CppCon} 2015},
+	author = {Doumler, Timur},
+	urldate = {2023-06-16},
+	date = {2015-09-21},
+	langid = {english},
+}
+
+@video{noauthor_notitle_nodate,
+}
+
+@collection{boulanger_audio_2011,
+	location = {Cambridge, Mass},
+	title = {The audio programming book},
+	isbn = {978-0-262-01446-5},
+	pagetotal = {889},
+	publisher = {{MIT} Press},
+	editor = {Boulanger, Richard Charles and Lazzarini, Victor},
+	date = {2011},
+	note = {{OCLC}: ocn503654559},
+	keywords = {Computer programs, Computer sound processing, Digital techniques, Music, Signal processing},
+}
+
+@book{pirkle_designing_2021,
+	location = {New York},
+	edition = {2nd edition},
+	title = {Designing software synthesizer plug-ins in C++ with audio {DSP}},
+	isbn = {978-0-367-51048-0 978-0-367-51046-6},
+	abstract = {"Designing Software Synthesizer Plugins in C++ provides everything you need to know to start designing and writing your own synthesizer plugins, including theory and practical examples for all of the major synthesizer building blocks from {LFOs} and {EGs} to {PCM} samples and morphing wavetables, along with complete synthesizer example projects. The book and accompanying {SynthLab} projects include scores of C++ objects and functions that implement the synthesizer building blocks, and six synthesizer projects ranging from virtual analog and physical modelling to wavetable morphing and wave-sequencing that demonstrate their use. You can start using the book immediately with the {SynthLab}-{DM} product that allows you to compile and load mini-modules that resemble modular synth components, without needing to maintain the complete synth project code. The C++ objects all run in a standalone mode, so you can incorporate them into your current projects or whip up a quick experiment. All six synth projects are fully documented from the tiny {SynthClock} up to the {SynthEngine} objects allowing you to get the most from the book while working at a level that you feel comfortable with. This book is intended for music technology and engineering students along with {DIY} audio programmers and anyone wanting to understand how synthesizers may be implemented in C++"--},
+	publisher = {Routledge},
+	author = {Pirkle, William C.},
+	date = {2021},
+	keywords = {C++ (Computer program language), Plug-ins (Computer programs), Software synthesizers},
+}
+
+@article{topfer_granularspectrals_2022,
+	title = {{GranularSpectrals} - Spectral manipulation for Advanced Granular Synthesis},
+	url = {http://dl.gi.de/handle/20.500.12116/39059},
+	doi = {10.18420/MUC2022-MCI-WS03-397},
+	abstract = {Spectral manipulation has increasingly established as a common method in audio editing. Based on the analytical visualization of audio material as a spectrogram, it offers interactive methods that are visually comprehensible. Consequently, it can be used to extend methods of music production by discovering novel techniques or by revisiting known ones. Thereby, granular synthesis has high potential in gaining functionality when thought and used in a spectral domain interface. Here, granular spectral synthesis is proposed and how it takes advantage is discussed.},
+	author = {Töpfer, Fabian and Engeln, Lars and Groh, Rainer},
+	urldate = {2023-07-14},
+	date = {2022},
+	langid = {english},
+	note = {Publisher: Gesellschaft für Informatik e.V.},
+	keywords = {granular synthesis, spectrogram, visual audio design},
+}
+
+@book{thompson_understanding_2005,
+	location = {Boston, Mass},
+	title = {Understanding audio: getting the most out of your project or professional recording studio},
+	isbn = {978-0-634-00959-4},
+	series = {Recording: Audio},
+	shorttitle = {Understanding audio},
+	pagetotal = {357},
+	publisher = {Berklee Press},
+	author = {Thompson, Daniel M.},
+	date = {2005},
+	note = {{OCLC}: ocm58450656},
+	keywords = {Handbooks, manuals, etc, Recording and reproducing, Sound, Sound recording industry},
+}
+
+@article{shannon_communication_1949,
+	title = {Communication in the Presence of Noise},
+	volume = {37},
+	issn = {0096-8390},
+	url = {http://ieeexplore.ieee.org/document/1697831/},
+	doi = {10.1109/JRPROC.1949.232969},
+	pages = {10--21},
+	number = {1},
+	journaltitle = {Proceedings of the {IRE}},
+	shortjournal = {Proc. {IRE}},
+	author = {Shannon, C.E.},
+	urldate = {2023-07-02},
+	date = {1949-01},
+}
+
+@video{hainbac_how_2021,
+	title = {How Happy Accidents Can Inspire Your Music},
+	url = {https://www.youtube.com/watch?v=Ibajy9A91ls},
+	abstract = {In which I show how I go actively looking for "happy accidents" when composing, especially when working with other musicians. I have found it is an easy way to get creative results fast.
+
+This video is part of a series, where I detail my work with https://instagram.com/friday\_musik/ and https://instagram.com/anabambalaelsat... for Amplify Berlin. 
+
+{SUPPORT} {THE} {CHANNEL}:  http://patreon.com/hainbach
+{CHANNEL} {MEMBERSHIP}:    / @hainbach  
+{MY} {MUSIC}: http://hainbach.bandcamp.com
+{FASHION}: http://teespring.com/de/stores/hainbach
+{CONNECT}: http://reddit.com/r/hainbach
+
+{MY} {SIGNATURE} {SOFTWARE}: ({BLACK} {FRIDAY} {SPECIAL} {PRICES})
+{WIRE} {RECORDER} {ECHO} https://www.audiothing.net/effects/wires
+{MORPHING} {ROTOR} https://www.audiothing.net/effects/th...
+{TEST} {EQUIPMENT} {LIBRARY} https://www.spitfireaudio.com/shop/a-...
+{LOOPER} https://apps.apple.com/us/app/gauss-f...
+
+{BUY} {THE} {GEAR} I {USE} ({EU}):
+https://redir.love/thocf/n2lm9oo2ym
+{BUY} {THE} {GEAR} I {USE} ({US}):
+https://imp.i114863.net/{KejKxe}
+{BUY} {THE} {GEAR} I {USE} ({UK}):
+https://www.gear4music.com/blog/what-...
+(affiliate links, I get a few \% if you buy through them)},
+	author = {{HAINBAC}},
+	urldate = {2023-06-22},
+	date = {2021-11-23},
+}
+
 @article{heideman_gauss_1985,
 	title = {Gauss and the history of the fast Fourier transform},
 	volume = {34},
@@ -153,7 +896,7 @@
 	note = {{OCLC}: 862386437},
 }
 
-@book{noauthor_notitle_nodate,
+@book{noauthor_notitle_nodate-1,
 }
 
 @misc{long_fully_2015,
