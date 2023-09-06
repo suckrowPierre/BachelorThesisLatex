@@ -248,10 +248,10 @@
 
 In Anlehnung an die Gedanken von M. V. Mathews fokussiert sich diese Arbeit auf die Untersuchung einer möglichen Implementierung eines Synthesizers mittels neuer \emph{Latenter Diffusionstechnologie}. Das Ziel der Implementierung ist es, einem Spieler durch die Nutzung dieses digitalen Instruments die Generierung von Klängen nach seinen individuellen Vorstellungen zu ermöglichen, die anschließend manipuliert und spielbar sein sollen. Das entstandene Instrument soll anschließend auf seine Schwächen und Stärken untersucht werden, und dessen Potenzial als neues Instrument evaluiert werden. Weiterhin soll das Instrument nahtlos in den modernen Musikproduktionsprozess integriert werden können und Musikern die Erschließung neuer Klangwelten ermöglichen. Durch die Erzeugung neuer, gezielter Klänge können zudem rechtliche Probleme vermieden werden, die durch die Verwendung von Samples entstehen könnten. Die Machbarkeit eines solchen Instrumentes soll im folgenden unter der Beschränkung auf ein Diffusionsmodell zur Audiosynthese gezeigt werden.
 
-Vereinzelte Projekte, darunter der von Google im Jahr 2017 entwickelte  \glqq  NSynth\grqq \cite{google_ai_nsynth_2017} oder das Audioplugin \glqq Neutone\grqq \cite{qosmo_neutone_nodate}, haben bereits die Konzeption von Instrumenten mithilfe von  \emph{Artifical Intelligence} in Angriff genommen. Diese Ansätze erlernen auditive Charakteristika und wenden diese auf ein Signal an bzw. übertragen sie. Die jüngsten Fortschritte in der Entwicklung generativer Modelle haben nun das Potenzial eröffnet, vollkommen neue Klangbilder zu erschaffen. Durch die Möglichkeit, das Ergebnis dieser Modelle präzise durch eine Texteingabe zu bestimmen, erhalten Musiker, Musikproduzenten und Sounddesigner eine neuartige Kontrollmethode zur Definition gewünschter Klangattribute. Ein ähnlicher Ansatz, mit Verwendung desselben Modells wie in dieser Arbeit findet Anwendung in \glqq VroomAI\grqq \cite{barney_hill_vroomai_2023}.
+Vereinzelte Projekte, darunter der von Google im Jahr 2017 entwickelte \emph{NSynth}\cite{google_ai_nsynth_2017} oder das Audioplugin \emph{Neutone}\cite{qosmo_neutone_nodate}, haben bereits die Konzeption von Instrumenten mithilfe von  \emph{Artifical Intelligence} in Angriff genommen. Diese Ansätze erlernen auditive Charakteristika und wenden diese auf ein Signal an bzw. übertragen sie. Die jüngsten Fortschritte in der Entwicklung generativer Modelle haben nun das Potenzial eröffnet, vollkommen neue Klangbilder zu erschaffen. Durch die Möglichkeit, das Ergebnis dieser Modelle präzise durch eine Texteingabe zu bestimmen, erhalten Musiker, Musikproduzenten und Sounddesigner eine neuartige Kontrollmethode zur Definition gewünschter Klangattribute. Ein ähnlicher Ansatz, mit Verwendung desselben Modells wie in dieser Arbeit findet Anwendung in \emph{VroomAI}\cite{barney_hill_vroomai_2023}.
 
 
-In der vorliegenden Arbeit wird das Text-zu-Audio-Diffusionsmodell \glqq AudioLDM\grqq \cite{liu_audioldm_2023} verwendet, um das Potenzial von Computational Intelligence im Bereich der Audiosynthese in einem musikalischen Kontext aufzuzeigen. Der Fokus liegt dabei auf der Untersuchung dieser neuen Methode zur Klangerzeugung und der Bewertung ihres performativen Potenzials. Insbesondere die Möglichkeit einer interaktiven Bereitstellung von Einstellungsmöglichkeiten für Paramter des jeweiligen Modells und die Klangwiedergabe, die in vergleichbaren Projekten bisher fehlte, soll dem Instrumentalist zusätzliche Kontrolle über die gewünschten Eigenschaften verleihen.
+In der vorliegenden Arbeit wird das Text-zu-Audio-Diffusionsmodell \emph{AudioLDM}\cite{liu_audioldm_2023-1} verwendet, um das Potenzial von Computational Intelligence im Bereich der Audiosynthese in einem musikalischen Kontext aufzuzeigen. Der Fokus liegt dabei auf der Untersuchung dieser neuen Methode zur Klangerzeugung und der Bewertung ihres performativen Potenzials. Insbesondere die Möglichkeit einer interaktiven Bereitstellung von Einstellungsmöglichkeiten für Paramter des jeweiligen Modells und die Klangwiedergabe, die in vergleichbaren Projekten bisher fehlte, soll dem Instrumentalist zusätzliche Kontrolle über die gewünschten Eigenschaften verleihen.
 
 % Fourth paragraph
 % CORE MESSAGE OF THIS PARAGRAPH:
@@ -261,15 +261,15 @@ In der vorliegenden Arbeit wird das Text-zu-Audio-Diffusionsmodell \glqq AudioLD
 \chapter{Related Work}
 
 
-Die Entwicklung eines Instruments, das die Soundsynthese durch künstliche Intelligenz (Artificial Intelligence) ermöglicht, wurde im Jahr 2023 im Rahmen des von \emph{Juce} \cite{noauthor_juce_nodate} organisierten Wettbewerbs „Neural Audio Plugin“ verfolgt. Insbesondere zeichnete sich das Projekt \emph{VroomAi} \cite{barney_hill_vroomai_2023} durch die Nutzung desselben C++ Audio Frameworks wie im vorliegenden Projekt aus. In \emph{VroomAi} wurde ein digitales Instrument entwickelt, welches über eine Benutzeroberfläche die Eingabe eines benutzerspezifischen Prompts zur Klangerzeugung ermöglicht. Anschließend kann dieser Klang durch den Einsatz eines Samplers spielbar gemacht werden.
+Die Entwicklung eines Instruments, das die Soundsynthese durch künstliche Intelligenz (Artificial Intelligence) ermöglicht, wurde im Jahr 2023 im Rahmen des von \emph{Juce} \cite{noauthor_juce_nodate-1} organisierten Wettbewerbs „Neural Audio Plugin“ verfolgt. Insbesondere zeichnete sich das Projekt \emph{VroomAi} \cite{barney_hill_vroomai_2023} durch die Nutzung desselben C++ Audio Frameworks wie im vorliegenden Projekt aus. In \emph{VroomAi} wurde ein digitales Instrument entwickelt, welches über eine Benutzeroberfläche die Eingabe eines benutzerspezifischen Prompts zur Klangerzeugung ermöglicht. Anschließend kann dieser Klang durch den Einsatz eines Samplers spielbar gemacht werden.
 
-Im Gegensatz zum gegenwärtigen Projekt bietet \emph{VroomAi} die Auswahl zwischen zwei Modellen: zum einen das Modell \emph{AudioLDM} \cite{liu_audioldm_2023}, welches auch in diesem Projekt verwendet wird, und zum anderen das Modell \cite{borsos_audiolm_2022}. Die Architektur in \emph{VroomAi} ähnelt der in der später vorgestellten Umsetzung und dient dazu, die Modelle zu betreiben und die Klänge zu generieren. Hierbei wird ein \emph{Gradio} Server \cite{team_gradio_gradio_nodate} adressiert, der das Modell lokal ausführt.
+Im Gegensatz zum gegenwärtigen Projekt bietet \emph{VroomAi} die Auswahl zwischen zwei Modellen: zum einen das Modell \emph{AudioLDM} \cite{liu_audioldm_2023-1}, welches auch in diesem Projekt verwendet wird, und zum anderen das Modell \cite{borsos_audiolm_2022}. Die Architektur in \emph{VroomAi} ähnelt der in der später vorgestellten Umsetzung und dient dazu, die Modelle zu betreiben und die Klänge zu generieren. Hierbei wird ein \emph{Gradio} Server \cite{team_gradio_gradio_nodate} adressiert, der das Modell lokal ausführt.
 
 Das lokale Betreiben des Modells birgt allerdings gewisse Schwächen (siehe \ref{api}), und es können Probleme auftreten, besonders bei der Verwendung des von den \emph{AudioLDM} Entwicklern veröffentlichten \emph{Gradio}-Servers. Beispielsweise ist das \emph{AudioLDM} Modell nicht ohne weitere Anpassungen auf Computern ohne GPU ausführbar. Dies stellt für Nutzer ohne Erfahrung im Umgang mit ML-Modellen oder der falschen Hardware ein Hindernis dar. Im Rahmen dieser Ausführung des gleichen Konzepts sollen derartige Hindernisse möglichst minimiert werden, um ein intuitiv bedienbares digitales Instrument bereitzustellen. Darüber hinaus wird dem Nutzer die Eingabe von modellspezifischen und Audio-Parametern ermöglicht, ein Merkmal, das in \emph{VroomAi} fehlt.
 
-Neben \emph{AudioLDM} \cite{liu_audioldm_2023} bieten sich folgende ML-Modelle an um Klangerzeugung zu betreiben.
+Neben \emph{AudioLDM} \cite{liu_audioldm_2023-1} bieten sich folgende ML-Modelle an um Klangerzeugung zu betreiben.
 
-\emph{AudioLM} \cite{borsos_audiolm_2022} befasst sich mit der Audio-Synthese mittels eines Modells, das aus einer Kombination von \emph{adversarial neural networks}, \emph{self-supervised representation learning} und \emph{language modeling} besteht. Dieses Modell wurde auf der \emph{tokenisierten} Darstellung von Wellenformen trainiert. Obwohl \emph{AudioLM} primär für die Generierung von Stimmen konzipiert wurde, hat es sich auch für die musikalische Synthese als geeignet erwiesen, indem es auf Klavieraufnahmen trainiert wurde und in der Inferenzphase solche erzeugen konnte. Das Modell setzt sich aus drei Hauptkomponenten zusammen: einem \emph{Tokenizer-Modell}, einem Decoder-Teil eines \emph{Transformers-Sprachmodells} und einem \emph{Detokenizer-Modell}. Das Tokenizer-Modell wandelt eine kontinuierliche Audiowellenform in eine diskrete Repräsentation um, die aus einem endlichen Vokabular besteht. In einem hybriden Tokenisierungsverfahren (Abbildung \ref{fig:tokenizerAudioLM}) werden sowohl akustische als auch semantische Merkmale (wie sprachliche Inhalte für Sprache, Melodie und Rhythmus für Musik) der betrachteten Wellenform extrahiert. Die akustischen Token werden von \emph{SoundStream} \cite{zeghidour_soundstream_2021} erzeugt, während die semantischen Token von Repräsentationen produziert werden, die von einer Zwischenschicht von \emph{w2v-BERT} \cite{chung_w2v-bert_2021} erzeugt werden. Der Decoder-Teil eines \emph{Transformers-Sprachmodells} erlernt, jedes Token basierend auf seinem vorhergehenden Kontext vorherzusagen, wobei es die Abhängigkeiten und Struktur innerhalb der Sprache erfasst. Zur Inferenzzeit sagt das Modell aus einem \emph{Prompt} die Token-Sequenz autoregressiv voraus. Dies bedeutet, dass es jedes Token einzeln generiert und die zuvor vorhergesagten Tokens als Kontext für die nächste Vorhersage verwendet. Der Prozess wird fortgesetzt, bis eine vollständige Sequenz vorhergesagt ist. Hierbei wird ein hierarchischer Ansatz verfolgt (Abbildung \ref{fig:hierarAudioLM}): Zunächst werden die semantischen Token für die gesamte Sequenz modelliert, die dann als Bedingungen verwendet werden, um die akustischen Token vorherzusagen. Schließlich wandelt das Detokenizer-Modell die Sequenz der vorhergesagten Tokens zurück in ein Audiosignal. \cite{borsos_audiolm_2022}
+\emph{AudioLM} \cite{borsos_audiolm_2022} befasst sich mit der Audio-Synthese mittels eines Modells, das aus einer Kombination von \emph{adversarial neural networks}\cite{goodfellow_generative_2014}, \emph{self-supervised representation learning} und \emph{language modeling} besteht. Dieses Modell wurde auf der \emph{tokenisierten} Darstellung von Wellenformen trainiert. Obwohl \emph{AudioLM} primär für die Generierung von Stimmen konzipiert wurde, hat es sich auch für die musikalische Synthese als geeignet erwiesen, indem es auf Klavieraufnahmen trainiert wurde und in der Inferenzphase solche erzeugen konnte. Das Modell setzt sich aus drei Hauptkomponenten zusammen: einem \emph{Tokenizer-Modell}, einem Decoder-Teil eines \emph{Transformers-Sprachmodells}\cite{vaswani_attention_2017} und einem \emph{Detokenizer-Modell}. Das Tokenizer-Modell wandelt eine kontinuierliche Audiowellenform in eine diskrete Repräsentation um, die aus einem endlichen Vokabular besteht. In einem hybriden Tokenisierungsverfahren (Abbildung \ref{fig:tokenizerAudioLM}) werden sowohl akustische als auch semantische Merkmale (wie sprachliche Inhalte für Sprache, Melodie und Rhythmus für Musik) der betrachteten Wellenform extrahiert. Die akustischen Token werden von \emph{SoundStream} \cite{zeghidour_soundstream_2021} erzeugt, während die semantischen Token von Repräsentationen produziert werden, die von einer Zwischenschicht von \emph{w2v-BERT} \cite{chung_w2v-bert_2021} erzeugt werden. Der Decoder-Teil eines \emph{Transformers-Sprachmodells} erlernt, jedes Token basierend auf seinem vorhergehenden Kontext vorherzusagen, wobei es die Abhängigkeiten und Struktur innerhalb der Sprache erfasst. Zur Inferenzzeit sagt das Modell aus einem \emph{Prompt} die Token-Sequenz autoregressiv voraus. Dies bedeutet, dass es jedes Token einzeln generiert und die zuvor vorhergesagten Tokens als Kontext für die nächste Vorhersage verwendet. Der Prozess wird fortgesetzt, bis eine vollständige Sequenz vorhergesagt ist. Hierbei wird ein hierarchischer Ansatz verfolgt (Abbildung \ref{fig:hierarAudioLM}): Zunächst werden die semantischen Token für die gesamte Sequenz modelliert, die dann als Bedingungen verwendet werden, um die akustischen Token vorherzusagen. Schließlich wandelt das Detokenizer-Modell die Sequenz der vorhergesagten Tokens zurück in ein Audiosignal. \cite{borsos_audiolm_2022}
 
 
 
@@ -343,7 +343,7 @@ Die musikalische Anwendung von \emph{Artifical Intelligence} beschränkt sich ni
 
 \section{Klangsynthese und Musikproduktion}
 
-\subsection{Mathematische und physikalische Modellierung von Musik und Klang}
+\subsection{Mathematische und physikalische Modellierung von Musik und Klang}\label{sec:music_math}
 \glqq Musik ist eine Kunstform und kulturelle Aktivität, deren Medium der in Zeit organisierte Klang ist\grqq \footnote{"Music is an art form and cultural activity whose medium is sound organized in time"} \cite{tsuji_physics_2021}. Im Gegensatz zu Rauschen weisen die Klänge, die Musik aufbauen, Strukturen und Zusammenhänge auf, welche für das menschliche Gehör als angenehm wahrgenommen werden \cite{parker_good_2009}. 
 
 \emph{Klang} stellt ein intrinsisches Zusammenspiel aus physikalischen und perzeptiven Elementen dar. Auf physikalischer Ebene handelt es sich bei Klang um eine durch einen schwingenden Körper erzeugte Welle, die sich von einem Ort zum anderen propagiert. Diese Welle besteht aus einem Grundton und mehreren resonierenden Einzeltönen. Der resultierende Klang besitzt eine Vielzahl von Obertönen, die die charakteristischen klanglichen Eigenschaften oder \emph{Klangfarben} hervorbringen. \cite{tsuji_physics_2021, parker_good_2009}
@@ -361,7 +361,7 @@ Die Untersuchung der Struktur eines Klangs befasst sich mit den Relationen und Z
 
 Die Struktur eines Klangs kann durch die Amplitudenfaktoren und zugehörigen Frequenzen der einzelnen Töne beschrieben und in einem \emph{Frequenzspektrum} (Abbildung \ref{fig:spectro}) visualisiert werden. Dies erlaubt die Bestimmung, welche Frequenzen oder Frequenzbereiche im Signal besonders stark enthalten sind und ermöglicht eine Darstellung der Klangfarbe bzw. der Charakteristik. Mit einer \emph{Fourier-Transformation} kann für jedes beliebige Signal das entsprechende Spektrum ermittelt und durch die \emph{Inverse Fourier-Transformation} das Signal eines Spektrums berechnet werden. \cite{raffaseder_audiodesign_2010}
 
-Zur Berechnung einer \emph{Diskreten Fourier-Transformation (DFT)} hat sich die \emph{Fast Fourier-Transformation (FFT)} als effizienter Algorithmus etabliert \cite{heideman_gauss_1985}. 
+Zur Berechnung einer \emph{Diskreten Fourier-Transformation (DFT)} hat sich die \emph{Fast Fourier-Transformation (FFT)} als effizienter Algorithmus etabliert \cite{heideman_gauss_1985}. Um die Foruier-Transformation in Echtzeit durchzuführen wird die \emph{Short Time Fourier-Transformation} angewandt \cite{thyagarajan_introduction_2019}. 
 
 Ein \emph{Spektrogramm} ermöglicht die Betrachtung eines Signals sowohl im Zeit- als auch im Frequenzbereich (Abbildung \ref{fig:spectro}), allerdings nicht in beliebiger Genauigkeit. Da hier das Signal in kurze zeitliche Abschnitte unterteilt und für diese das Spektrum berechnet wird, verlieren längere Abschnitte Informationen über die zeitliche Auflösung, weisen jedoch eine bessere Frequenzauflösung auf. Kurze Abschnitte hingegen besitzen eine bessere zeitliche Auflösung, lösen jedoch weniger genau im Frequenzbereich auf. \cite{raffaseder_audiodesign_2010}
 
@@ -424,17 +424,92 @@ Die Einführung dieses Protokolls beeinflusste signifikant die Konzeption und Ge
 
 \glqq Die Methoden der Klangerzeugung mit traditionellen mechanischen Musikinstrumenten waren seit ihrer Entstehung nur unwesentlichen Veränderungen unterworfen. [...] Der Instrumentenbau wandelte sich lediglich deshalb im Laufe der Zeit, weil man die Spielbarkeit der Instrumente zu verbessern und ihren Klangcharakter den wechselnden musikalischen Idealvorstellungen anzupassen wünschte. Anders dagegen im Bereich elektronischer Klangerzeugung. Hier werden ständig neue Methoden zur Synthese von Klängen entwickelt.\grqq \, \cite{ruschkowski_elektronische_2019}
 
-Im Folgenden soll zunächst dargelegt werden, welche Vorteile die neuartige Technik der Soundsynthese durch Diffusion mit sich bringen kann. Bei Erzielung von hochwertigen Ergebnissen könnten beispielsweise die Notwendigkeit und der Zugang zu aufgezeichneten Klängen entfallen. Der Aufwand für die Aufnahme solcher Klänge ist oft erheblich und führt daher in der Regel zu kostenpflichtigen Angeboten. Die Anwendung künstlicher Intelligenz in der Synthese von Sound könnte jedoch dazu beitragen, diesen Bereich zu demokratisieren und einem breiteren Publikum die benötigten Ressourcen zur Verfügung zu stellen. Darüber hinaus könnte diese Technik den Nutzern eine umfassendere Kontrolle über die gewünschten Eigenschaften und Klangfarben verleihen. Auf kreativer Ebene ermöglicht die Soundsynthese durch Diffusion die Erzeugung einzigartiger, zuvor nicht existierender Klänge, die potenziell als neue Inspirationsquelle für Künstler und Musiker dienen könnten. \cite{haohe_liu_audioldm_2023}
+Im Folgenden soll zunächst dargelegt werden, welche Vorteile die neuartige Technik der Soundsynthese durch Diffusion mit sich bringen kann. Bei Erzielung von hochwertigen Ergebnissen könnten beispielsweise die Notwendigkeit und der Zugang zu aufgezeichneten Klängen entfallen. Der Aufwand für die Aufnahme solcher Klänge ist oft erheblich und führt daher in der Regel zu kostenpflichtigen Angeboten. Die Anwendung künstlicher Intelligenz in der Synthese von Sound könnte jedoch dazu beitragen, diesen Bereich zu demokratisieren und einem breiteren Publikum die benötigten Ressourcen zur Verfügung zu stellen. Darüber hinaus könnte diese Technik den Nutzern eine umfassendere Kontrolle über die gewünschten Eigenschaften und Klangfarben verleihen. Auf kreativer Ebene ermöglicht die Soundsynthese durch Diffusion die Erzeugung einzigartiger, zuvor nicht existierender Klänge, die potenziell als neue Inspirationsquelle für Künstler und Musiker dienen könnten. \cite{haohe_liu_audioldm_2023-1}
 
 
-\subsection{Latente Diffsuion}
+\subsection{Diffusion}
+Unter der Prämisse, dass die untersuchten Daten einer bestimmten Verteilung entstammen, verfolgen generative Machine-Learning-Modelle das Hauptziel, diese Verteilung zu identifizieren und zu approximieren. Die Generierung neuer Daten basiert auf der Entnahme einer Probe aus der approximierten Verteilung.\cite{machine_learning_at_berkeley_diffusion_2022}
 
-\newpage
+Der im Kontext des Maschinellen Lernens als \emph{Diffusion} bekannte Prozess\cite{sohl-dickstein_deep_2015, ho_denoising_2020, nichol_improved_2021, dhariwal_diffusion_2021} schöpfte seine Inspiration aus der statistischen Thermodynamik\cite{jarzynski_equilibrium_1997} und der sequenziellen Monte-Carlo-Methodik\cite{neal_annealed_1998}. Hierbei zielt man darauf ab, iterative korrumpierte Strukturen einer Datenverteilung $x_0\sim q(\mathbf{x}_0)$ (\emph{forward diffusion}) durch einen Rückwärtsprozess zu korrigieren (\emph{reverse diffusion}). Dies resultiert in einem generativen Modell, welches effizient trainiert und bewertet werden kann als vergleichbare Methoden.\cite{sohl-dickstein_deep_2015, nichol_improved_2021}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=.9\textwidth]{forwardDiffusion.png}
+  \caption[Forward diffusion]{Vorwärtsprozess Diffusion \cite{machine_learning_at_berkeley_diffusion_2022}}
+  \label{fig:forwardDiffusion}
+\end{figure} 
+
+Der Vorwärtsprozess (Abbildung \ref{fig:forwardDiffusion}) wurde als Markov-Kette konzipiert\cite{sohl-dickstein_deep_2015, ho_denoising_2020}. Einem Datenpunkt $x_0$ wird eine minimale Menge an Rauschen hinzugefügt, welches durch den Hyperparameter $\left\{\beta_t \in(0,1)\right\}_{t=1}^T$, als \emph{noise schedule} bekannt, definiert wird\cite{ho_denoising_2020, machine_learning_at_berkeley_diffusion_2022}. Dabei wird \emph{Gauss'sches Rauschen}\cite{shannon_communication_1949} verwendet, welches durch eine Normalverteilung $\mathcal{N}$ beschrieben wird. Wird dieser Prozess über $T$-Schritte wiederholt, verliert man nach und nach Informationen, bis letztlich nur isotropisches Rauschen zurückbleibt\cite{machine_learning_at_berkeley_diffusion_2022}.
+
+\begin{align}
+   & q\left(\mathbf{x}^{(t)} \mid \mathbf{x}^{(t-1)}\right) = \mathcal{N}\left(\mathbf{x}^{(t)} ; \mathbf{x}^{(t-1)} \sqrt{1-\beta_t}, \mathbf{I} \beta_t\right) \\
+   & q\left(\mathbf{x}_{1: T} \mid \mathbf{x}_0\right)=\prod_{t=1}^T q\left(\mathbf{x}_t \mid \mathbf{x}_{t-1}\right)
+\end{align}
+
+Mit den Beziehungen \( \alpha_t:=1-\beta_t \) und \( \bar{\alpha}_t:=\prod_{s=1}^t \alpha_s \) ergibt sich für den Vorwärtsprozess die Gleichung:
+
+\begin{equation}
+    q\left(\mathbf{x}_t \mid \mathbf{x}_0\right)=\mathcal{N}\left(\mathbf{x}_t ; \sqrt{\bar{\alpha}_t} \mathbf{x}_0,\left(1-\bar{\alpha}_t\right) \mathbf{I}\right)
+\end{equation}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=.8\textwidth]{reverseDiffusion.png}
+  \caption[Reverse diffusion]{Rückwertsprozess Diffusion \cite{machine_learning_at_berkeley_diffusion_2022}}
+  \label{fig:reverseDiffusion}
+\end{figure} 
+
+Im Rückwärtsprozess (Abbildung \ref{fig:reverseDiffusion}) wird angestrebt, das hinzugefügte Rauschen $\epsilon \sim \mathcal{N}(0,1)$ iterativ zu eliminieren \cite{machine_learning_at_berkeley_diffusion_2022}. Dadurch erscheint es, als würde der inverse Prozess neue Daten aus Rauschen generieren \cite{machine_learning_at_berkeley_diffusion_2022}. Bei geringem $\beta$ entspricht die Rauschverteilung des Rückwärtsschritts \( q\left(\mathbf{x}_{t-1} \mid \mathbf{x}_t\right) \) dem Vorwärtsprozess \cite{sohl-dickstein_deep_2015}. Der erlernte Rückwärtsprozess \( p_\theta\left(\mathbf{x}_{t-1} \mid \mathbf{x}_t\right) \) kann daher wie folgt approximiert werden \cite{ho_denoising_2020, machine_learning_at_berkeley_diffusion_2022, nichol_improved_2021}. Der Lernprozess konzentriert sich darauf, geringfügige Abweichungen zu schätzen, anstatt den gesamten Prozess in einem Schritt durch eine Funktion darzustellen \cite{sohl-dickstein_deep_2015}.
+
+
+\begin{align}
+& p_\theta\left(\mathbf{x}_{t-1} \mid \mathbf{x}_t\right)=\mathcal{N}\left(\mathbf{x}_{t-1} ; \boldsymbol{\mu}_\theta\left(\mathbf{x}_t, t\right), \boldsymbol{\Sigma}_\theta\left(\mathbf{x}_t, t\right)\right)\\
+& p_\theta\left(\mathbf{x}_{0: T}\right)=p\left(\mathbf{x}_T\right) \prod_{t=1}^T p_\theta\left(\mathbf{x}_{t-1} \mid \mathbf{x}_t\right)
+\end{align}
+
+Das Erlernen des Rückwärtsprozesses erfolgt durch ein neuronales Netzwerk, wobei in jedem Schritt der Erwartungswert $\boldsymbol{\mu}_\theta$, das ursprüngliche Bild $\boldsymbol{x}_0$ oder das eingefügte Rauschen $\boldsymbol{\epsilon}$ vorhergesagt werden können \cite{ho_denoising_2020, nichol_improved_2021}. Es wurde festgestellt, dass Bildvorhersagen schlechtere Ergebnisse erzielten und daher sich für die Vorhersage des eingefügten Rauschens $\boldsymbol{\epsilon}$ mit der vereinfachten Verlustfunktion 3.6 entschieden wurde \cite{ho_denoising_2020}.
+
+\begin{equation}
+    L_{\text {simple }}=E_{t, x_0, \epsilon}\left[\left\|\epsilon-\epsilon_\theta\left(x_t, t\right)\right\|^2\right]
+\end{equation}
+
+Aus dem vorhergesagten Rauschen $\boldsymbol{\epsilon}$ kann der Erwartungswert $\boldsymbol{\mu}_\theta$ mit folgender Gleichung hergeleitet werden:
+
+\begin{equation}
+    \mu_\theta\left(x_t, t\right)=\frac{1}{\sqrt{\alpha_t}}\left(x_t-\frac{\beta_t}{\sqrt{1-\bar{\alpha}_t}} \epsilon_\theta\left(x_t, t\right)\right)
+\end{equation}
+
+Die in \cite{ho_denoising_2020} präsentierte Architektur des neuronalen Netzwerks basiert auf einem \emph{U-Net} \cite{ronneberger_u-net_2015}, welches auf einem \emph{Wide ResNet} \cite{zagoruyko_wide_2017} aufbaut \cite{ho_denoising_2020}.
+
+\cite{nichol_improved_2021} führte bedeutende Verbesserungen gegenüber den Arbeiten von \cite{sohl-dickstein_deep_2015} und \cite{ho_denoising_2020} ein. Anstatt mit einer festen Varianz zu trainieren, wurde diese nun ebenfalls gelernt. Ein weiterer bedeutender Fortschritt war die Anpassung des \emph{schedule} Parameters. Anstatt ihn konstant zu halten, was dazu führte, dass Datenpunkte am Ende zu stark verrauscht waren und die initialen Schritte zu viele Informationen verloren, wurde eine \emph{cosinus schedule} eingeführt \cite{nichol_improved_2021}.
+
+\subsection{Latente Diffusion}
+
+Um Bildgenerierung basierend auf einer Eingabe zu ermöglichen, erweiterten \cite{rombach_high-resolution_2022} mit dem vorgestellten  \emph{Latenten Diffusionsmodell} (\emph{LDM}) den Diffusionsprozesses \cite{sohl-dickstein_deep_2015, ho_denoising_2020, nichol_improved_2021, dhariwal_diffusion_2021}. Im Gegensatz zu vorhergehenden Diffusionsprozessen arbeitet dieser Ansatz nicht auf die Pixelwerte der Bilder, sondern auf ihre latente Repräsentation. Dies führt zu einer erheblichen Reduzierung des Rechenaufwands und erlaubt sowohl Training als auch Inferenz auf beschränkter Hardware. Die Architektur, dargestellt in Abbildung \ref{fig:LDM}, setzt sich aus drei Hauptkomponenten zusammen: Einem \emph{Variational Autoencoder}, der die Ein- und Ausgabe im Latentenraum kodiert bzw. dekodiert, dem Diffusionsteil, sowie einem weiteren Modul zur Konditionierung des Diffusionsteils mittels Text, Bildern oder anderen Eingaben \cite{rombach_high-resolution_2022}.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=.8\textwidth]{LDM.png}
+  \caption[LDM Architektur]{LDM Architektur\cite{rombach_high-resolution_2022}}
+  \label{fig:LDM}
+\end{figure} 
+
+Der latente Raum für den Diffusionsprozess wird durch vorausgehendes Training eines \emph{Variational Autoencoders} \cite{kingma_auto-encoding_2022} gemäß \cite{esser_taming_2021} erzeugt. Der resultierende \emph{Encoder} $\mathcal{E}$ transformiert ein RGB-Bild $x \in \mathbb{R}^{H \times W \times 3}$ in die latente Repräsentation $z \in \mathbb{R}^{h \times w \times c}$, so dass $z=\mathcal{E}(x)$. Ein \emph{Decoder} $\mathcal{D}$ generiert nach dem Rückwärtsdiffusionsprozess das Bild $\tilde{x}=\mathcal{D}(z)=\mathcal{D}(\mathcal{E}(x))$ \cite{rombach_high-resolution_2022}.
+
+Der Diffusionsprozess profitiert von der niedrigen Dimensionalität und Kompression des latenten Raumes und zeigte sich gegenüber der Nutzung der originellen Pixelwerten als geeigneter für \emph{likelihood} basierte Generative Modelle, da mehr die semantischen wichtigen Information mehr zur Geltung kommen und der Rechenaufwand effizienter gehalten wird. Das zugrunde liegende \emph{U-Net} \cite{ronneberger_u-net_2015} besteht, um den Umgang mit Bildern gerecht zu werden, primär aus \emph{2D-Konvolutionsschichten}. \cite{rombach_high-resolution_2022}
+
+Um die von einer Eingabe $y$ bedingten Generierung zu ermöglichen ist eine Konditionierung des Netzes $\epsilon_\theta\left(z_t, t, y\right)$ notwendig. Hierfür wird das benutze \emph{U-Net} um \emph{Cross Attention}\cite{vaswani_attention_2017} erweitert. Um die verschiedenen Eingabmodalitäten zu unterstützen verarbeiten zu können, schafft eine je nach Medium spezifischer Encoder $\tau_\theta$ eine Repräsentation $T_\theta(y) \in \mathbb{R}^{M \times d_\tau}$, welche mittels \emph{Cross Attention} $\operatorname{Attention}(Q, K, V)=\operatorname{softmax}\left(\frac{Q K^T}{\sqrt{d}}\right)$, mit $Q=W_Q^{(i)} \cdot \varphi_i\left(z_t\right), K=W_K^{(i)} \cdot \tau_\theta(y), V=W_V^{(i)} \cdot \tau_\theta(y)$ auf die Schichten des \emph{U-Net} übertragen wird. Die Verlustfunktion definert sich folgendermaßen. \cite{rombach_high-resolution_2022}
+
+\begin{equation}
+L_{L D M}:=\mathbb{E}_{\mathcal{E}(x), y, \epsilon \sim \mathcal{N}(0,1), t}\left[\left\|\epsilon-\epsilon_\theta\left(z_t, t, \tau_\theta(y)\right)\right\|_2^2\right]
+\end{equation}
+
+
 \subsection{Clap}
 
-\emph{Large-Scale Contrastive Language-Audio Pretraining} (\emph{Clap} )\cite{wu_large-scale_2023} stellte eine Modell vor, um Vortraining mittels \emph{Contrastive learning} auf Sprach-Audio-Daten durchzuführen, mit dem Ziel eine Latente Repräsentation für Audio zu erschaffen. Es orientierte sich an der Arichtektur von \emph{Contrastive Language-Image Pretraining} (\emph{CLIP})\cite{radford_learning_2021}, in der auf ähnliche Weise eine Zusammenhang zwischen Bild und Textdaten erlernt wird. Ähnlich dem  bildlichen Kontext, weisen Audio und Text überlappende Informationen auf. 
+\emph{Large-Scale Contrastive Language-Audio Pretraining} (\emph{Clap})\cite{wu_large-scale_2023} präsentierte ein Modell, um Vortraining mittels \emph{Contrastive Learning} auf Sprach-Audio-Daten durchzuführen, mit dem Ziel, eine latente Repräsentation für Audio zu schaffen. Dieses Modell orientierte sich an der Architektur von \emph{Contrastive Language-Image Pretraining} (\emph{CLIP})\cite{radford_learning_2021}, bei dem in ähnlicher Weise ein Zusammenhang zwischen Bild und Textdaten erlernt wird. Analog zum bildlichen Kontext weisen Audio und Text überlappende Informationen auf. \cite{wu_large-scale_2023}
 
-Das \emph{Contrastive learning} Modell wurde zuteil auf dem hierfür veröffentlichten Datensatz \emph{\emph{LAION-Audio-630K}} trainiert. Der Datensatz besteht aus $633,526$ Text und Audio Paaren ($X_i^a$, $X_i^t$), zusammengesetzt aus verschiedenen Internet Quellen, bestehend aus Klänge wie Menschlichen Stimmen, Naturgeräusche und Audioeffekten. Weitere verwendete Datensätze sind \emph{AudioCaps+Clotho} \cite{kim_audiocaps_2019} \cite{drossos_clotho_2019} , sowie \emph{AudioSet} \cite{gemmeke_audio_2017}. Alle Audiodaten werden zu einem \emph{Mono}-Signal konvertiert und haben eine Abtastrate von 48kHz. \cite{wu_large-scale_2023}
+Das \emph{Contrastive Learning}-Modell wurde auf dem speziell veröffentlichten Datensatz \emph{LAION-Audio-630K} trainiert. Dieser Datensatz besteht aus $633,526$ Text- und Audio-Paaren ($X_i^a$, $X_i^t$), zusammengesetzt aus verschiedenen Internetquellen, einschließlich Klängen wie menschlichen Stimmen, Naturgeräuschen und Audioeffekten. Weitere verwendete Datensätze sind \emph{AudioCaps+Clotho} \cite{kim_audiocaps_2019} \cite{drossos_clotho_2019}, sowie \emph{AudioSet} \cite{gemmeke_audio_2017}. Alle Audiodaten werden zu einem \emph{Mono}-Signal konvertiert und besitzen eine Abtastrate von 48kHz. \cite{wu_large-scale_2023}
 
 \begin{figure}[h]
   \centering
@@ -443,27 +518,26 @@ Das \emph{Contrastive learning} Modell wurde zuteil auf dem hierfür veröffentl
   \label{fig:Clap}
 \end{figure} 
 
-Die Architektur des Modells (Abbidlung \ref{fig:Clap} schafft Embeddings $E_i^a$, $E_i^t$  der Audio $X_i^a$ und Text $X_i^t$ Eingabe, in dem jeweils erste eine Encoder $f(\cdot)$ benutzt wird, und dessen Ergebnis durch ein 2-Layer großem \emph{Multi-Layer-Perceptron} (\emph{MLP}) mit \emph{ReLU}\cite{agarap_deep_2019} als Aktivierungsfunktion verarbeitet wird. \cite{wu_large-scale_2023}
+Die Architektur des Modells (Abbildung \ref{fig:Clap}) erzeugt Embeddings $E_i^a$, $E_i^t$ der Audio- $X_i^a$ und Texteingabe $X_i^t$, indem zuerst jeweils ein Encoder $f(\cdot)$ verwendet wird, dessen Ergebnis durch ein 2-Layer großes \emph{Multi-Layer-Perceptron} (\emph{MLP}) mit \emph{ReLU}\cite{agarap_deep_2019} als Aktivierungsfunktion verarbeitet wird. \cite{wu_large-scale_2023}
 
 \begin{align}
   E_i^a & = M L P_{\text{audio}}\left(f_{\text{audio}}\left(X_i^a\right)\right) \\
   E_i^t & = M L P_{\text{text}}\left(f_{\text{text}}\left(X_i^t\right)\right)
 \end{align}
 
-Das gesamte Audiosingal encodieren zu lassen würde bei Signales mit längerer Dauer zu viel Rechenzeit mit sich ziehen. Stattdessen wurde ein Ansatz verfolgt, bei dem verschiedene Längen von Audioeingaben in konstanter Rechenzeit trainiert und inferiert wurden, indem sowohl globale als auch lokale Informationen kombiniert wurden. Falls das Singal kürzer als 10 Sekunden ist, wird dieses dreimal wiederholt und mit Nullen aufgefüllt, bis die 10 Sekunden erreicht sind. Wenn das Signal länger als 10 Sekunden ist, werden aus diesem vier Eingabeparemter geschaffen. Das Signal wird Einmal komplett zu einem 10 Sekunden globalen Parameter \emph{downgesampled} und Einmal drei zufällige 10 Sekunden Ausschnitte aus dem Anfang, der Mitte und das Ende des Signales als lokale Parameter entnommen. Der Audio-Encoder extrahiert anschließend in seinem Prozess die wichtigen Informationen und verschmielzt globale und lokale Infomrationen. 
+Das gesamte Audiosignal zu encodieren, würde bei Signalen mit längerer Dauer zu viel Rechenzeit in Anspruch nehmen. Stattdessen wurde ein Ansatz verfolgt, bei dem verschiedene Längen von Audioeingaben in konstanter Rechenzeit trainiert und inferiert wurden. Hierzu wurden sowohl globale als auch lokale Informationen kombiniert. Falls das Signal kürzer als 10 Sekunden ist, wird es dreimal wiederholt und mit Nullen aufgefüllt, bis die 10 Sekunden erreicht sind. Wenn das Signal länger als 10 Sekunden ist, werden daraus vier Eingabeparameter generiert. Das Signal wird einmal komplett zu einem 10 Sekunden globalen Parameter \emph{downgesampled} und einmal werden drei zufällige 10 Sekunden Ausschnitte aus Anfang, Mitte und Ende des Signals als lokale Parameter entnommen. Der Audio-Encoder extrahiert anschließend die wichtigen Informationen und verschmilzt globale und lokale Informationen.
 
-Da manche der verwendeten Datensätze keine Beschreibungen sondern nur Keywords oder Tags für das jeweilige Audiosignal besitzen, wurde das \emph{Language}-Modell \emph{T5}\cite{raffel_exploring_2020} benutzt, um ganze Beschreibungen aus den Keyword und Tags zu schaffen. Ebenso wurden die Beschreibungen \emph{de-biased}. So wurde z.B \emph{gender de-biasing} betrieben. \cite{wu_large-scale_2023}
+Da einige der verwendeten Datensätze keine Beschreibungen, sondern nur Keywords oder Tags für das jeweilige Audiosignal besitzen, wurde das \emph{Language}-Modell \emph{T5}\cite{raffel_exploring_2020} eingesetzt, um vollständige Beschreibungen aus den Keywords und Tags zu generieren. Auch wurden die Beschreibungen \emph{de-biased}, beispielsweise durch \emph{gender de-biasing}. \cite{wu_large-scale_2023}
 
-Die selbe Verlustfunktion, mit einem Temperaturparameter $\tau$, wie in \emph{Clip}\cite{radford_learning_2021} wurde in den MLPs angewandt \cite{wu_large-scale_2023}.
+Die gleiche Verlustfunktion mit einem Temperaturparameter $\tau$, wie in \emph{Clip}\cite{radford_learning_2021}, wurde in den MLPs verwendet \cite{wu_large-scale_2023}.
 
 \begin{equation}
 L=\frac{1}{2 N} \sum_{i=1}^N\left(\log \frac{\exp \left(E_i^a \cdot E_i^t / \tau\right)}{\sum_{j=1}^N \exp \left(E_i^a \cdot E_j^t / \tau\right)}+\log \frac{\exp \left(E_i^t \cdot E_i^a / \tau\right)}{\sum_{j=1}^N \exp \left(E_i^t \cdot E_j^a / \tau\right)}\right)
 \end{equation}
 
-Als Audio-Encoder wurden die Modelle \emph{PANN}\cite{kong_panns_2020}, basierend auf einem \emph{Convolutional neural network}(CNN), und \emph{HTSAT}\cite{chen_hts-at_2022}, basierend auf einem \emph{Transformer}-Modell, evaluiert. Für den Text-Encoder wurden der Text-Encoder von \emph{Clip}\cite{radford_learning_2021}, \emph{Bert}\cite{devlin_bert_2019} oder \emph{RoBERTa}\cite{liu_roberta_2019} ebenfalls ausgewertet. \cite{wu_large-scale_2023}
+Als Audio-Encoder wurden die Modelle \emph{PANN}\cite{kong_panns_2020}, basierend auf einem \emph{Convolutional Neural Network} (CNN), und \emph{HTSAT}\cite{chen_hts-at_2022}, basierend auf einem \emph{Transformer}-Modell, evaluiert. Für den Text-Encoder wurden der Text-Encoder von \emph{Clip}\cite{radford_learning_2021}, \emph{Bert}\cite{devlin_bert_2019}, oder \emph{RoBERTa}\cite{liu_roberta_2019} ebenfalls ausgewertet. \cite{wu_large-scale_2023}
 
-
-Das trainierte Modell kann für Audio Klassifikation benutzt werden oder für einen Text ein passenends Audiosignal determinieren $(T\rightarrow A)$ \cite{wu_large-scale_2023}. Für die Klangsynthese ist der Prozess von Text zu Audio von Bedeutung. Die Ergebnisse der Kombination der verschiedener Encoder aus Tabbelle \ref{tab:Clap} zeigt, das als Audio-Encoder \emph{HTSAT}\cite{chen_hts-at_2022} und als Text-Encoder je nach Datenset \emph{Bert}\cite{devlin_bert_2019} oder \emph{RoBERTa}\cite{liu_roberta_2019} die besten Ergebnisse für Text zu Audio erzeugt. 
+Das trainierte Modell kann für Audio-Klassifikation verwendet werden oder ein passendes Audiosignal für einen Text bestimmen $(T\rightarrow A)$ \cite{wu_large-scale_2023}. Für die Klangsynthese ist der Prozess von Text zu Audio von Bedeutung. Die Ergebnisse der Kombination der verschiedenen Encoder aus Tabelle \ref{tab:Clap} zeigen, dass \emph{HTSAT}\cite{chen_hts-at_2022} als Audio-Encoder und je nach Datensatz \emph{Bert}\cite{devlin_bert_2019} oder \emph{RoBERTa}\cite{liu_roberta_2019} als Text-Encoder die besten Resultate lieferten. \cite{wu_large-scale_2023}
 
 \begin{table}[h]
   \centering
@@ -483,12 +557,45 @@ HTSAT+RoBERTa & $\mathbf{4 5 . 7}$ & $\mathbf{5 1 . 3}$ & $\mathbf{1 3 . 8}$ & 2
 \end{table}
 
 
-
-
-
-
-
 \subsection{AudioLDM}
+
+Das Modell \emph{AudioLDM}\cite{liu_audioldm_2023-1} dient zur Synthese von Text zu Audio sowie zur textgesteuerten Audio-Manipulation mittles \emph{Latenten Diffusion}\cite{rombach_high-resolution_2022}. Es verspricht qualitativ hochwertige Ergebnisse bei geringem Rechenaufwand. Im Gegensatz zu \emph{Diffsound}\cite{yang_diffsound_2023}, das Audio-Text-Paare für das Training verwendet, hat \emph{AudioLDM} gezeigt, dass mithilfe einer \emph{CLAP}-Repräsentation\cite{wu_large-scale_2023} hochwertige Resultate erzielt werden können. \cite{liu_audioldm_2023-1}
+
+Die Wahl, Natürliche Sprache anstelle von Labels für die Eingabe und Konditionierung zu verwenden, erfolgte aufgrund der Möglichkeit, akustische Merkmale flexibler, deskriptiver und präziser darzustellen. Frühere Ansätze im Bereich Text-zu-Audio (TTA) stießen auf die Grenze, dass oft keine großen Mengen qualitativ hochwertiger Audio-Text-Daten verfügbar waren\cite{liu_separate_2022}. Methoden der Textvorverarbeitung\cite{gemmeke_audio_2017, yang_diffsound_2023} konnten dieses Problem nicht gänzlich lösen, da sie komplexe Zusammenhänge zwischen Klangereignissen vereinfachten, was die Generierungsleistung beeinträchtigte. Das Modell \emph{AudioLDM} adressierte diese Herausforderung, indem es ausschließlich auf Audiodaten im Training setzte und so bessere Ergebnisse erzielte als mit gepaarten Audio-Text-Daten. \cite{liu_audioldm_2023-1}
+
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=.6\textwidth]{AudioLDM.png}
+  \caption[AudioLDM Architektur]{Architektur für die Text-Generierung von AudioLDM\cite{liu_audioldm_2023-1}}
+  \label{fig:AudioLDM}
+\end{figure} 
+
+Die Architektur (Abbildung \ref{fig:AudioLDM}) kombiniert mehrere Komponenten: Einen \emph{VAE}\cite{kingma_auto-encoding_2022}, der Mel-Spektrogramme in einen latenten Raum kodiert; einen nach \emph{CLAP}\cite{wu_large-scale_2023} konzipierten Audio- und Text-Encoder, der Embeddings für die Konditionierung des \emph{LDMs} erstellt; einen \emph{LDM}, der die zugrunde liegende Verteilung erlernt; und einen \emph{Vocoder}, der das generierte Spektrogramm in ein Audiosignal umwandelt. \cite{liu_audioldm_2023-1}
+
+Die \emph{CLAP}-Module generieren Embeddings für Text $\boldsymbol{E}^y \in \mathbb{R}^L$ und Audio $\boldsymbol{E}^x \in \mathbb{R}^L$. Hierbei repräsentiert $x$ eine Audioprobe und $y$ eine Textbeschreibung, wobei jeweils $f_{\text {text }}(\cdot)$ und $f_{\text {audio }}(\cdot)$ als Encoder dienen. Für den Audioencoder wurde \emph{HTSAT}\cite{chen_hts-at_2022} und für den Textencoder \emph{RoBERTa}\cite{liu_roberta_2019} verwendet. Beim Training des \emph{LDMs} diente $\boldsymbol{E}^x$ aus dem jeweiligen Trainingsdatenpunkt als Konditionierung, während $\boldsymbol{E}^y$ zur Generierung des gewünschten Signals Verwendung findet. \cite{liu_audioldm_2023-1}
+
+Für den \emph{LDM}-genutzten Latentraum $\boldsymbol{z} \in \mathbb{R}^{C \times \frac{T}{r} \times \frac{F}{r}}$ fand ein Training mithilfe eines \emph{VAE} auf Spektrogrammen statt. Dabei repräsentiert $r$ das \emph{Kompressionslevel}, während $T$ und $F$ für Zeit- und Frequenzdimensionen stehen. $C$ gibt die Anzahl der Kanäle an. Ein Spektrogramm $\boldsymbol{X} \in \mathbb{R}^{T \times F}$ wird durch \emph{STFT} (Referenz \ref{sec:music_math}) aus einem gegebenen Audiosignal generiert. Im Generierungsverfahren wird aus der latenten Variable $\hat{\boldsymbol{z}}_o$ ein Spektrogramm $\hat{\boldsymbol{X}}$ erstellt. Dieses Spektrogramm wird schließlich durch den \emph{Vocoder}, basierend auf \emph{HiFi-GAN}\cite{kong_hifi-gan_2020}, in ein Audiosignal $\hat{x}$ transformiert. \cite{liu_audioldm_2023-1}
+
+Das konzeptionelle \emph{LDM} hat das Ziel, die grundlegende Verteilung $q\left(\boldsymbol{z}0 \mid \boldsymbol{E}^y\right)$ mithilfe von $p\theta\left(\boldsymbol{z}_0 \mid \boldsymbol{E}^y\right)$ anzunähern. Dabei wurden Verlustfunktion und der Rückwärtsprozess wie folgt spezifiziert: \cite{liu_audioldm_2023-1}
+
+\begin{equation}
+    L_n(\theta)=\mathbb{E}_{\boldsymbol{z}_0, \boldsymbol{\epsilon}, n}\left\|\boldsymbol{\epsilon}-\boldsymbol{\epsilon}_\theta\left(\boldsymbol{z}_n, n, \boldsymbol{E}^x\right)\right\|_2^2
+\end{equation}
+\begin{equation}
+    p_\theta\left(\boldsymbol{z}_{n-1} \mid \boldsymbol{z}_n, \boldsymbol{E}^y\right)=\mathcal{N}\left(\boldsymbol{z}_{n-1} ; \boldsymbol{\mu}_\theta\left(\boldsymbol{z}_n, n, \boldsymbol{E}^y\right), \boldsymbol{\sigma}_n^2 \boldsymbol{I}\right)
+\end{equation}
+\begin{equation}
+    p_\theta\left(\boldsymbol{z}_{0: N} \mid \boldsymbol{E}^y\right)=p\left(\boldsymbol{z}_N\right) \prod^N p_\theta\left(\boldsymbol{z}_{n-1} \mid \boldsymbol{z}_n, \boldsymbol{E}^y\right) \\
+\end{equation}
+
+Der Erwartungswert ist folgendermaßen parametrisiert und berechnet sich aus dem im Rückwärtsprozess ermittelten Rauschen $\boldsymbol{\epsilon}_\theta\left(\boldsymbol{z}_n, n, \boldsymbol{E}^y\right)$ \cite{liu_audioldm_2023-1}.
+
+\begin{equation}
+    \boldsymbol{\mu}_\theta\left(\boldsymbol{z}_n, n, \boldsymbol{E}^y\right)=\frac{1}{\sqrt{\alpha_n}}\left(\boldsymbol{z}_n-\frac{\beta_n}{\sqrt{1-\bar{\alpha}_n}} \boldsymbol{\epsilon}_\theta\left(\boldsymbol{z}_n, n, \boldsymbol{E}^y\right)\right)
+\end{equation}
+
+Des weiterem wurde gezeigt, dass der \emph{Cross-Attention}-Mechanismus aus \cite{rombach_high-resolution_2022} weggelassen werden kann \cite{liu_audioldm_2023-1}. 
 
 \section{Implementierung des Neuronalen Synthesizers}
 \subsection{Audioprogrammierung}
@@ -496,9 +603,9 @@ Die Geschwindigkeit der Datenverarbeitung stellt ein maßgebliches Kriterium bei
 
 C++ entstand als Erweiterung der Sprache C und behält dabei C als seine Untermenge. Es stützt sich auf die Grundprinzipien von C, insbesondere die hardwarenahe Programmiermöglichkeit und die Tatsache, dass C auf den meisten Systemen laufen kann. Darüber hinaus bereichert C++ das Spektrum um Aspekte der Datenabstraktion sowie objektorientierte und generische Programmierparadigmen. \cite{stroustrup_c_1997}
 \subsection{JUCE Framework}
-\glqq\emph{JUCE} ist das am häufigsten verwendete Framework für die Entwicklung von Audioanwendungen und -Plugins. Es handelt sich dabei um eine Open-Source-C++-Codebasis, die zur Erstellung eigenständiger Software auf Windows, macOS, Linux, iOS und Android sowie VST-, VST3-, AU-, AUv3-, AAX- und LV2-Plugins verwendet werden kann.\grqq \cite{noauthor_juce_nodate}
+\glqq\emph{JUCE} ist das am häufigsten verwendete Framework für die Entwicklung von Audioanwendungen und -Plugins. Es handelt sich dabei um eine Open-Source-C++-Codebasis, die zur Erstellung eigenständiger Software auf Windows, macOS, Linux, iOS und Android sowie VST-, VST3-, AU-, AUv3-, AAX- und LV2-Plugins verwendet werden kann.\grqq \cite{noauthor_juce_nodate-1}
 
-Es bietet eine Abstraktion für die Verarbeitung von Audiosamples und MIDI von den nativen Audiogeräten auf jeder Plattform oder einer Host-DAW. Mit der Bibliothek von \emph{digitalen Signalverarbeitungs-(DSP)-Bausteinen}, die JUCE bereitstellt, können unterschiedliche Audioeffekte, Filter, Instrumente und Generatoren schnell prototypisiert und eingesetzt werden. \cite{noauthor_juce_nodate} So umfasst wa eine breite Palette von Klassen, die häufig auftretende Probleme bei der Entwicklung von Audioprojekten lösen. Dazu gehören die Behandlung von Grafiken, Sound, Benutzerinteraktion und Netzwerken. \cite{robinson_getting_2013}
+Es bietet eine Abstraktion für die Verarbeitung von Audiosamples und MIDI von den nativen Audiogeräten auf jeder Plattform oder einer Host-DAW. Mit der Bibliothek von \emph{digitalen Signalverarbeitungs-(DSP)-Bausteinen}, die JUCE bereitstellt, können unterschiedliche Audioeffekte, Filter, Instrumente und Generatoren schnell prototypisiert und eingesetzt werden. \cite{noauthor_juce_nodate-1} So umfasst wa eine breite Palette von Klassen, die häufig auftretende Probleme bei der Entwicklung von Audioprojekten lösen. Dazu gehören die Behandlung von Grafiken, Sound, Benutzerinteraktion und Netzwerken. \cite{robinson_getting_2013}
 
 In dieser Arbeit wird das JUCE-Framework mittels \emph{CMake}, \glqq eine Open-Source-, plattformübergreifende Werkzeugfamilie, die zur Erstellung, zum Testen und zum Verpacken von Software entwickelt wurde\grqq \cite{noauthor_cmake_nodate} benutzt, um die durch das Diffusionsnetz erstellten Klänge spielbar und manipulierbar zu gestalten. 
 
@@ -521,6 +628,8 @@ Die implementierten Endpunkte umfassen einen zur Initialisierung eines Modells, 
 
 \subsection{Sampler}
 
+Für die Implementierung des Samplers wurde der bereits von \emph{Juce}\cite{noauthor_juce_nodate-1} zur Verfügung gestellte Sampler \cite{noauthor_juce_nodate} verwendet. Zusätzlich wurde die Funktionalität erweitert, um eine spezifische Tonverschiebung vornehmen zu können und den Pitch-Bender an einem Keyboard einsetzen zu können.
+
 \chapter{Ergebnisse}
 Das Zusammenspiel der vorgestellten Komponenten und Elemente führte zu einem digitalen Instrument, welches als Standalone oder als Plugin in einem VST3 oder AU-Format in einer DAW wie \emph{Ableton} \cite{noauthor_ableton_nodate}, \emph{Logic} \cite{noauthor_logic_nodate} und anderen, unter Windows und Mac, verwendet werden kann.
 
@@ -531,22 +640,7 @@ Das Zusammenspiel der vorgestellten Komponenten und Elemente führte zu einem di
   \label{fig:synth}
 \end{figure} 
 
-Die daraus entstandene Benutzeroberfläche (Abbildung \ref{fig:synth}) ermöglicht es einem Nutzer, den Server für die API (siehe \ref{sec:api}) auf einem gewünschten Port  zu starten und ein Modell zu initiieren, indem aus einer Auswahl von vorab trainierten Modellen gewählt wird. Die Verwendung des Modells auf verschiedenen Hardwarekonfigurationen (mit und ohne GPU) und Betriebssystemen wird durch die Auswahl an unterstützten Geräten ermöglicht. Nach der Initialisierung eines Modells kann ein gewünschter Klang, der durch die Texteingabefelder \emph{Prompt} und \emph{Negative Prompt} definiert wird, synthetisiert werden. Auch die Länge des zu erzeugenden Klangs in Sekunden (\emph{audio length}), die Anzahl der Inferenzschritte (\emph{number of inference steps}) und die Leitskala (\emph{guidance scale}) lassen sich einstellen.
-
-Ein zusätzlicher Parameter, der nicht in der AudioLDM-Pipeline\cite{liu_audioldm_2023} vorkommt, ist die Einstellung der Abtastrate (\emph{sample rate}), in der das erzeugte Signal gelesen und übertragen wird. AudioLDM erzeugt mit folgendem Code ein Audiosignal mit einer Abtastrate von $16.00$ kHz. 
-
-\lstset{basicstyle=\ttfamily, keywordstyle=\bfseries}
-
-\begin{lstlisting}
-audio = pipe(prompt, audio_length_in_s, num_inference_steps, guidance_scale, negative_prompt).audios[0]  #16kHz
-sf.write(file, audio, samplerate, format)
-\end{lstlisting}
-
-Wird jedoch nun das Signal mit 
-
-
-
-Wird das Signal mit einer niedrigeren Abtastrate gesampled, so verlängert sich das Signal, die Tonhöhe verringert sich, und Informationen gehen verloren. Dies wird als \emph{Unterabtastung} (engl. \emph{Undersampling}) bezeichnet. Obgleich dies als unerwünschtes Verhalten erscheinen mag, kann die Unterabtastung klanglich interessante Eigenschaften und Artefakte mit sich bringen. Veraltete Hardware-Sampler wie der \emph{E-MU SP1200} mit einer Abtastrate von $26$ kHz und einer Bittiefe von 12 Bits, oder die \emph{S}-Reihe von \emph{Akai}, die auch höhere Sampleraten unterstützen, erlebten einen Preisanstieg und eine wachsende Nachfrage aufgrund speziellen Klangfärbung durch Unterabtastung und einer niedrigen Bittiefe. Eine niedrigere Abtastrate wurde oftmals benutzt, um die Einschränkung der Aufnahmelänge der damaligen Hardware zu umgehen, indem die Aufnahme bei Wiedergabezeit mittels Unterabtastung künstlich verlängert wurde. Das gleiche Konzept kann auf das von AudioLDM generierte Signal angewendet werden. \cite{liu_audioldm_2023} hat gezeigt, dass kürzere Signale eine höhere Qualität als erzeugte Klänge mit längerer Dauer aufweisen. Ein kürzeres Signal hoher Qualität kann somit verlängert werden, wobei sich allerdings die Tonhöhe vertieft. Dies kann jedoch ein gewünschter Effekt sein, da AudioLDM für manche Prompts Signale mit einer hohen Tonhöhe oder störenden hohen Obertönen erzeugt. Der Nutzer kann das Signal somit bewusst manipulieren, um die erhöhte Tonhöhe auszugleichen und störende Obertöne durch den Informationsverlust zu unterdrücken.
+Die daraus entstandene Benutzeroberfläche (Abbildung \ref{fig:synth}) ermöglicht es einem Nutzer, den Server für die API (siehe \ref{sec:api}) auf einem gewünschten Port  zu starten und ein Modell zu initiieren, indem aus einer Auswahl von vorab trainierten Modellen gewählt wird. Die Verwendung des Modells auf verschiedenen Hardwarekonfigurationen (mit und ohne GPU) und Betriebssystemen wird durch die Auswahl an unterstützten Geräten ermöglicht. Nach der Initialisierung eines Modells kann ein gewünschter Klang, der durch die Texteingabefelder \emph{Prompt} und \emph{Negative Prompt} definiert wird, synthetisiert werden. Auch die Länge des zu erzeugenden Klangs in Sekunden (\emph{audio length}), die Anzahl der Inferenzschritte (\emph{number of inference steps}) und die Leitskala (\emph{guidance scale}) lassen sich einstellen. Um die Erzeugung determiniert zu machen, kann auch ein \emph{Seed} in Form eines 8-Byte großen Integers im Wertebereich von $0$ bis $2^{64}-1$ mit angegeben werden.  
 
 Die \emph{Hüllkurve} des \emph{Samplers} (siehe \ref{sec:synth+envelope}) lässt sich über vier Parameter modifizieren. Hierbei sind die Zeitspannen in Sekunden für die Anschwell- (engl. \emph{attack}), Abschwell- (engl. \emph{decay}) und Ausschwingphasen (engl. \emph{release}) sowie das Level, auf das die Lautstärke absinken soll (engl. \emph{sustain}), festlegbar. Der von dem Instrument generierte Klang kann mithilfe des Sliders "Verstärkung" (engl. \emph{gain}) auf eine bestimmte Lautstärke angepasst werden.
 
@@ -554,14 +648,91 @@ Da die Tonhöhe des generierten Klangs nicht im Voraus bestimmt werden kann und 
 
 Das produzierte Signal wird durch eine Wellenform- und Spektrogramm-Anzeige visualisiert. Dies soll dem Nutzer dabei helfen, die Ergebnisse des Modells besser nachzuvollziehen und das erfolgreiche Generieren zu erkennen. Zudem lassen sich aus dieser Visualisierung bestimmte Klangstrukturen herauslesen.
 
+Die Soundqualität des Instrumentes und die Fähigkeit die gewünschten musikalischen Merkmale aus der textuellen Eingabe zu generieren hängt von dem zur Verwendung kommenden Modell ab.    Genauigkeit des 
 
-
+//TODO: Ergebnisse von AudioLDM im musikalischen Kontext, und wie gut es Sound für die Musikproduktion erziehelen kann. 
 
 \chapter{Diskussion}
 
+Das Aufzeigen, der Möglichkeit Instrumente basierend auf künstlicher Intelligenz zu entwickeln stellt eine beachtliche Erweiterung der musikalischen Klangerzeugung dar. Neue Arten Klänge oder Musik zu erzeugen, manipulieren oder zu spielen  
+
+
+Schwächen:
+
+AudioLDM
+
+Zu wenig Training über Musikproduktions Keywords
+
+Nervige Obertöne
+
+Keine zuordnung zu Genres, Künstler, Epochen
+
+Keine Automatische Pitch Erkennung
+
+--------------
+
+Stärken:
+
+Neue Soundsynthese
+
+Ambiend Pads
+
+Sound Experimentierung
+
+Happy Little Accidents
+
+
+--------------
+
 Verbesserung:
 
+Automatische Pitch Zuordnung
+
+Mehr Zuordnung zu Emotionen 
+
+AudioLDM 2
+
+Schneller Inferenz
+
+Spezielle Hardware 
+
+ML-Sampler
+
 Spektogramm Manipulation 
+
+Loop Points
+
+Modulare Aufbau 
+
+Finetuning auf mehr musikalischen Daten
+
+Indivduelles Finetuning 
+
+Eine Programmiersprache
+
+ONNX
+
+Binäredaten
+
+Envelope Visualiesieren
+
+Additive Synth
+
+Convelution Mixer
+
+Presets speichern 
+
+Schon Präsente Spuren Analysieren und Lücken finden 
+
+ML-Effekte
+
+Mehre Modell Auswahl 
+
+Modell zusammenbauen ? 
+
+
+
+
 
 \chapter{Schlussfolgerung}
 \label{sec:conclusion}
