@@ -31,6 +31,7 @@
 ]{scrbook}
 \input{config}
 
+\usepackage{multicol}
 
 \usepackage[
   title={Text-zu-spielbarem-Klang: Synthesizer basierend auf Latent-Diffusion-Technologie}, % Do not forget to capitalize your title correctly, you may use the following page to help you: https://capitalizemytitle.com/
@@ -251,7 +252,7 @@ In Anlehnung an die Gedanken von M. V. Mathews fokussiert sich diese Arbeit auf 
 Vereinzelte Projekte, darunter der von Google im Jahr 2017 entwickelte \emph{NSynth}\cite{google_ai_nsynth_2017} oder das Audioplugin \emph{Neutone}\cite{qosmo_neutone_nodate}, haben bereits die Konzeption von Instrumenten mithilfe von  \emph{Artifical Intelligence} in Angriff genommen. Diese Ansätze erlernen auditive Charakteristika und wenden diese auf ein Signal an bzw. übertragen sie. Die jüngsten Fortschritte in der Entwicklung generativer Modelle haben nun das Potenzial eröffnet, vollkommen neue Klangbilder zu erschaffen. Durch die Möglichkeit, das Ergebnis dieser Modelle präzise durch eine Texteingabe zu bestimmen, erhalten Musiker, Musikproduzenten und Sounddesigner eine neuartige Kontrollmethode zur Definition gewünschter Klangattribute. Ein ähnlicher Ansatz, mit Verwendung desselben Modells wie in dieser Arbeit findet Anwendung in \emph{VroomAI}\cite{barney_hill_vroomai_2023}.
 
 
-In der vorliegenden Arbeit wird das Text-zu-Audio-Diffusionsmodell \emph{AudioLDM}\cite{liu_audioldm_2023-1} verwendet, um das Potenzial von Computational Intelligence im Bereich der Audiosynthese in einem musikalischen Kontext aufzuzeigen. Der Fokus liegt dabei auf der Untersuchung dieser neuen Methode zur Klangerzeugung und der Bewertung ihres performativen Potenzials. Insbesondere die Möglichkeit einer interaktiven Bereitstellung von Einstellungsmöglichkeiten für Paramter des jeweiligen Modells und die Klangwiedergabe, die in vergleichbaren Projekten bisher fehlte, soll dem Instrumentalist zusätzliche Kontrolle über die gewünschten Eigenschaften verleihen.
+In der vorliegenden Arbeit wird das Text-zu-Audio-Diffusionsmodell \emph{AudioLDM}\cite{liu_audioldm_2023} verwendet, um das Potenzial von Computational Intelligence im Bereich der Audiosynthese in einem musikalischen Kontext aufzuzeigen. Der Fokus liegt dabei auf der Untersuchung dieser neuen Methode zur Klangerzeugung und der Bewertung ihres performativen Potenzials. Insbesondere die Möglichkeit einer interaktiven Bereitstellung von Einstellungsmöglichkeiten für Paramter des jeweiligen Modells und die Klangwiedergabe, die in vergleichbaren Projekten bisher fehlte, soll dem Instrumentalist zusätzliche Kontrolle über die gewünschten Eigenschaften verleihen.
 
 % Fourth paragraph
 % CORE MESSAGE OF THIS PARAGRAPH:
@@ -263,11 +264,11 @@ In der vorliegenden Arbeit wird das Text-zu-Audio-Diffusionsmodell \emph{AudioLD
 
 Die Entwicklung eines Instruments, das die Soundsynthese durch künstliche Intelligenz (Artificial Intelligence) ermöglicht, wurde im Jahr 2023 im Rahmen des von \emph{Juce} \cite{noauthor_juce_nodate-1} organisierten Wettbewerbs „Neural Audio Plugin“ verfolgt. Insbesondere zeichnete sich das Projekt \emph{VroomAi} \cite{barney_hill_vroomai_2023} durch die Nutzung desselben C++ Audio Frameworks wie im vorliegenden Projekt aus. In \emph{VroomAi} wurde ein digitales Instrument entwickelt, welches über eine Benutzeroberfläche die Eingabe eines benutzerspezifischen Prompts zur Klangerzeugung ermöglicht. Anschließend kann dieser Klang durch den Einsatz eines Samplers spielbar gemacht werden.
 
-Im Gegensatz zum gegenwärtigen Projekt bietet \emph{VroomAi} die Auswahl zwischen zwei Modellen: zum einen das Modell \emph{AudioLDM} \cite{liu_audioldm_2023-1}, welches auch in diesem Projekt verwendet wird, und zum anderen das Modell \cite{borsos_audiolm_2022}. Die Architektur in \emph{VroomAi} ähnelt der in der später vorgestellten Umsetzung und dient dazu, die Modelle zu betreiben und die Klänge zu generieren. Hierbei wird ein \emph{Gradio} Server \cite{team_gradio_gradio_nodate} adressiert, der das Modell lokal ausführt.
+Im Gegensatz zum gegenwärtigen Projekt bietet \emph{VroomAi} die Auswahl zwischen zwei Modellen: zum einen das Modell \emph{AudioLDM} \cite{liu_audioldm_2023}, welches auch in diesem Projekt verwendet wird, und zum anderen das Modell \cite{borsos_audiolm_2022}. Die Architektur in \emph{VroomAi} ähnelt der in der später vorgestellten Umsetzung und dient dazu, die Modelle zu betreiben und die Klänge zu generieren. Hierbei wird ein \emph{Gradio} Server \cite{team_gradio_gradio_nodate} adressiert, der das Modell lokal ausführt.
 
 Das lokale Betreiben des Modells birgt allerdings gewisse Schwächen (siehe \ref{api}), und es können Probleme auftreten, besonders bei der Verwendung des von den \emph{AudioLDM} Entwicklern veröffentlichten \emph{Gradio}-Servers. Beispielsweise ist das \emph{AudioLDM} Modell nicht ohne weitere Anpassungen auf Computern ohne GPU ausführbar. Dies stellt für Nutzer ohne Erfahrung im Umgang mit ML-Modellen oder der falschen Hardware ein Hindernis dar. Im Rahmen dieser Ausführung des gleichen Konzepts sollen derartige Hindernisse möglichst minimiert werden, um ein intuitiv bedienbares digitales Instrument bereitzustellen. Darüber hinaus wird dem Nutzer die Eingabe von modellspezifischen und Audio-Parametern ermöglicht, ein Merkmal, das in \emph{VroomAi} fehlt.
 
-Neben \emph{AudioLDM} \cite{liu_audioldm_2023-1} bieten sich folgende ML-Modelle an um Klangerzeugung zu betreiben.
+Neben \emph{AudioLDM} \cite{liu_audioldm_2023} bieten sich folgende ML-Modelle an um Klangerzeugung zu betreiben.
 
 \emph{AudioLM} \cite{borsos_audiolm_2022} befasst sich mit der Audio-Synthese mittels eines Modells, das aus einer Kombination von \emph{adversarial neural networks}\cite{goodfellow_generative_2014}, \emph{self-supervised representation learning} und \emph{language modeling} besteht. Dieses Modell wurde auf der \emph{tokenisierten} Darstellung von Wellenformen trainiert. Obwohl \emph{AudioLM} primär für die Generierung von Stimmen konzipiert wurde, hat es sich auch für die musikalische Synthese als geeignet erwiesen, indem es auf Klavieraufnahmen trainiert wurde und in der Inferenzphase solche erzeugen konnte. Das Modell setzt sich aus drei Hauptkomponenten zusammen: einem \emph{Tokenizer-Modell}, einem Decoder-Teil eines \emph{Transformers-Sprachmodells}\cite{vaswani_attention_2017} und einem \emph{Detokenizer-Modell}. Das Tokenizer-Modell wandelt eine kontinuierliche Audiowellenform in eine diskrete Repräsentation um, die aus einem endlichen Vokabular besteht. In einem hybriden Tokenisierungsverfahren (Abbildung \ref{fig:tokenizerAudioLM}) werden sowohl akustische als auch semantische Merkmale (wie sprachliche Inhalte für Sprache, Melodie und Rhythmus für Musik) der betrachteten Wellenform extrahiert. Die akustischen Token werden von \emph{SoundStream} \cite{zeghidour_soundstream_2021} erzeugt, während die semantischen Token von Repräsentationen produziert werden, die von einer Zwischenschicht von \emph{w2v-BERT} \cite{chung_w2v-bert_2021} erzeugt werden. Der Decoder-Teil eines \emph{Transformers-Sprachmodells} erlernt, jedes Token basierend auf seinem vorhergehenden Kontext vorherzusagen, wobei es die Abhängigkeiten und Struktur innerhalb der Sprache erfasst. Zur Inferenzzeit sagt das Modell aus einem \emph{Prompt} die Token-Sequenz autoregressiv voraus. Dies bedeutet, dass es jedes Token einzeln generiert und die zuvor vorhergesagten Tokens als Kontext für die nächste Vorhersage verwendet. Der Prozess wird fortgesetzt, bis eine vollständige Sequenz vorhergesagt ist. Hierbei wird ein hierarchischer Ansatz verfolgt (Abbildung \ref{fig:hierarAudioLM}): Zunächst werden die semantischen Token für die gesamte Sequenz modelliert, die dann als Bedingungen verwendet werden, um die akustischen Token vorherzusagen. Schließlich wandelt das Detokenizer-Modell die Sequenz der vorhergesagten Tokens zurück in ein Audiosignal. \cite{borsos_audiolm_2022}
 
@@ -424,7 +425,7 @@ Die Einführung dieses Protokolls beeinflusste signifikant die Konzeption und Ge
 
 \glqq Die Methoden der Klangerzeugung mit traditionellen mechanischen Musikinstrumenten waren seit ihrer Entstehung nur unwesentlichen Veränderungen unterworfen. [...] Der Instrumentenbau wandelte sich lediglich deshalb im Laufe der Zeit, weil man die Spielbarkeit der Instrumente zu verbessern und ihren Klangcharakter den wechselnden musikalischen Idealvorstellungen anzupassen wünschte. Anders dagegen im Bereich elektronischer Klangerzeugung. Hier werden ständig neue Methoden zur Synthese von Klängen entwickelt.\grqq \, \cite{ruschkowski_elektronische_2019}
 
-Im Folgenden soll zunächst dargelegt werden, welche Vorteile die neuartige Technik der Soundsynthese durch Diffusion mit sich bringen kann. Bei Erzielung von hochwertigen Ergebnissen könnten beispielsweise die Notwendigkeit und der Zugang zu aufgezeichneten Klängen entfallen. Der Aufwand für die Aufnahme solcher Klänge ist oft erheblich und führt daher in der Regel zu kostenpflichtigen Angeboten. Die Anwendung künstlicher Intelligenz in der Synthese von Sound könnte jedoch dazu beitragen, diesen Bereich zu demokratisieren und einem breiteren Publikum die benötigten Ressourcen zur Verfügung zu stellen. Darüber hinaus könnte diese Technik den Nutzern eine umfassendere Kontrolle über die gewünschten Eigenschaften und Klangfarben verleihen. Auf kreativer Ebene ermöglicht die Soundsynthese durch Diffusion die Erzeugung einzigartiger, zuvor nicht existierender Klänge, die potenziell als neue Inspirationsquelle für Künstler und Musiker dienen könnten. \cite{haohe_liu_audioldm_2023-1}
+Im Folgenden soll zunächst dargelegt werden, welche Vorteile die neuartige Technik der Soundsynthese durch Diffusion mit sich bringen kann. Bei Erzielung von hochwertigen Ergebnissen könnten beispielsweise die Notwendigkeit und der Zugang zu aufgezeichneten Klängen entfallen. Der Aufwand für die Aufnahme solcher Klänge ist oft erheblich und führt daher in der Regel zu kostenpflichtigen Angeboten. Die Anwendung künstlicher Intelligenz in der Synthese von Sound könnte jedoch dazu beitragen, diesen Bereich zu demokratisieren und einem breiteren Publikum die benötigten Ressourcen zur Verfügung zu stellen. Darüber hinaus könnte diese Technik den Nutzern eine umfassendere Kontrolle über die gewünschten Eigenschaften und Klangfarben verleihen. Auf kreativer Ebene ermöglicht die Soundsynthese durch Diffusion die Erzeugung einzigartiger, zuvor nicht existierender Klänge, die potenziell als neue Inspirationsquelle für Künstler und Musiker dienen könnten. \cite{haohe_liu_audioldm_2023}
 
 
 \subsection{Diffusion}
@@ -559,25 +560,25 @@ HTSAT+RoBERTa & $\mathbf{4 5 . 7}$ & $\mathbf{5 1 . 3}$ & $\mathbf{1 3 . 8}$ & 2
 
 \subsection{AudioLDM}
 
-Das Modell \emph{AudioLDM}\cite{liu_audioldm_2023-1} dient zur Synthese von Text zu Audio sowie zur textgesteuerten Audio-Manipulation mittles \emph{Latenten Diffusion}\cite{rombach_high-resolution_2022}. Es verspricht qualitativ hochwertige Ergebnisse bei geringem Rechenaufwand. Im Gegensatz zu \emph{Diffsound}\cite{yang_diffsound_2023}, das Audio-Text-Paare für das Training verwendet, hat \emph{AudioLDM} gezeigt, dass mithilfe einer \emph{CLAP}-Repräsentation\cite{wu_large-scale_2023} hochwertige Resultate erzielt werden können. \cite{liu_audioldm_2023-1}
+Das Modell \emph{AudioLDM}\cite{liu_audioldm_2023} dient zur Synthese von Text zu Audio sowie zur textgesteuerten Audio-Manipulation mittles \emph{Latenten Diffusion}\cite{rombach_high-resolution_2022}. Es verspricht qualitativ hochwertige Ergebnisse bei geringem Rechenaufwand. Im Gegensatz zu \emph{Diffsound}\cite{yang_diffsound_2023}, das Audio-Text-Paare für das Training verwendet, hat \emph{AudioLDM} gezeigt, dass mithilfe einer \emph{CLAP}-Repräsentation\cite{wu_large-scale_2023} hochwertige Resultate erzielt werden können. \cite{liu_audioldm_2023}
 
-Die Wahl, Natürliche Sprache anstelle von Labels für die Eingabe und Konditionierung zu verwenden, erfolgte aufgrund der Möglichkeit, akustische Merkmale flexibler, deskriptiver und präziser darzustellen. Frühere Ansätze im Bereich Text-zu-Audio (TTA) stießen auf die Grenze, dass oft keine großen Mengen qualitativ hochwertiger Audio-Text-Daten verfügbar waren\cite{liu_separate_2022}. Methoden der Textvorverarbeitung\cite{gemmeke_audio_2017, yang_diffsound_2023} konnten dieses Problem nicht gänzlich lösen, da sie komplexe Zusammenhänge zwischen Klangereignissen vereinfachten, was die Generierungsleistung beeinträchtigte. Das Modell \emph{AudioLDM} adressierte diese Herausforderung, indem es ausschließlich auf Audiodaten im Training setzte und so bessere Ergebnisse erzielte als mit gepaarten Audio-Text-Daten. \cite{liu_audioldm_2023-1}
+Die Wahl, Natürliche Sprache anstelle von Labels für die Eingabe und Konditionierung zu verwenden, erfolgte aufgrund der Möglichkeit, akustische Merkmale flexibler, deskriptiver und präziser darzustellen. Frühere Ansätze im Bereich Text-zu-Audio (TTA) stießen auf die Grenze, dass oft keine großen Mengen qualitativ hochwertiger Audio-Text-Daten verfügbar waren\cite{liu_separate_2022}. Methoden der Textvorverarbeitung\cite{gemmeke_audio_2017, yang_diffsound_2023} konnten dieses Problem nicht gänzlich lösen, da sie komplexe Zusammenhänge zwischen Klangereignissen vereinfachten, was die Generierungsleistung beeinträchtigte. Das Modell \emph{AudioLDM} adressierte diese Herausforderung, indem es ausschließlich auf Audiodaten im Training setzte und so bessere Ergebnisse erzielte als mit gepaarten Audio-Text-Daten. \cite{liu_audioldm_2023}
 
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=.6\textwidth]{AudioLDM.png}
-  \caption[AudioLDM Architektur]{Architektur für die Text-Generierung von AudioLDM\cite{liu_audioldm_2023-1}}
+  \caption[AudioLDM Architektur]{Architektur für die Text-zu-Audio Generierung von AudioLDM\cite{liu_audioldm_2023}}
   \label{fig:AudioLDM}
 \end{figure} 
 
-Die Architektur (Abbildung \ref{fig:AudioLDM}) kombiniert mehrere Komponenten: Einen \emph{VAE}\cite{kingma_auto-encoding_2022}, der Mel-Spektrogramme in einen latenten Raum kodiert; einen nach \emph{CLAP}\cite{wu_large-scale_2023} konzipierten Audio- und Text-Encoder, der Embeddings für die Konditionierung des \emph{LDMs} erstellt; einen \emph{LDM}, der die zugrunde liegende Verteilung erlernt; und einen \emph{Vocoder}, der das generierte Spektrogramm in ein Audiosignal umwandelt. \cite{liu_audioldm_2023-1}
+Die Architektur (Abbildung \ref{fig:AudioLDM}) kombiniert mehrere Komponenten: Einen \emph{VAE}\cite{kingma_auto-encoding_2022}, der Mel-Spektrogramme in einen latenten Raum kodiert; einen nach \emph{CLAP}\cite{wu_large-scale_2023} konzipierten Audio- und Text-Encoder, der Embeddings für die Konditionierung des \emph{LDMs} erstellt; einen \emph{LDM}, der die zugrunde liegende Verteilung erlernt; und einen \emph{Vocoder}, der das generierte Spektrogramm in ein Audiosignal umwandelt. \cite{liu_audioldm_2023}
 
-Die \emph{CLAP}-Module generieren Embeddings für Text $\boldsymbol{E}^y \in \mathbb{R}^L$ und Audio $\boldsymbol{E}^x \in \mathbb{R}^L$. Hierbei repräsentiert $x$ eine Audioprobe und $y$ eine Textbeschreibung, wobei jeweils $f_{\text {text }}(\cdot)$ und $f_{\text {audio }}(\cdot)$ als Encoder dienen. Für den Audioencoder wurde \emph{HTSAT}\cite{chen_hts-at_2022} und für den Textencoder \emph{RoBERTa}\cite{liu_roberta_2019} verwendet. Beim Training des \emph{LDMs} diente $\boldsymbol{E}^x$ aus dem jeweiligen Trainingsdatenpunkt als Konditionierung, während $\boldsymbol{E}^y$ zur Generierung des gewünschten Signals Verwendung findet. \cite{liu_audioldm_2023-1}
+Die \emph{CLAP}-Module generieren Embeddings für Text $\boldsymbol{E}^y \in \mathbb{R}^L$ und Audio $\boldsymbol{E}^x \in \mathbb{R}^L$. Hierbei repräsentiert $x$ eine Audioprobe und $y$ eine Textbeschreibung, wobei jeweils $f_{\text {text }}(\cdot)$ und $f_{\text {audio }}(\cdot)$ als Encoder dienen. Für den Audioencoder wurde \emph{HTSAT}\cite{chen_hts-at_2022} und für den Textencoder \emph{RoBERTa}\cite{liu_roberta_2019} verwendet. Beim Training des \emph{LDMs} diente $\boldsymbol{E}^x$ aus dem jeweiligen Trainingsdatenpunkt als Konditionierung, während $\boldsymbol{E}^y$ zur Generierung des gewünschten Signals Verwendung findet. \cite{liu_audioldm_2023}
 
-Für den \emph{LDM}-genutzten Latentraum $\boldsymbol{z} \in \mathbb{R}^{C \times \frac{T}{r} \times \frac{F}{r}}$ fand ein Training mithilfe eines \emph{VAE} auf Spektrogrammen statt. Dabei repräsentiert $r$ das \emph{Kompressionslevel}, während $T$ und $F$ für Zeit- und Frequenzdimensionen stehen. $C$ gibt die Anzahl der Kanäle an. Ein Spektrogramm $\boldsymbol{X} \in \mathbb{R}^{T \times F}$ wird durch \emph{STFT} (Referenz \ref{sec:music_math}) aus einem gegebenen Audiosignal generiert. Im Generierungsverfahren wird aus der latenten Variable $\hat{\boldsymbol{z}}_o$ ein Spektrogramm $\hat{\boldsymbol{X}}$ erstellt. Dieses Spektrogramm wird schließlich durch den \emph{Vocoder}, basierend auf \emph{HiFi-GAN}\cite{kong_hifi-gan_2020}, in ein Audiosignal $\hat{x}$ transformiert. \cite{liu_audioldm_2023-1}
+Für den \emph{LDM}-genutzten Latentraum $\boldsymbol{z} \in \mathbb{R}^{C \times \frac{T}{r} \times \frac{F}{r}}$ fand ein Training mithilfe eines \emph{VAE} auf Spektrogrammen statt. Dabei repräsentiert $r$ das \emph{Kompressionslevel}, während $T$ und $F$ für Zeit- und Frequenzdimensionen stehen. $C$ gibt die Anzahl der Kanäle an. Ein Spektrogramm $\boldsymbol{X} \in \mathbb{R}^{T \times F}$ wird durch \emph{STFT} (Referenz \ref{sec:music_math}) aus einem gegebenen Audiosignal generiert. Im Generierungsverfahren wird aus der latenten Variable $\hat{\boldsymbol{z}}_o$ ein Spektrogramm $\hat{\boldsymbol{X}}$ erstellt. Dieses Spektrogramm wird schließlich durch den \emph{Vocoder}, basierend auf \emph{HiFi-GAN}\cite{kong_hifi-gan_2020}, in ein Audiosignal $\hat{x}$ transformiert. \cite{liu_audioldm_2023}
 
-Das konzeptionelle \emph{LDM} hat das Ziel, die grundlegende Verteilung $q\left(\boldsymbol{z}0 \mid \boldsymbol{E}^y\right)$ mithilfe von $p\theta\left(\boldsymbol{z}_0 \mid \boldsymbol{E}^y\right)$ anzunähern. Dabei wurden Verlustfunktion und der Rückwärtsprozess wie folgt spezifiziert: \cite{liu_audioldm_2023-1}
+Das konzeptionelle \emph{LDM} hat das Ziel, die grundlegende Verteilung $q\left(\boldsymbol{z}0 \mid \boldsymbol{E}^y\right)$ mithilfe von $p\theta\left(\boldsymbol{z}_0 \mid \boldsymbol{E}^y\right)$ anzunähern. Dabei wurden Verlustfunktion und der Rückwärtsprozess wie folgt spezifiziert: \cite{liu_audioldm_2023}
 
 \begin{equation}
     L_n(\theta)=\mathbb{E}_{\boldsymbol{z}_0, \boldsymbol{\epsilon}, n}\left\|\boldsymbol{\epsilon}-\boldsymbol{\epsilon}_\theta\left(\boldsymbol{z}_n, n, \boldsymbol{E}^x\right)\right\|_2^2
@@ -589,13 +590,24 @@ Das konzeptionelle \emph{LDM} hat das Ziel, die grundlegende Verteilung $q\left(
     p_\theta\left(\boldsymbol{z}_{0: N} \mid \boldsymbol{E}^y\right)=p\left(\boldsymbol{z}_N\right) \prod^N p_\theta\left(\boldsymbol{z}_{n-1} \mid \boldsymbol{z}_n, \boldsymbol{E}^y\right) \\
 \end{equation}
 
-Der Erwartungswert ist folgendermaßen parametrisiert und berechnet sich aus dem im Rückwärtsprozess ermittelten Rauschen $\boldsymbol{\epsilon}_\theta\left(\boldsymbol{z}_n, n, \boldsymbol{E}^y\right)$ \cite{liu_audioldm_2023-1}.
+Der Erwartungswert ist folgendermaßen parametrisiert und berechnet sich aus dem im Rückwärtsprozess ermittelten Rauschen $\boldsymbol{\epsilon}_\theta\left(\boldsymbol{z}_n, n, \boldsymbol{E}^y\right)$ \cite{liu_audioldm_2023}.
 
 \begin{equation}
     \boldsymbol{\mu}_\theta\left(\boldsymbol{z}_n, n, \boldsymbol{E}^y\right)=\frac{1}{\sqrt{\alpha_n}}\left(\boldsymbol{z}_n-\frac{\beta_n}{\sqrt{1-\bar{\alpha}_n}} \boldsymbol{\epsilon}_\theta\left(\boldsymbol{z}_n, n, \boldsymbol{E}^y\right)\right)
 \end{equation}
 
-Des weiterem wurde gezeigt, dass der \emph{Cross-Attention}-Mechanismus aus \cite{rombach_high-resolution_2022} weggelassen werden kann \cite{liu_audioldm_2023-1}. 
+Des weiterem wurde gezeigt, dass der \emph{Cross-Attention}-Mechanismus aus \cite{rombach_high-resolution_2022} weggelassen werden kann \cite{liu_audioldm_2023}. 
+
+\subsection{AudioLDM2}
+
+\emph{AudioLDM2}\cite{liu_audioldm2_2023} greifte erarbeitete Konzepte aus \emph{AudioLDM}\cite{liu_audioldm_2023} auf und erziehlte durch eine neue Architektur (Abildung \ref{fig:AudioLDM2}) und neuen Konzepten, verbesserte Ergebnisse für die Audiogenerierung mittels neuronalen Netzen. Motivation hinter der Entwicklung, war die Beobachtung, dass im Bereich der Audiosynthese verschiedene Modelle für verschiedene Aufgaben, wie Spracherzeugung, Musikgenerierung und Klangysnthese existieren, jedoch diese für eine speziellen Aufgabe oder Domaine entwickelt wurden und somit zu spezifisch und einschränkend sind, das sie in einem übergeordneten Kontext verwendet werden können. Das vorgestellte Modell soll ermöglichen, all diese spezifischen Problemstellungen in einem Modell zu vereinen. Hierfür wurde eine Repräsentation von Audio namens \emph{language of audio} (\emph{LOA}) entwickelt, welche gut auf allen Domaine generalisieren kann.  
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=.8\textwidth]{AudioLDM2.png}
+  \caption[AudioLDM2 Architektur]{Architektur von AudioLDM2\cite{liu_audioldm2_2023}}
+  \label{fig:AudioLDM2}
+\end{figure} 
+
 
 \section{Implementierung des Neuronalen Synthesizers}
 \subsection{Audioprogrammierung}
@@ -648,9 +660,10 @@ Da die Tonhöhe des generierten Klangs nicht im Voraus bestimmt werden kann und 
 
 Das produzierte Signal wird durch eine Wellenform- und Spektrogramm-Anzeige visualisiert. Dies soll dem Nutzer dabei helfen, die Ergebnisse des Modells besser nachzuvollziehen und das erfolgreiche Generieren zu erkennen. Zudem lassen sich aus dieser Visualisierung bestimmte Klangstrukturen herauslesen.
 
-Die Soundqualität des Instrumentes und die Fähigkeit die gewünschten musikalischen Merkmale aus der textuellen Eingabe zu generieren hängt von dem zur Verwendung kommenden Modell ab.    Genauigkeit des 
+Die Soundqualität des Instrumentes und die Fähigkeit die gewünschten musikalischen Merkmale aus der textuellen Eingabe zu generieren hängt von dem zur Verwendung kommenden Modell, und der Nutzer spezifischen Eingabe des Promptes ab. Um diese zur Evaluieren wurden 135 verschiedene Prompts definiert und generiert, und für jedes jeweils ein Audiosignal mit den Modellen \emph{audioldm-m-full, audioldm-l-full, audioldm2-large, audioldm2-music} erstellt \cite{liu_audioldm_2023,liu_audioldm2_2023}(siehe \ref{chap:prompts}). Aus den generierten Audiodatein lassen sich folgende Schlüsse ziehen. 
 
-//TODO: Ergebnisse von AudioLDM im musikalischen Kontext, und wie gut es Sound für die Musikproduktion erziehelen kann. 
+Prompts, die nur ein einzelnes kurzes nicht wiederholendes Audioereigniss umschreiben,wie \glqq A single kickdrum\grqq; 
+\glqq A kickdrum\grqq; \glqq A clap\grqq; \glqq A snare\grqq; etc.., erzeugen nicht das erwarte Ergebniss, sonder Signale, in denen Audioereignisse mehrfach vorkommen. Die Modelle versuchen nicht 
 
 \chapter{Diskussion}
 
@@ -743,8 +756,189 @@ Modell zusammenbauen ?
 All links were last followed on \today{}.
 
 \appendix
-%\input{latexhints/latexhints-english}
 
+\chapter{Prompts}
+\label{chap:prompts}
+
+Die auf \url{https://suckrowpierre.github.io/TtPS.github.io/}\cite{pierre-louis_suckrow_text-zu-spielbarem-klang_nodate} vorgestellten Ergebnisse wurden folgender maßen erstellt.
+
+Mittels den folgenden Prompts wurden für jedes der Modelle \emph{audioldm-m-full, audioldm-l-full, audioldm2-large, audioldm2-music} \cite{liu_audioldm_2023,liu_audioldm2_2023} jeweils ein Audiosignal mittels dem Quellcode \ref{lst:generator}\cite{pierre-louis_suckrow_thesismodelsresultsgenerator_2023} generiert. 
+
+\begin{multicols}{4}
+\fontsize{8pt}{11pt}\selectfont
+\begin{itemize}
+    \item A single kickdrum
+    \item A kickdrum
+    \item A distored kickdrum
+    \item A kickdrum with a lot of reverb
+    \item Deep house kick
+    \item Techno kick
+    \item A clap
+    \item A weird clap
+    \item A snare
+    \item A snare with reverb tail
+    \item A string orchestra
+    \item A analog synth
+    \item A distorted analog synth
+    \item A string synth
+    \item dreamy nostalgic strings
+    \item Ambient pads
+    \item A guitar string
+    \item A distorted guitar string
+    \item A tight snare
+    \item 808 bass
+    \item A sub-bass
+    \item Jazz ride cymbal
+    \item A realistic hi-hat pattern
+    \item A blues harmonica
+    \item A smooth saxophone
+    \item A jazz trumpet solo
+    \item Electric piano chords
+    \item Grand piano arpeggios
+    \item Harpsichord playing Baroque
+    \item A sitar drone
+    \item A tabla rhythm
+    \item Fast-paced conga drums
+    \item A marimba melody
+    \item An upright bass groove
+    \item Lo-fi beats
+    \item A vocoder voice
+    \item A children's choir
+    \item An operatic soprano
+    \item A flute ensemble
+    \item An oboe solo
+    \item Bassoon in a chamber setting
+    \item Steel drums playing Calypso
+    \item A bagpipe melody
+    \item A didgeridoo drone
+    \item Djembe in a world music context
+    \item A triangle ting
+    \item Cowbell in a funk setting
+    \item A gong hit
+    \item Wind chimes in C major
+    \item A celesta playing a lullaby
+    \item A Hammond organ in gospel style
+    \item A Moog synthesizer lead
+    \item Square wave arpeggiator
+    \item FM synthesis bells
+    \item Noise sweep
+    \item White noise with a filter sweep
+    \item Vinyl crackle
+    \item Tape hiss
+    \item Reverse cymbal
+    \item Side-chained pad
+    \item Glitched vocal sample
+    \item Auto-tuned vocals
+    \item A theremin playing a melody
+    \item Beatboxing sequence
+    \item Finger snaps in a jazz setting
+    \item A full orchestral crescendo
+    \item A muted trumpet
+    \item A slide guitar in a blues context
+    \item Clawhammer banjo
+    \item Double-bass pizzicato
+    \item A haunting choir pad
+    \item Ambient rainforest sounds
+    \item Foley footsteps
+    \item Synth brass in an '80s style
+    \item Harp glissando
+    \item Ticking clock sample
+    \item Ambient ocean waves
+    \item Jazz brush kit groove
+    \item A detuned square wave synth
+    \item An aggressive dubstep wobble bass
+    \item Shrill piccolo solo
+    \item Melodic pan flute
+    \item Sustained pipe organ chord
+    \item Choir singing in Latin
+    \item A fingerstyle ukulele
+    \item Flamenco guitar playing fast runs
+    \item Hard rock power chords
+    \item Acoustic guitar with a capo on 5th fret
+    \item A sultry bossa nova rhythm
+    \item Swing band with a prominent double bass
+    \item Spooky theremin melody
+    \item A pulsing trance bassline
+    \item Crunchy breakbeat loop
+    \item Reggae offbeat chords
+    \item A barbershop quartet
+    \item Bowed double bass drone
+    \item Glissando on a grand harp
+    \item Layered vocal harmonies
+    \item A slow, haunting Gregorian chant
+    \item A distorted metal guitar solo
+    \item A mellow Rhodes piano groove
+    \item A detuned radio frequency scan
+    \item Spacey sci-fi effects
+    \item A mandolin playing bluegrass
+    \item Chorus of kazoos playing a melody
+    \item Melodica in a reggae context
+    \item Pop punk palm-muted guitar
+    \item Bright and shimmering glockenspiel
+    \item High-pitched bat squeaks
+    \item Traditional Japanese koto melody
+    \item Tribal African drum circle
+    \item A drone from a tanpura
+    \item Cajun accordion riff
+    \item Complex polyrhythmic hand percussion
+    \item A twangy banjo in a bluegrass setting
+    \item Psychedelic sitar in a raga style
+    \item A punchy techno kick
+    \item Rich choir aahs and ooohs
+    \item Massive cinematic drum hits
+    \item A fluid slap bass line
+    \item Balkan brass band upbeat tune
+    \item Tense suspense string section
+    \item Shruti box drone in C\#
+    \item Chirping birds at dawn
+    \item Tuvan throat singing melody
+    \item A haunting reverb-drenched ebow guitar
+    \item Energetic punk rock drum fill
+    \item Middle Eastern oud improvisation
+    \item Polka accordion and tuba duet
+    \item Smooth and soulful Motown bassline
+    \item An eerie wind howling effect
+    \item Traditional Chinese guzheng melody
+    \item A slapstick comedy woodblock
+    \item Bouncy reggaeton beat with dembow rhythm
+    \item Echoing canyon yodel
+\end{itemize}
+\end{multicols}
+
+Die Liste an musikalisch und instrumentalen Prompts wurden unteranderem mittels \emph{GPT-4}\cite{openai_gpt-4_2023} auf \url{https://chat.openai.com/} mittels folgendem Prompt am 8. September 2023 generiert. 
+
+\lstdefinestyle{gpt}{
+    basicstyle=\ttfamily\small,
+    breaklines=true
+}
+
+\begin{lstlisting}[style=gpt]
+For a scientific work of mine, I'm evaluating the music abilities of diffusion models that can generate audio. For that, I have a script that generates audio for different models based on a list of prompts. My list looks like the following. Please add more prompts to test the musical and instrumental abilities of the models. Keep in mind the people using the models would be musicians, studio engineers, and music producers. 
+
+
+A single kickdrum
+A kickdrum
+A distored kickdrum
+A kickdrum with a lot of reverb
+A clap
+A weird clap
+A snare
+A string orchestra
+A analog synth
+A distorted analog synth
+A string synth
+dreamy nostalgic strings
+Ambient pads
+A guitar string
+A distorted guitar string
+\end{lstlisting}
+
+\begin{Listing}
+\lstinputlisting[language=Python, frame=single,basicstyle=\scriptsize]{code/generator.py}
+ \caption{Python code zur Generierung der Ergebnisse}
+  \label{lst:generator}
+\end{Listing}
+%\input{latexhints/latexhints-english}
 \pagestyle{empty}
 \renewcommand*{\chapterpagestyle}{empty}
 \Affirmation

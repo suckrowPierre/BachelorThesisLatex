@@ -1,4 +1,64 @@
 
+@misc{openai_gpt-4_2023,
+	title = {{GPT}-4 Technical Report},
+	url = {http://arxiv.org/abs/2303.08774},
+	abstract = {We report the development of {GPT}-4, a large-scale, multimodal model which can accept image and text inputs and produce text outputs. While less capable than humans in many real-world scenarios, {GPT}-4 exhibits human-level performance on various professional and academic benchmarks, including passing a simulated bar exam with a score around the top 10\% of test takers. {GPT}-4 is a Transformer-based model pre-trained to predict the next token in a document. The post-training alignment process results in improved performance on measures of factuality and adherence to desired behavior. A core component of this project was developing infrastructure and optimization methods that behave predictably across a wide range of scales. This allowed us to accurately predict some aspects of {GPT}-4's performance based on models trained with no more than 1/1,000th the compute of {GPT}-4.},
+	number = {{arXiv}:2303.08774},
+	publisher = {{arXiv}},
+	author = {{OpenAI}},
+	urldate = {2023-09-08},
+	date = {2023-03-27},
+	eprinttype = {arxiv},
+	eprint = {2303.08774 [cs]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computation and Language},
+}
+
+@misc{liu_audioldm2_2023,
+	title = {{AudioLDM}2: Learning Holistic Audio Generation with Self-supervised Pretraining},
+	url = {http://arxiv.org/abs/2308.05734},
+	shorttitle = {{AudioLDM} 2},
+	abstract = {Although audio generation shares commonalities across different types of audio, such as speech, music, and sound effects, designing models for each type requires careful consideration of specific objectives and biases that can significantly differ from those of other types. To bring us closer to a unified perspective of audio generation, this paper proposes a framework that utilizes the same learning method for speech, music, and sound effect generation. Our framework introduces a general representation of audio, called language of audio ({LOA}). Any audio can be translated into {LOA} based on {AudioMAE}, a self-supervised pre-trained representation learning model. In the generation process, we translate any modalities into {LOA} by using a {GPT}-2 model, and we perform self-supervised audio generation learning with a latent diffusion model conditioned on {LOA}. The proposed framework naturally brings advantages such as in-context learning abilities and reusable self-supervised pretrained {AudioMAE} and latent diffusion models. Experiments on the major benchmarks of text-to-audio, text-to-music, and text-to-speech demonstrate new state-of-the-art or competitive performance to previous approaches. Our demo and code are available at https://audioldm.github.io/audioldm2.},
+	number = {{arXiv}:2308.05734},
+	publisher = {{arXiv}},
+	author = {Liu, Haohe and Tian, Qiao and Yuan, Yi and Liu, Xubo and Mei, Xinhao and Kong, Qiuqiang and Wang, Yuping and Wang, Wenwu and Wang, Yuxuan and Plumbley, Mark D.},
+	urldate = {2023-09-05},
+	date = {2023-08-10},
+	eprinttype = {arxiv},
+	eprint = {2308.05734 [cs, eess]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Multimedia, Computer Science - Sound, Electrical Engineering and Systems Science - Audio and Speech Processing, Electrical Engineering and Systems Science - Signal Processing},
+}
+
+@software{pierre-louis_suckrow_thesismodelsresultsgenerator_2023,
+	title = {{ThesisModelsResultsGenerator}},
+	url = {https://github.com/suckrowPierre/ThesisModelsResultsGenerator},
+	author = {Pierre-Louis Suckrow},
+	urldate = {2023-09-08},
+	date = {2023-09-07},
+	note = {original-date: 2023-09-07T14:32:45Z},
+}
+
+@online{pierre-louis_suckrow_text-zu-spielbarem-klang_nodate,
+	title = {Text-zu-spielbarem-Klang: Synthesizer basierend auf Latent-Diffusion-Technologie},
+	url = {https://suckrowpierre.github.io/TtPS.github.io/},
+	author = {{Pierre-Louis Suckrow}},
+	urldate = {2023-09-07},
+}
+
+@misc{tan_regeneration_2023,
+	title = {Regeneration Learning: A Learning Paradigm for Data Generation},
+	url = {http://arxiv.org/abs/2301.08846},
+	shorttitle = {Regeneration Learning},
+	abstract = {Machine learning methods for conditional data generation usually build a mapping from source conditional data X to target data Y. The target Y (e.g., text, speech, music, image, video) is usually high-dimensional and complex, and contains information that does not exist in source data, which hinders effective and efficient learning on the source-target mapping. In this paper, we present a learning paradigm called regeneration learning for data generation, which first generates Y' (an abstraction/representation of Y) from X and then generates Y from Y'. During training, Y' is obtained from Y through either handcrafted rules or self-supervised learning and is used to learn X--{\textgreater}Y' and Y'--{\textgreater}Y. Regeneration learning extends the concept of representation learning to data generation tasks, and can be regarded as a counterpart of traditional representation learning, since 1) regeneration learning handles the abstraction (Y') of the target data Y for data generation while traditional representation learning handles the abstraction (X') of source data X for data understanding; 2) both the processes of Y'--{\textgreater}Y in regeneration learning and X--{\textgreater}X' in representation learning can be learned in a self-supervised way (e.g., pre-training); 3) both the mappings from X to Y' in regeneration learning and from X' to Y in representation learning are simpler than the direct mapping from X to Y. We show that regeneration learning can be a widely-used paradigm for data generation (e.g., text generation, speech recognition, speech synthesis, music composition, image generation, and video generation) and can provide valuable insights into developing data generation methods.},
+	number = {{arXiv}:2301.08846},
+	publisher = {{arXiv}},
+	author = {Tan, Xu and Qin, Tao and Bian, Jiang and Liu, Tie-Yan and Bengio, Yoshua},
+	urldate = {2023-09-06},
+	date = {2023-01-20},
+	eprinttype = {arxiv},
+	eprint = {2301.08846 [cs, eess]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computation and Language, Computer Science - Computer Vision and Pattern Recognition, Computer Science - Machine Learning, Electrical Engineering and Systems Science - Audio and Speech Processing},
+}
+
 @book{thyagarajan_introduction_2019,
 	location = {Cham},
 	edition = {1st ed. 2019},
@@ -37,21 +97,6 @@
 	eprinttype = {arxiv},
 	eprint = {2203.15147 [cs, eess]},
 	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computation and Language, Computer Science - Sound, Electrical Engineering and Systems Science - Audio and Speech Processing, Electrical Engineering and Systems Science - Signal Processing},
-}
-
-@misc{liu_audioldm_2023,
-	title = {{AudioLDM} 2: Learning Holistic Audio Generation with Self-supervised Pretraining},
-	url = {http://arxiv.org/abs/2308.05734},
-	shorttitle = {{AudioLDM} 2},
-	abstract = {Although audio generation shares commonalities across different types of audio, such as speech, music, and sound effects, designing models for each type requires careful consideration of specific objectives and biases that can significantly differ from those of other types. To bring us closer to a unified perspective of audio generation, this paper proposes a framework that utilizes the same learning method for speech, music, and sound effect generation. Our framework introduces a general representation of audio, called language of audio ({LOA}). Any audio can be translated into {LOA} based on {AudioMAE}, a self-supervised pre-trained representation learning model. In the generation process, we translate any modalities into {LOA} by using a {GPT}-2 model, and we perform self-supervised audio generation learning with a latent diffusion model conditioned on {LOA}. The proposed framework naturally brings advantages such as in-context learning abilities and reusable self-supervised pretrained {AudioMAE} and latent diffusion models. Experiments on the major benchmarks of text-to-audio, text-to-music, and text-to-speech demonstrate new state-of-the-art or competitive performance to previous approaches. Our demo and code are available at https://audioldm.github.io/audioldm2.},
-	number = {{arXiv}:2308.05734},
-	publisher = {{arXiv}},
-	author = {Liu, Haohe and Tian, Qiao and Yuan, Yi and Liu, Xubo and Mei, Xinhao and Kong, Qiuqiang and Wang, Yuping and Wang, Wenwu and Wang, Yuxuan and Plumbley, Mark D.},
-	urldate = {2023-09-05},
-	date = {2023-08-10},
-	eprinttype = {arxiv},
-	eprint = {2308.05734 [cs, eess]},
-	keywords = {Computer Science - Artificial Intelligence, Computer Science - Multimedia, Computer Science - Sound, Electrical Engineering and Systems Science - Audio and Speech Processing, Electrical Engineering and Systems Science - Signal Processing},
 }
 
 @misc{tom_m_mitchell_need_1980,
@@ -1265,7 +1310,7 @@ https://www.gear4music.com/blog/what-...
 	keywords = {Computer Science - Computation and Language, Computer Science - Sound, Electrical Engineering and Systems Science - Audio and Speech Processing},
 }
 
-@misc{liu_audioldm_2023-1,
+@misc{liu_audioldm_2023,
 	title = {{AudioLDM}: Text-to-Audio Generation with Latent Diffusion Models},
 	url = {http://arxiv.org/abs/2301.12503},
 	shorttitle = {{AudioLDM}},
