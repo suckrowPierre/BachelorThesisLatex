@@ -1,4 +1,267 @@
 
+@online{noauthor_sampler_nodate,
+	title = {sampler Juce},
+	url = {https://docs.juce.com/master/group__juce__audio__formats-sampler.html},
+	titleaddon = {{JUCE} Docs},
+	urldate = {2023-08-19},
+}
+
+@misc{defossez_high_2022,
+	title = {High Fidelity Neural Audio Compression},
+	url = {http://arxiv.org/abs/2210.13438},
+	doi = {10.48550/arXiv.2210.13438},
+	abstract = {We introduce a state-of-the-art real-time, high-fidelity, audio codec leveraging neural networks. It consists in a streaming encoder-decoder architecture with quantized latent space trained in an end-to-end fashion. We simplify and speed-up the training by using a single multiscale spectrogram adversary that efficiently reduces artifacts and produce high-quality samples. We introduce a novel loss balancer mechanism to stabilize training: the weight of a loss now defines the fraction of the overall gradient it should represent, thus decoupling the choice of this hyper-parameter from the typical scale of the loss. Finally, we study how lightweight Transformer models can be used to further compress the obtained representation by up to 40\%, while staying faster than real time. We provide a detailed description of the key design choices of the proposed model including: training objective, architectural changes and a study of various perceptual loss functions. We present an extensive subjective evaluation ({MUSHRA} tests) together with an ablation study for a range of bandwidths and audio domains, including speech, noisy-reverberant speech, and music. Our approach is superior to the baselines methods across all evaluated settings, considering both 24 {kHz} monophonic and 48 {kHz} stereophonic audio. Code and models are available at github.com/facebookresearch/encodec.},
+	number = {{arXiv}:2210.13438},
+	publisher = {{arXiv}},
+	author = {Défossez, Alexandre and Copet, Jade and Synnaeve, Gabriel and Adi, Yossi},
+	urldate = {2023-10-09},
+	date = {2022-10-24},
+	eprinttype = {arxiv},
+	eprint = {2210.13438 [cs, eess, stat]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Sound, Electrical Engineering and Systems Science - Audio and Speech Processing, Statistics - Machine Learning},
+}
+
+@misc{huang_mulan_2022,
+	title = {{MuLan}: A Joint Embedding of Music Audio and Natural Language},
+	url = {http://arxiv.org/abs/2208.12415},
+	doi = {10.48550/arXiv.2208.12415},
+	shorttitle = {{MuLan}},
+	abstract = {Music tagging and content-based retrieval systems have traditionally been constructed using pre-defined ontologies covering a rigid set of music attributes or text queries. This paper presents {MuLan}: a first attempt at a new generation of acoustic models that link music audio directly to unconstrained natural language music descriptions. {MuLan} takes the form of a two-tower, joint audio-text embedding model trained using 44 million music recordings (370K hours) and weakly-associated, free-form text annotations. Through its compatibility with a wide range of music genres and text styles (including conventional music tags), the resulting audio-text representation subsumes existing ontologies while graduating to true zero-shot functionalities. We demonstrate the versatility of the {MuLan} embeddings with a range of experiments including transfer learning, zero-shot music tagging, language understanding in the music domain, and cross-modal retrieval applications.},
+	number = {{arXiv}:2208.12415},
+	publisher = {{arXiv}},
+	author = {Huang, Qingqing and Jansen, Aren and Lee, Joonseok and Ganti, Ravi and Li, Judith Yue and Ellis, Daniel P. W.},
+	urldate = {2023-10-09},
+	date = {2022-08-25},
+	eprinttype = {arxiv},
+	eprint = {2208.12415 [cs, eess, stat]},
+	keywords = {Computer Science - Computation and Language, Computer Science - Sound, Electrical Engineering and Systems Science - Audio and Speech Processing, Statistics - Machine Learning},
+}
+
+@misc{copet_simple_2023,
+	title = {Simple and Controllable Music Generation},
+	url = {http://arxiv.org/abs/2306.05284},
+	doi = {10.48550/arXiv.2306.05284},
+	abstract = {We tackle the task of conditional music generation. We introduce {MusicGen}, a single Language Model ({LM}) that operates over several streams of compressed discrete music representation, i.e., tokens. Unlike prior work, {MusicGen} is comprised of a single-stage transformer {LM} together with efficient token interleaving patterns, which eliminates the need for cascading several models, e.g., hierarchically or upsampling. Following this approach, we demonstrate how {MusicGen} can generate high-quality samples, while being conditioned on textual description or melodic features, allowing better controls over the generated output. We conduct extensive empirical evaluation, considering both automatic and human studies, showing the proposed approach is superior to the evaluated baselines on a standard text-to-music benchmark. Through ablation studies, we shed light over the importance of each of the components comprising {MusicGen}. Music samples, code, and models are available at https://github.com/facebookresearch/audiocraft.},
+	number = {{arXiv}:2306.05284},
+	publisher = {{arXiv}},
+	author = {Copet, Jade and Kreuk, Felix and Gat, Itai and Remez, Tal and Kant, David and Synnaeve, Gabriel and Adi, Yossi and Défossez, Alexandre},
+	urldate = {2023-10-08},
+	date = {2023-06-08},
+	eprinttype = {arxiv},
+	eprint = {2306.05284 [cs, eess]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Machine Learning, Computer Science - Sound, Electrical Engineering and Systems Science - Audio and Speech Processing},
+}
+
+@misc{agostinelli_musiclm_2023,
+	title = {{MusicLM}: Generating Music From Text},
+	url = {http://arxiv.org/abs/2301.11325},
+	doi = {10.48550/arXiv.2301.11325},
+	shorttitle = {{MusicLM}},
+	abstract = {We introduce {MusicLM}, a model generating high-fidelity music from text descriptions such as "a calming violin melody backed by a distorted guitar riff". {MusicLM} casts the process of conditional music generation as a hierarchical sequence-to-sequence modeling task, and it generates music at 24 {kHz} that remains consistent over several minutes. Our experiments show that {MusicLM} outperforms previous systems both in audio quality and adherence to the text description. Moreover, we demonstrate that {MusicLM} can be conditioned on both text and a melody in that it can transform whistled and hummed melodies according to the style described in a text caption. To support future research, we publicly release {MusicCaps}, a dataset composed of 5.5k music-text pairs, with rich text descriptions provided by human experts.},
+	number = {{arXiv}:2301.11325},
+	publisher = {{arXiv}},
+	author = {Agostinelli, Andrea and Denk, Timo I. and Borsos, Zalán and Engel, Jesse and Verzetti, Mauro and Caillon, Antoine and Huang, Qingqing and Jansen, Aren and Roberts, Adam and Tagliasacchi, Marco and Sharifi, Matt and Zeghidour, Neil and Frank, Christian},
+	urldate = {2023-10-08},
+	date = {2023-01-26},
+	eprinttype = {arxiv},
+	eprint = {2301.11325 [cs, eess]},
+	keywords = {Computer Science - Machine Learning, Computer Science - Sound, Electrical Engineering and Systems Science - Audio and Speech Processing},
+}
+
+@online{elizalde_clap_2022,
+	title = {{CLAP}: Learning Audio Concepts From Natural Language Supervision},
+	url = {https://arxiv.org/abs/2206.04769v1},
+	shorttitle = {{CLAP}},
+	abstract = {Mainstream Audio Analytics models are trained to learn under the paradigm of one class label to many recordings focusing on one task. Learning under such restricted supervision limits the flexibility of models because they require labeled audio for training and can only predict the predefined categories. Instead, we propose to learn audio concepts from natural language supervision. We call our approach Contrastive Language-Audio Pretraining ({CLAP}), which learns to connect language and audio by using two encoders and a contrastive learning to bring audio and text descriptions into a joint multimodal space. We trained {CLAP} with 128k audio and text pairs and evaluated it on 16 downstream tasks across 8 domains, such as Sound Event Classification, Music tasks, and Speech-related tasks. Although {CLAP} was trained with significantly less pairs than similar computer vision models, it establishes {SoTA} for Zero-Shot performance. Additionally, we evaluated {CLAP} in a supervised learning setup and achieve {SoTA} in 5 tasks. Hence, {CLAP}'s Zero-Shot capability removes the need of training with class labels, enables flexible class prediction at inference time, and generalizes to multiple downstream tasks.},
+	titleaddon = {{arXiv}.org},
+	author = {Elizalde, Benjamin and Deshmukh, Soham and Ismail, Mahmoud Al and Wang, Huaming},
+	urldate = {2023-10-08},
+	date = {2022-06-09},
+	langid = {english},
+}
+
+@article{koepke_audio_2023,
+	title = {Audio Retrieval with Natural Language Queries: A Benchmark Study},
+	volume = {25},
+	issn = {1520-9210, 1941-0077},
+	url = {http://arxiv.org/abs/2112.09418},
+	doi = {10.1109/TMM.2022.3149712},
+	shorttitle = {Audio Retrieval with Natural Language Queries},
+	abstract = {The objectives of this work are cross-modal text-audio and audio-text retrieval, in which the goal is to retrieve the audio content from a pool of candidates that best matches a given written description and vice versa. Text-audio retrieval enables users to search large databases through an intuitive interface: they simply issue free-form natural language descriptions of the sound they would like to hear. To study the tasks of text-audio and audio-text retrieval, which have received limited attention in the existing literature, we introduce three challenging new benchmarks. We first construct text-audio and audio-text retrieval benchmarks from the {AudioCaps} and Clotho audio captioning datasets. Additionally, we introduce the {SoundDescs} benchmark, which consists of paired audio and natural language descriptions for a diverse collection of sounds that are complementary to those found in {AudioCaps} and Clotho. We employ these three benchmarks to establish baselines for cross-modal text-audio and audio-text retrieval, where we demonstrate the benefits of pre-training on diverse audio tasks. We hope that our benchmarks will inspire further research into audio retrieval with free-form text queries. Code, audio features for all datasets used, and the {SoundDescs} dataset are publicly available at https://github.com/akoepke/audio-retrieval-benchmark.},
+	pages = {2675--2685},
+	journaltitle = {{IEEE} Transactions on Multimedia},
+	shortjournal = {{IEEE} Trans. Multimedia},
+	author = {Koepke, A. Sophia and Oncescu, Andreea-Maria and Henriques, João F. and Akata, Zeynep and Albanie, Samuel},
+	urldate = {2023-10-08},
+	date = {2023},
+	eprinttype = {arxiv},
+	eprint = {2112.09418 [cs, eess]},
+	keywords = {Computer Science - Information Retrieval, Computer Science - Sound, Electrical Engineering and Systems Science - Audio and Speech Processing},
+}
+
+@misc{deshmukh_audio_2022,
+	title = {Audio Retrieval with {WavText}5K and {CLAP} Training},
+	url = {http://arxiv.org/abs/2209.14275},
+	doi = {10.48550/arXiv.2209.14275},
+	abstract = {Audio-Text retrieval takes a natural language query to retrieve relevant audio files in a database. Conversely, Text-Audio retrieval takes an audio file as a query to retrieve relevant natural language descriptions. Most of the literature train retrieval systems with one audio captioning dataset, but evaluating the benefit of training with multiple datasets is underexplored. Moreover, retrieval systems have to learn the alignment between elaborated sentences describing audio content of variable length ranging from a few seconds to several minutes. In this work, we propose a new collection of web audio-text pairs and a new framework for retrieval. First, we provide a new collection of about five thousand web audio-text pairs that we refer to as {WavText}5K. When used to train our retrieval system, {WavText}5K improved performance more than other audio captioning datasets. Second, our framework learns to connect language and audio content by using a text encoder, two audio encoders, and a contrastive learning objective. Combining both audio encoders helps to process variable length audio. The two contributions beat state of the art performance for {AudioCaps} and Clotho on Text-Audio retrieval by a relative 2\% and 16\%, and Audio-Text retrieval by 6\% and 23\%.},
+	number = {{arXiv}:2209.14275},
+	publisher = {{arXiv}},
+	author = {Deshmukh, Soham and Elizalde, Benjamin and Wang, Huaming},
+	urldate = {2023-10-08},
+	date = {2022-09-28},
+	eprinttype = {arxiv},
+	eprint = {2209.14275 [cs, eess]},
+	keywords = {Computer Science - Artificial Intelligence, Electrical Engineering and Systems Science - Audio and Speech Processing},
+}
+
+@inproceedings{xu_crnn-gru_2020,
+	title = {A {CRNN}-{GRU} Based Reinforcement Learning Approach to Audio Captioning.},
+	url = {https://myw19.github.io/AboutPageAssets/papers/xnx98-xu-dcase2020.pdf},
+	pages = {225--229},
+	booktitle = {{DCASE}},
+	author = {Xu, Xuenan and Dinkel, Heinrich and Wu, Mengyue and Yu, Kai},
+	urldate = {2023-10-08},
+	date = {2020},
+}
+
+@misc{roberts_scaling_2022,
+	title = {Scaling Up Models and Data with \${\textbackslash}texttt\{t5x\}\$ and \${\textbackslash}texttt\{seqio\}\$},
+	url = {http://arxiv.org/abs/2203.17189},
+	abstract = {Recent neural network-based language models have benefited greatly from scaling up the size of training datasets and the number of parameters in the models themselves. Scaling can be complicated due to various factors including the need to distribute computation on supercomputer clusters (e.g., {TPUs}), prevent bottlenecks when infeeding data, and ensure reproducible results. In this work, we present two software libraries that ease these issues: \${\textbackslash}texttt\{t5x\}\$ simplifies the process of building and training large language models at scale while maintaining ease of use, and \${\textbackslash}texttt\{seqio\}\$ provides a task-based {API} for simple creation of fast and reproducible training data and evaluation pipelines. These open-source libraries have been used to train models with hundreds of billions of parameters on datasets with multiple terabytes of training data. Along with the libraries, we release configurations and instructions for T5-like encoder-decoder models as well as {GPT}-like decoder-only architectures. \${\textbackslash}texttt\{t5x\}\$ and \${\textbackslash}texttt\{seqio\}\$ are open source and available at https://github.com/google-research/t5x and https://github.com/google/seqio, respectively.},
+	number = {{arXiv}:2203.17189},
+	publisher = {{arXiv}},
+	author = {Roberts, Adam and Chung, Hyung Won and Levskaya, Anselm and Mishra, Gaurav and Bradbury, James and Andor, Daniel and Narang, Sharan and Lester, Brian and Gaffney, Colin and Mohiuddin, Afroz and Hawthorne, Curtis and Lewkowycz, Aitor and Salcianu, Alex and van Zee, Marc and Austin, Jacob and Goodman, Sebastian and Soares, Livio Baldini and Hu, Haitang and Tsvyashchenko, Sasha and Chowdhery, Aakanksha and Bastings, Jasmijn and Bulian, Jannis and Garcia, Xavier and Ni, Jianmo and Chen, Andrew and Kenealy, Kathleen and Clark, Jonathan H. and Lee, Stephan and Garrette, Dan and Lee-Thorp, James and Raffel, Colin and Shazeer, Noam and Ritter, Marvin and Bosma, Maarten and Passos, Alexandre and Maitin-Shepard, Jeremy and Fiedel, Noah and Omernick, Mark and Saeta, Brennan and Sepassi, Ryan and Spiridonov, Alexander and Newlan, Joshua and Gesmundo, Andrea},
+	urldate = {2023-10-07},
+	date = {2022-03-31},
+	eprinttype = {arxiv},
+	eprint = {2203.17189 [cs]},
+	keywords = {Computer Science - Computation and Language, Computer Science - Machine Learning},
+}
+
+@misc{chung_w2v-bert_2021,
+	title = {W2v-{BERT}: Combining Contrastive Learning and Masked Language Modeling for Self-Supervised Speech Pre-Training},
+	url = {http://arxiv.org/abs/2108.06209},
+	shorttitle = {W2v-{BERT}},
+	abstract = {Motivated by the success of masked language modeling{\textasciitilde}({MLM}) in pre-training natural language processing models, we propose w2v-{BERT} that explores {MLM} for self-supervised speech representation learning. w2v-{BERT} is a framework that combines contrastive learning and {MLM}, where the former trains the model to discretize input continuous speech signals into a finite set of discriminative speech tokens, and the latter trains the model to learn contextualized speech representations via solving a masked prediction task consuming the discretized tokens. In contrast to existing {MLM}-based speech pre-training frameworks such as {HuBERT}, which relies on an iterative re-clustering and re-training process, or vq-wav2vec, which concatenates two separately trained modules, w2v-{BERT} can be optimized in an end-to-end fashion by solving the two self-supervised tasks{\textasciitilde}(the contrastive task and {MLM}) simultaneously. Our experiments show that w2v-{BERT} achieves competitive results compared to current state-of-the-art pre-trained models on the {LibriSpeech} benchmarks when using the Libri-Light{\textasciitilde}60k corpus as the unsupervised data. In particular, when compared to published models such as conformer-based wav2vec{\textasciitilde}2.0 and {HuBERT}, our model shows{\textasciitilde}5{\textbackslash}\% to{\textasciitilde}10{\textbackslash}\% relative {WER} reduction on the test-clean and test-other subsets. When applied to the Google's Voice Search traffic dataset, w2v-{BERT} outperforms our internal conformer-based wav2vec{\textasciitilde}2.0 by more than{\textasciitilde}30{\textbackslash}\% relatively.},
+	number = {{arXiv}:2108.06209},
+	publisher = {{arXiv}},
+	author = {Chung, Yu-An and Zhang, Yu and Han, Wei and Chiu, Chung-Cheng and Qin, James and Pang, Ruoming and Wu, Yonghui},
+	urldate = {2023-10-07},
+	date = {2021-09-13},
+	eprinttype = {arxiv},
+	eprint = {2108.06209 [cs, eess]},
+	keywords = {Computer Science - Machine Learning, Computer Science - Sound, Electrical Engineering and Systems Science - Audio and Speech Processing},
+}
+
+@misc{girdhar_imagebind_2023,
+	title = {{ImageBind}: One Embedding Space To Bind Them All},
+	url = {http://arxiv.org/abs/2305.05665},
+	shorttitle = {{ImageBind}},
+	abstract = {We present {ImageBind}, an approach to learn a joint embedding across six different modalities - images, text, audio, depth, thermal, and {IMU} data. We show that all combinations of paired data are not necessary to train such a joint embedding, and only image-paired data is sufficient to bind the modalities together. {ImageBind} can leverage recent large scale vision-language models, and extends their zero-shot capabilities to new modalities just by using their natural pairing with images. It enables novel emergent applications 'out-of-the-box' including cross-modal retrieval, composing modalities with arithmetic, cross-modal detection and generation. The emergent capabilities improve with the strength of the image encoder and we set a new state-of-the-art on emergent zero-shot recognition tasks across modalities, outperforming specialist supervised models. Finally, we show strong few-shot recognition results outperforming prior work, and that {ImageBind} serves as a new way to evaluate vision models for visual and non-visual tasks.},
+	number = {{arXiv}:2305.05665},
+	publisher = {{arXiv}},
+	author = {Girdhar, Rohit and El-Nouby, Alaaeldin and Liu, Zhuang and Singh, Mannat and Alwala, Kalyan Vasudev and Joulin, Armand and Misra, Ishan},
+	urldate = {2023-10-06},
+	date = {2023-05-31},
+	eprinttype = {arxiv},
+	eprint = {2305.05665 [cs]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computer Vision and Pattern Recognition, Computer Science - Machine Learning, Computer Science - Multimedia},
+}
+
+@misc{chung_scaling_2022,
+	title = {Scaling Instruction-Finetuned Language Models},
+	url = {http://arxiv.org/abs/2210.11416},
+	abstract = {Finetuning language models on a collection of datasets phrased as instructions has been shown to improve model performance and generalization to unseen tasks. In this paper we explore instruction finetuning with a particular focus on (1) scaling the number of tasks, (2) scaling the model size, and (3) finetuning on chain-of-thought data. We find that instruction finetuning with the above aspects dramatically improves performance on a variety of model classes ({PaLM}, T5, U-{PaLM}), prompting setups (zero-shot, few-shot, {CoT}), and evaluation benchmarks ({MMLU}, {BBH}, {TyDiQA}, {MGSM}, open-ended generation). For instance, Flan-{PaLM} 540B instruction-finetuned on 1.8K tasks outperforms {PALM} 540B by a large margin (+9.4\% on average). Flan-{PaLM} 540B achieves state-of-the-art performance on several benchmarks, such as 75.2\% on five-shot {MMLU}. We also publicly release Flan-T5 checkpoints, which achieve strong few-shot performance even compared to much larger models, such as {PaLM} 62B. Overall, instruction finetuning is a general method for improving the performance and usability of pretrained language models.},
+	number = {{arXiv}:2210.11416},
+	publisher = {{arXiv}},
+	author = {Chung, Hyung Won and Hou, Le and Longpre, Shayne and Zoph, Barret and Tay, Yi and Fedus, William and Li, Yunxuan and Wang, Xuezhi and Dehghani, Mostafa and Brahma, Siddhartha and Webson, Albert and Gu, Shixiang Shane and Dai, Zhuyun and Suzgun, Mirac and Chen, Xinyun and Chowdhery, Aakanksha and Castro-Ros, Alex and Pellat, Marie and Robinson, Kevin and Valter, Dasha and Narang, Sharan and Mishra, Gaurav and Yu, Adams and Zhao, Vincent and Huang, Yanping and Dai, Andrew and Yu, Hongkun and Petrov, Slav and Chi, Ed H. and Dean, Jeff and Devlin, Jacob and Roberts, Adam and Zhou, Denny and Le, Quoc V. and Wei, Jason},
+	urldate = {2023-10-06},
+	date = {2022-12-06},
+	eprinttype = {arxiv},
+	eprint = {2210.11416 [cs]},
+	keywords = {Computer Science - Computation and Language, Computer Science - Machine Learning},
+}
+
+@article{masoudnia_mixture_2014,
+	title = {Mixture of experts: a literature survey},
+	volume = {42},
+	issn = {0269-2821, 1573-7462},
+	url = {http://link.springer.com/10.1007/s10462-012-9338-y},
+	doi = {10.1007/s10462-012-9338-y},
+	shorttitle = {Mixture of experts},
+	pages = {275--293},
+	number = {2},
+	journaltitle = {Artificial Intelligence Review},
+	shortjournal = {Artif Intell Rev},
+	author = {Masoudnia, Saeed and Ebrahimpour, Reza},
+	urldate = {2023-10-06},
+	date = {2014-08},
+	langid = {english},
+}
+
+@collection{kolen_field_2001,
+	location = {New York},
+	title = {A field guide to dynamical recurrent networks},
+	isbn = {978-0-7803-5369-5 978-0-7908-5369-7},
+	pagetotal = {421},
+	publisher = {{IEEE} Press},
+	editor = {Kolen, John F. and Kremer, Stefan C.},
+	date = {2001},
+	keywords = {Neural networks (Computer science)},
+}
+
+@inproceedings{alec_radford_jeff_wu_rewon_child_david_luan_dario_amodei_ilya_sutskever_language_2019,
+	title = {Language Models are Unsupervised Multitask Learners},
+	url = {https://api.semanticscholar.org/CorpusID:160025533},
+	abstract = {Natural language processing tasks, such as question answering, machine translation, reading comprehension, and summarization, are typically
+approached with supervised learning on taskspecific datasets. We demonstrate that language
+models begin to learn these tasks without any explicit supervision when trained on a new dataset
+of millions of webpages called {WebText}. When
+conditioned on a document plus questions, the answers generated by the language model reach 55
+F1 on the {CoQA} dataset - matching or exceeding
+the performance of 3 out of 4 baseline systems
+without using the 127,000+ training examples.
+The capacity of the language model is essential
+to the success of zero-shot task transfer and increasing it improves performance in a log-linear
+fashion across tasks. Our largest model, {GPT}-2,
+is a 1.5B parameter Transformer that achieves
+state of the art results on 7 out of 8 tested language modeling datasets in a zero-shot setting
+but still underfits {WebText}. Samples from the
+model reflect these improvements and contain coherent paragraphs of text. These findings suggest
+a promising path towards building language processing systems which learn to perform tasks from
+their naturally occurring demonstrations.},
+	author = {{Alec Radford, Jeff Wu, Rewon Child, David Luan, Dario Amodei, Ilya Sutskever}},
+	date = {2019},
+}
+
+@misc{liu_simple_2023,
+	title = {Simple Pooling Front-ends For Efficient Audio Classification},
+	url = {http://arxiv.org/abs/2210.00943},
+	abstract = {Recently, there has been increasing interest in building efficient audio neural networks for on-device scenarios. Most existing approaches are designed to reduce the size of audio neural networks using methods such as model pruning. In this work, we show that instead of reducing model size using complex methods, eliminating the temporal redundancy in the input audio features (e.g., mel-spectrogram) could be an effective approach for efficient audio classification. To do so, we proposed a family of simple pooling front-ends ({SimPFs}) which use simple non-parametric pooling operations to reduce the redundant information within the mel-spectrogram. We perform extensive experiments on four audio classification tasks to evaluate the performance of {SimPFs}. Experimental results show that {SimPFs} can achieve a reduction in more than half of the number of floating point operations ({FLOPs}) for off-the-shelf audio neural networks, with negligible degradation or even some improvements in audio classification performance.},
+	number = {{arXiv}:2210.00943},
+	publisher = {{arXiv}},
+	author = {Liu, Xubo and Liu, Haohe and Kong, Qiuqiang and Mei, Xinhao and Plumbley, Mark D. and Wang, Wenwu},
+	urldate = {2023-10-06},
+	date = {2023-05-06},
+	eprinttype = {arxiv},
+	eprint = {2210.00943 [cs, eess]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Sound, Electrical Engineering and Systems Science - Audio and Speech Processing, Electrical Engineering and Systems Science - Signal Processing},
+}
+
+@misc{huang_masked_2023,
+	title = {Masked Autoencoders that Listen},
+	url = {http://arxiv.org/abs/2207.06405},
+	abstract = {This paper studies a simple extension of image-based Masked Autoencoders ({MAE}) to self-supervised representation learning from audio spectrograms. Following the Transformer encoder-decoder design in {MAE}, our Audio-{MAE} first encodes audio spectrogram patches with a high masking ratio, feeding only the non-masked tokens through encoder layers. The decoder then re-orders and decodes the encoded context padded with mask tokens, in order to reconstruct the input spectrogram. We find it beneficial to incorporate local window attention in the decoder, as audio spectrograms are highly correlated in local time and frequency bands. We then fine-tune the encoder with a lower masking ratio on target datasets. Empirically, Audio-{MAE} sets new state-of-the-art performance on six audio and speech classification tasks, outperforming other recent models that use external supervised pre-training. The code and models will be at https://github.com/facebookresearch/{AudioMAE}.},
+	number = {{arXiv}:2207.06405},
+	publisher = {{arXiv}},
+	author = {Huang, Po-Yao and Xu, Hu and Li, Juncheng and Baevski, Alexei and Auli, Michael and Galuba, Wojciech and Metze, Florian and Feichtenhofer, Christoph},
+	urldate = {2023-10-05},
+	date = {2023-01-12},
+	eprinttype = {arxiv},
+	eprint = {2207.06405 [cs, eess]},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Machine Learning, Computer Science - Sound, Electrical Engineering and Systems Science - Audio and Speech Processing},
+}
+
 @online{noauthor_cvsspaudioldm2-music_nodate,
 	title = {cvssp/audioldm2-music},
 	url = {https://huggingface.co/cvssp/audioldm2-music},
@@ -289,21 +552,6 @@ University of California, Berkele},
 	keywords = {Computer Science - Machine Learning, Statistics - Machine Learning},
 }
 
-@online{noauthor_home_nodate,
-	title = {Home},
-	url = {https://juce.com/},
-	abstract = {{JUCE} is the most widely used framework for audio application and plug-in development on Windows, {macOS}, Linux, {iOS}, Android, {VST}, {VST}3, {AU}, {AUv}3, {AAX} and {LV}2 plug-ins.},
-	titleaddon = {{JUCE}},
-	urldate = {2023-08-19},
-	langid = {british},
-}
-
-@online{noauthor_juce_nodate,
-	title = {{JUCE}: sampler},
-	url = {https://docs.juce.com/master/group__juce__audio__formats-sampler.html},
-	urldate = {2023-08-19},
-}
-
 @misc{raffel_exploring_2020,
 	title = {Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer},
 	url = {http://arxiv.org/abs/1910.10683},
@@ -487,7 +735,7 @@ I judge a samplers filter based on how it sound on a synth string type of sound 
 	keywords = {Computer Science - Computation and Language},
 }
 
-@misc{chung_scaling_2022,
+@misc{chung_scaling_2022-1,
 	title = {Scaling Instruction-Finetuned Language Models},
 	url = {http://arxiv.org/abs/2210.11416},
 	abstract = {Finetuning language models on a collection of datasets phrased as instructions has been shown to improve model performance and generalization to unseen tasks. In this paper we explore instruction finetuning with a particular focus on (1) scaling the number of tasks, (2) scaling the model size, and (3) finetuning on chain-of-thought data. We find that instruction finetuning with the above aspects dramatically improves performance on a variety of model classes ({PaLM}, T5, U-{PaLM}), prompting setups (zero-shot, few-shot, {CoT}), and evaluation benchmarks ({MMLU}, {BBH}, {TyDiQA}, {MGSM}, open-ended generation). For instance, Flan-{PaLM} 540B instruction-finetuned on 1.8K tasks outperforms {PALM} 540B by a large margin (+9.4\% on average). Flan-{PaLM} 540B achieves state-of-the-art performance on several benchmarks, such as 75.2\% on five-shot {MMLU}. We also publicly release Flan-T5 checkpoints, which achieve strong few-shot performance even compared to much larger models, such as {PaLM} 62B. Overall, instruction finetuning is a general method for improving the performance and usability of pretrained language models.},
@@ -647,7 +895,7 @@ I judge a samplers filter based on how it sound on a synth string type of sound 
 	keywords = {Computer Science - Computation and Language},
 }
 
-@misc{chung_w2v-bert_2021,
+@misc{chung_w2v-bert_2021-1,
 	title = {W2v-{BERT}: Combining Contrastive Learning and Masked Language Modeling for Self-Supervised Speech Pre-Training},
 	url = {http://arxiv.org/abs/2108.06209},
 	shorttitle = {W2v-{BERT}},
@@ -1081,7 +1329,7 @@ https://www.gear4music.com/blog/what-...
 	langid = {american},
 }
 
-@online{noauthor_juce_nodate-1,
+@online{noauthor_juce_nodate,
 	title = {Juce},
 	url = {https://juce.com/},
 	abstract = {{JUCE} is the most widely used framework for audio application and plug-in development on Windows, {macOS}, Linux, {iOS}, Android, {VST}, {VST}3, {AU}, {AUv}3, {AAX} and {LV}2 plug-ins.},
@@ -1201,7 +1449,7 @@ https://www.gear4music.com/blog/what-...
 	note = {{OCLC}: 862386437},
 }
 
-@book{noauthor_notitle_nodate-1,
+@book{noauthor_notitle_nodate,
 }
 
 @misc{long_fully_2015,
