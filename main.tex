@@ -368,7 +368,7 @@ Das Modell \emph{MusicLM} basiert auf den Konzepten von \emph{AudioLM}. Es integ
 Im Gegensatz zu \emph{MusicLM} setzt \emph{MusicGen} nicht auf mehrere kaskadierende Modelle, sondern verwendet einen \emph{autoregressiven Transformer-basierten Decoder} \cite{vaswani_attention_2017}, der auf Text oder Melodien, wie beispielsweise Summen, konditioniert werden kann. Dieses Modell operiert auf einer komprimierten Darstellung von \emph{gesampelten} Audiosignalen, die durch \emph{EnCodec} \cite{defossez_high_2022} generiert wird. \emph{EnCodec} ist ein \emph{convolutional auto-encoder}, der einen \emph{Latentenraum} mithilfe von \emph{Residual Vector Quantization} \cite{zeghidour_soundstream_2021} erstellt. Abhängig von der Anzahl der in dem Quantifizierungsprozess verwendeten \emph{codebooks} werden entsprechend viele Tokens generiert, die speziell angeordnet und anschließend dem \emph{Decoder} von \emph{EnCodec} übergeben werden. Dieser kann unter der gegebenen Konditionierung eine Audiodatei erstellen. Für die Textkonditionierung wurden Modelle wie \emph{T5} \cite{raffel_exploring_2020}, \emph{FLAN-T5} \cite{roberts_scaling_2022} und \emph{CLAP} evaluiert, während für Melodien eine Konditionierung über ein \emph{Chromagramm} erfolgt.
 
 
-\chapter{Methoden}
+\chapter{Grundlagen}
 
 \section{Klangsynthese und Musikproduktion}
 
@@ -682,6 +682,7 @@ Zur Nutzung von Text als Kondition $C$ kamen sowohl \emph{CLAP}\cite{wu_large-sc
 
 Während des Finetunings entschied ein probabilistischer Mechanismus über das Konditionierungssignal. In $25\%$ der Fälle dienten die von \emph{AudioMAE} extrahierten Informationen als \emph{Ground Truth}. Demgegenüber wurden in den verbleibenden $75\%$ der Szenarien die von \emph{GPT} generierten Daten herangezogen. \cite{liu_audioldm2_2023}
 
+\chapter{Methoden}
 \section{Implementierung des Neuronalen Synthesizers}
 \subsection{Audioprogrammierung}
 Die Geschwindigkeit der Datenverarbeitung stellt ein maßgebliches Kriterium bei der Wahl der Programmiersprache für die Entwicklung und Implementierung von digitalen Audioprozessen dar. Für Echtzeitanwendungen gilt insbesondere, dass der Code so effizient wie möglich gestaltet sein sollte, um jegliche Latenz zu minimieren. Unter Berücksichtigung dieser Prämissen fällt die Wahl häufig auf eine Realisierung in \emph{C/C++}. \cite{doumler_c_2015, boulanger_audio_2011}
@@ -722,7 +723,9 @@ Für die Implementierung des Samplers wurde der von \emph{Juce} bereitgestellten
 \chapter{Ergebnisse}
 Die Integration der erörterten Komponenten und Elemente resultierte in einem digitalen Instrument mit den Namen \emph{WaveGenSynth}, das entweder als eigenständige Anwendung oder als Erweiterung in den Formaten VST3 oder AU innerhalb einer Digital Audio Workstation (DAW) wie \emph{Ableton} \cite{noauthor_ableton_nodate} oder \emph{Logic} \cite{noauthor_logic_nodate} verwendet werden kann. Das digitale Instrument ist unter \emph{Github} \cite{noauthor_github_nodate} veröffentlicht \footnote{\url{https://github.com/suckrowPierre/WaveGenSynth}} (siehe \ref{chap:git}). 
 
-Für \emph{macOS} konnten eine \emph{.app}-Applikationsdatei, eine \emph{VST3}- sowie eine \emph{AU}-Datei generiert werden. Um die Installation der Dateien für den Nutzer zu vereinfachen, wurden diese in eine \emph{pkg}-Installationsdatei gebündelt. Auf \emph{Windows} konnte das Instrument mittels \emph{CMake} kompiliert werden; jedoch war es anschließend nicht möglich, die \emph{.exe}-Datei außerhalb der Entwicklungsumgebung zu öffnen.
+Für \emph{macOS} konnten eine \emph{.app}-Applikationsdatei, eine \emph{VST3}- sowie eine \emph{AU}-Datei generiert werden. Um die Installation der Dateien für den Nutzer zu vereinfachen, wurden diese in eine \emph{pkg}-Installationsdatei gebündelt. 
+
+Auf \emph{Windows} konnte das Instrument mittels \emph{CMake} kompiliert werden; jedoch war es anschließend nicht möglich, die \emph{.exe}-Datei außerhalb der Entwicklungsumgebung zu öffnen.
 
 Der \emph{FastAPI}-Server wurde mittels \emph{pyinstaller} \cite{noauthor_pyinstaller_nodate} zu einer Applikation kompiliert, die der Nutzer unkompliziert öffnen kann. \emph{pyinstaller} integriert alle erforderlichen Abhängigkeiten in einem Paket, sodass der Benutzer die Applikation ausführen kann, ohne einen Python-Interpreter oder sonstige Module installieren zu müssen \cite{noauthor_pyinstaller_nodate}. Da jedoch alle benötigten Module inkludiert werden, resultiert aus einem ursprünglich $5$ KB großen Skript eine Dateigröße von $450$ MB. Die Vergrößerung des Speicheraufwandes ist somit erheblich, jedoch unabdingbar, um den Server und damit ein benutzbares Instrument zu verteilen und zu veröffentlichen. Falls die generierten Server-Applikationen, jedoch auf einem System instabile Performance oder Probleme aufweisen, lässt sich auch das Server-Skript in einer festgelegten \emph{Conda}-Umgebung ausführen. 
 
@@ -757,116 +760,48 @@ Um die Auswirkungen der gewünschten Audiosignallänge auf die Resultate zu unte
 
 Die Einwirkung verschiedener \emph{Negative-Prompts} (engl. \emph{negative prompt}) auf die Prompts (\glqq Soft flute note\grqq, \glqq Choir\grqq, \glqq A muted trumpet\grqq) wurde analysiert. Mittels der Modelle \emph{audioldm-m-full}\cite{noauthor_cvsspaudioldm-m-full_nodate} und \emph{audioldm2-music}\cite{noauthor_cvsspaudioldm2-music_nodate} wurden Signale unter Verwendung der \emph{Negativen Prompts} (\glqq low quality\grqq, \glqq average quality\grqq, \glqq harsh noise\grqq, \glqq dissonant chords\grqq, \glqq distorted sounds\grqq, \glqq clashing frequencies\grqq, \glqq feedback loop\grqq, \glqq clattering\grqq, \glqq inharmonious\grqq, \glqq noise\grqq, \glqq high pitch\grqq, \glqq artefacts\grqq) generiert. Die Beobachtungen zeigen, dass einige \emph{Negative-Prompts} das Ergebnis positiv beeinflussen, während andere das Signal mit zusätzlichem Rauschen beeinträchtigen. Insbesondere \glqq low quality\grqq, \glqq noise\grqq, \glqq harsh noise\grqq und \glqq average quality\grqq schienen das Resultat am meisten zu verbessern. Der \emph{Negative-Prompt} \glqq distorted sounds\grqq zeigte in einigen Fällen positive Effekte, bewirkte jedoch im Zusammenhang mit dem \emph{Prompt} \glqq Soft flute note\grqq und dem Modell \emph{audioldm-m-full} eine Verschlechterung. \glqq high pitch\grqq scheint hohe Obertöne zu unterdrücken und tiefere Töne bekommen mehr Präsenz, was eine bewusste Entscheidung seien sollte. Andere \emph{Negative-Prompts}, wie \glqq dissonant chords\grqq, \glqq distorted sounds\grqq, \glqq clashing frequencies\grqq, \glqq feedback loop\grqq, \glqq clattering\grqq, \glqq inharmonious\grqq und \glqq artefacts\grqq, scheinen das Resultat zu beeinträchtigen. Die anfängliche Annahme, dass \emph{AudioLDM2} aufgrund von \emph{LOLA} effizienter mit \emph{Negative-Prompts} interagieren könnte, wurde durch die ungünstigen Ergebnisse von \emph{audioldm2-music} in den gegebenen Tests nicht bestätigt.
 
-Prompts, die nur ein einzelnes kurzes nicht wiederholendes Audioereigniss umschreiben,wie \glqq A single kickdrum\grqq; 
-\glqq A kickdrum\grqq; \glqq A clap\grqq; \glqq A snare\grqq; etc.., erzeugen nicht das erwarte Ergebniss, sonder Signale, in denen Audioereignisse mehrfach vorkommen. Die Modelle versuchen nicht das gewünschte einzelne Ereigniss zu synthetisieren, sondern versuchen das gwünschte Ergebniss in einem musikalischen Rhytmus zu erzeugen 
+Erwartungen, dass \emph{Prompts} wie \glqq A kickdrum\grqq, \glqq A snare\grqq, \glqq Loud clap sound\grqq, \glqq A gong hit\grqq \, ein singuläres, nicht wiederholendes Audioereignis erzeugen, werden nicht erfüllt. In den meisten Fällen produzieren die Modelle Signale, in denen Audioereignisse mehrfach auftreten. Die Modelle scheinen nicht darauf ab zu zielen, das gewünschte einzelne Ereignis zu synthetisieren, sondern generieren das angestrebte Ergebnis in einem musikalischen Rhythmus. Eine präzise Formulierung, die ausschließlich ein einzelnes Audioereignis und einen Ton erwartet – ausgedrückt durch \glqq A single\grqq –, scheint bei \emph{audioldm2}\cite{noauthor_cvsspaudioldm2_nodate} effektiver zu sein. Im Gegensatz dazu zeigt \emph{audioldm2-music}\cite{noauthor_cvsspaudioldm2-music_nodate} auch mit dieser Formulierung keine verbesserten Ergebnisse. Es wird vermutet, dass \emph{audioldm2-music}\cite{noauthor_cvsspaudioldm2-music_nodate} dazu neigt, wiederholende Strukturen zu generieren, da sein Hauptziel die Generierung musikalischer Ergebnisse und nicht eines isolierten Klangs ist.
 
+Der Versuch, instrumententypische Klänge durch die \emph{Prompts} \glqq FM synthesis bells\grqq, \glqq mellotron chords\grqq, \glqq A bagpipe melody\grqq, \glqq A guitar string\grqq und \glqq A piano chord\grqq zu generieren, brachte nicht die gewünschten Ergebnisse. Die erzeugten Signale klingen abstrakt und stellen keine akkurate Audiorepräsentation der jeweiligen Eingabe dar. Zudem ist festzustellen, dass weniger zufriedenstellende Ergebnisse von \emph{AudioLDM2} eine Neigung haben, ähnliche zu klingen.
+
+Das Schmücken des \emph{Prompts} mit Emotionen und zusätzlichen Beschreibungen, wie beispielsweise \glqq Dark pad sound\grqq, \glqq An ethereal shimmering synth pad\grqq, \glqq An angelic choir\grqq, \glqq dreamy nostalgic strings\grqq und \glqq a sad violin solo\grqq, scheint die generierten Signale interessanter zu gestalten. Dies ermöglicht den Anwendern, den zu erzeugenden Klang stärker in eine bestimmte Richtung zu beeinflussen. Hierbei wurde wieder beobachtet, dass die Ergebnisse von \emph{AudioLDM2} trotz variierender Prompts eine Tendenz zu ähnlichen Klangstrukturen zeigen.
 
 Die Modelle scheinen auf bestimmte Beschreibungen musikalischer und akustischer Effekte adäquat reagieren zu können. Das langanhaltende Ausklingen eines Tones, umschrieben durch den Ausdruck \glqq long sustain\grqq, funktioniert offenbar zufriedenstellend. Ebenso scheint das Hinzufügen von Hall durch \glqq reverb\grqq, Verzerrung mittels \emph{distortion} und das Umkehren eines Tones durch \glqq reverse\grqq gut zu funktionieren. Komplexere Effekte wie Echo (\glqq echo\grqq), Verstimmung (\glqq detune\grqq) und Verzögerung (\glqq delay\grqq) können gelegentlich zu den gewünschten Ergebnissen führen. Interessanterweise scheinen die \emph{AudioLDM}-Modelle in diesem Aspekt besser abzuschneiden als die \emph{AudioLDM2}-Modelle, obwohl man aufgrund der \emph{LOA}-Repräsentation erwarten könnte, dass letztere bessere Ergebnisse erzielen könnten.
 
 Bei dem Versuch, \emph{Prompts} mit spezifischen, in der Musikproduktion oder der Pop-Kultur häufig verwendeten Klängen und Begriffen zu definieren, waren die Ergebnisse ernüchternd. Die Bemühungen, eine im Hip-Hop häufig verwendete \emph{808-Kickdrum} oder eine in der elektronischen Musik verwendete \emph{909-Kickdrum} zu erzeugen, lieferten Ergebnisse, deren Klangfarbe nicht den Vorgaben entsprach. Auch der Versuch, einen \emph{Amen-Break}, das wohl am meisten verwendete \emph{Sample} weltweit, zu erzeugen, brachte nicht das gewünschte Ergebnis. Eine Ähnlichkeit mit einer \emph{303 Baseline} konnte lediglich durch \emph{audioldm-m-full} erreicht werden, während die anderen Modelle scheiterten. Die Prompts \glqq A Juno-106 pad\grqq{} und \glqq Oberheimer OB-Xa string pads\grqq{} erzeugten verwendbare \emph{Pads}, also lange gehaltene Töne oder Akkorde. Es lässt sich jedoch streiten, ob sie die klanglichen Feinheiten dieser Instrumente besitzen. 
 
 \chapter{Diskussion}
+Das Aufzeigen, der Möglichkeit Instrumente basierend auf künstlicher Intelligenz zu entwickeln, stellt eine bedeutende Erweiterung in der musikalischen Klangerzeugung dar. Die Analyse des digitalen Instruments und die Bewertung der anwendbaren Modelle deuten darauf hin, dass die Generierung, Manipulation und Reproduktion von Klängen, die durch künstliche Intelligenz synthetisiert wurden, ein hohes kreatives Potential aufweisen. Es treten jedoch bestimmte Einschränkungen und Schwachstellen auf. Zu diesen zählen insbesondere die identifizierten Mängel, das gelegentlich unvorhersehbare Verhalten der Modelle sowie die begrenzte Implementierung des Samplers.
 
-Das Aufzeigen, der Möglichkeit Instrumente basierend auf künstlicher Intelligenz zu entwickeln stellt eine beachtliche Erweiterung der musikalischen Klangerzeugung dar. Die Untersuchung des digitalen Instruments und die Evaluation der anwendbaren Modelle legen nahe, dass die Generierung, Manipulation und Reproduktion von durch Künstliche Intelligenz synthetisierten Klängen ein erhebliches kreatives Potential besitzen. Dennoch zeigen sich bestimmte limitierende Schwachstellen. Insbesondere die identifizierten Mängel, das gelegentlich unvorhersehbare Verhalten der Modelle und die eingeschränkte Umsetzung des Samplers gehören dazu.
+Es zeigt sich, dass die analysierten Modelle bisher nicht angemessen auf Eingabeaufforderungen im Bereich der Musikproduktion reagieren. Die Unfähigkeit einiger Modelle, einzelne Klangereignisse zu generieren, das Fehlen der Modellierung erwarteter Klangmerkmale spezifischer Instrumente sowie das Auftreten verrauschter Ergebnisse weisen auf bestehende Defizite hin. Diese Mängel könnten durch das Training mit umfangreicheren Audiodaten, die in der Musikproduktion eingesetzt werden, adressiert werden. Potenzielle Quellen für solche Trainingsdaten sind Synthesizer- oder Samplermanufakturen, Audiobibliotheken wie \emph{Splice}\cite{noauthor_royalty-free_nodate}, Musikstudios oder auch Produzenten selbst. Privatpersonen, die sich mit Musikproduktion beschäftigen, verfügen häufig über eigene Klangbibliotheken, die in ihren Werken Anwendung finden. Auf Basis dieser Daten könnte ein Modell weiter verfeinert werden, um es individueller und persönlicher zu gestalten. Eine solche Personalisierung von \emph{AudioLDM} \cite{liu_audioldm_2023} wurde in \cite{plitsis_investigating_2023} untersucht und könnte in \emph{generative AI}-Werkzeuge für Musikproduzenten integriert werden. Eine weitere Überlegung wäre, die Klangbibliotheken verschiedener Privatpersonen zu einer umfangreichen Datenbasis zusammenzuführen, die anschließend für das Finetuning oder Training verwendet werden könnte. Ein solcher, von der Community getriebener Ansatz, könnte ein demokratisches Mittel darstellen, um den Mangel an Datensätzen in diesem Bereich zu beheben. 
 
-Es wird deutlich, dass die untersuchten Modelle bisher nicht adäquat auf Eingabeaufforderungen im Kontext der Musikproduktion reagieren. Die Unfähigkeit, einzelne Klangereignisse zu generieren, das Versäumnis, erwartete Klangmerkmale von spezifischen Instrumenten zu modellieren, sowie einige verrauschte Ergebnisse, deuten auf vorhandene Defizite hin. Diese könnten möglicherweise durch das Training mit mehr Audiodaten, die in der Musikproduktion verwendet werden, behoben werden. Trainingsdaten hierfür liegen bei Synthesizer- oder Samplermanufaktoren, Audiobibliothken wie Splice etc.., Musikstudios oder Produzenten selber. Privatpersonen, welche Musikproduktion betreiben besitzen meist selber eine Bibliothek an Klängen, welche Verwendung in deren Kreationen findet. Basierend auf diesen könnte ein gewünschtes Modell weiter gefinedtuned werden um dieses Individueller und persönlicher zu gestalten. Ein weiterer Idee, wäre diese verschiedenen Biblitoheken von verschiedenen Privat Personen zu einer großen nutzbaren Datenmenge zusammenzuführen, welche anschließend für Finetuning oder Training genutzt werden. Dieser Community-Driven Ansatz wäre ein demokratisierter Weg den Mangeln an Datensätze in diesem Bereich zu überwinden. 
+Benutzte Modelle sollten darauf abzielen, Ergebnisse mit der von der \emph{Audio Engineering Society} empfohlenen \emph{Sampling}-Rate von $48$kHz \cite{audio_engineering_society_inc_aes5-2018_2018} zu erzeugen. Die Modelle \emph{AudioLDM}\cite{liu_audioldm_2023} und \emph{AudioLDM2}\cite{liu_audioldm2_2023} produzieren Ergebnisse mit einer Rate von $16$kHz und sind daher nicht geeignet, um Klänge in \emph{High Fidelity} zu generieren. Eine kürzere \emph{Inferenzzeit} könnte die \emph{User-Experience} des Instruments positiv beeinflussen.
 
-Das Scheitern des Erstellen eines ONNX, bzw einer TorchScript Repräsentation des Modells um Inferenz in C++ zu betreiben, bringt die Schwierigkeit mit sich das Modell samt nötiger Verknüpfung mit der Python API zu bündeln und verteilen. Eine gesamte Implementation in einer Sprache wäre deutlich wünschenswerter und einfacherer. Ein Server und eine Api wären somit nicht mehr von Nöten und 
+Es ist wünschenswert, dass eingesetzte Modelle Ergebnisse mit der von der \emph{Audio Engineering Society} empfohlenen \emph{Sampling}-Rate von $48$kHz \cite{audio_engineering_society_inc_aes5-2018_2018} liefern. Die Modelle \emph{AudioLDM}\cite{liu_audioldm_2023} und \emph{AudioLDM2}\cite{liu_audioldm2_2023} generieren Ergebnisse mit einer Rate von $16$kHz und sind daher für die Generierung von Klängen in \emph{High Fidelity} nicht optimal. Eine verkürzte \emph{Inferenzzeit} könnte zudem die \emph{User-Experience} des Instruments verbessern.
 
-Die rudimentäre Implementierung des Samplers verhindert aktuell die Festlegung von Start- und Endpunkten für die Wiedergabe des generierten Signals. Solche Parameter könnten eine intuitive Methode darstellen, um aus mehreren oder wiederholten Klangereignissen das gewünschte auszuwählen. Auch fehlt die Option, bestimmte Klangbereiche zu loopen, um einen kontinuierlichen Klang zu erzeugen, ein Feature, das in industriell genutzten Samplern seit den 1990er Jahren Standard ist. In diesem Kontext erhebt sich die Frage, ob die Entwicklung eines eigenen Samplers tatsächlich erforderlich ist. Alternativ könnte eine Benutzeroberfläche ausreichen, die sich in bestehende Musikproduktionssoftware integrieren lässt, um Klänge zu generieren und mittels der Werkzeuge des jeweiligen Software-Ökosystems zu manipulieren. Ein solches Instrument könnte Anwendungen wie Splice potenziell obsolet machen, vorausgesetzt, das Modell ist ausreichend leistungsfähig. Die in AudioLDM vorgestellten Generierungsoptionen, wie Inpainting oder Style-Transfer, könnten in einem derartigen Tool integriert werden, sodass es beispielsweise einem Nutzer ermöglicht wird, bestimmte unerwünschte Abschnitte eines Spektrogramms zu entfernen oder Audiodateien zu importieren und mittels Eingabeaufforderungen zu modifizieren.
+Das Scheitern der Erstellung einer ONNX- bzw. TorchScript-Repräsentation des Modells für die Inferenz in C++ führt zu Komplikationen bei der Bündelung und Verteilung des Modells in Verbindung mit der Python API. Durch die Erstellung einer solchen \emph{binären} Datei für das verwendete Modell würde die Notwendigkeit eines Servers und einer API entfallen. Ebenso wäre der Einsatz mehrerer Programmiersprachen für eine Implementierung nicht länger erforderlich.
 
-Falls jedoch die Entwicklung eines eigens entwickelten Samplers weiterverfolgt wird könnten diesem auch Aspekte des maschinellen Lernens zugeführt werden. Wenn auf einem Klavier unterschiedliche Noten gespielt werden habe diese unterschiedliche Klangfarben und somit unterschiedlichen Spektren \cite{parker_good_2009}. Es reicht nicht aus den Klang in die gewünschte Frequenz zu bringen. Um ein realisitischeres Ergebniss zu erziehlen müssen die kleinen Unterschiede der Oberschwingungen für jede Tonhöhe modulliert werden. Genau dies könnte mit einem ML-Modell erlernt werden. Als Eingabe würde ein Audiosignal dienen, aus dem das Modell jeweils eine Signal für alle möglichen Tonhöhen erzeugt. Um dieses zu trainieren wäre eine große Datenmenge an Audiosignalen von nöten, die alle Tonhöhen von verschiedenen Instrumenten umfassen. 
+Die rudimentäre Implementierung des Samplers ermöglicht nicht die Definition von Start- und Endpunkten für die Wiedergabe des generierten Signals. Solche Parameter könnten eine intuitive Möglichkeit bieten, das gewünschte Klangereignis aus mehreren oder wiederholten Ereignissen auszuwählen. Zudem fehlt die Möglichkeit, spezifische Klangsegmente zu wiederholen, um einen durchgängigen Klang zu erzeugen – eine Funktion, die in industriellen Samplern seit den 1990er Jahren üblich ist. Vor diesem Hintergrund stellt sich die Frage nach der Notwendigkeit, einen eigenen Sampler zu entwickeln. Alternativ könnte eine Benutzeroberfläche ausreichen, die sich in bestehende Musikproduktionssoftware integrieren lässt, um Klänge zu generieren und mittels der Werkzeuge des jeweiligen Software-Ökosystems zu manipulieren. Eine solches Anwendung könnte, vorausgesetzt das Modell ist leistungsstark genug, Anwendungen wie \emph{Splice} \cite{noauthor_royalty-free_nodate} überflüssig machen. Die in \emph{AudioLDM} \cite{liu_audioldm_2023} präsentierten Generierungsfunktionen, wie Inpainting oder Style-Transfer, könnten in einem solchen Werkzeug integriert werden. Dies würde Nutzern beispielsweise erlauben, unerwünschte Abschnitte eines Spektrogramms zu eliminieren oder Audiodateien zu importieren und durch Eingabeaufforderungen zu verändern.
 
-Weitere Mängel des Instrumentes welche adressiert und verbessert werden könnten, wären zum Beispiel das manuelle Stimmen des Instruments, welches sich automatisierten ließ. Eine weitere große Schwäche, ist das bisher generierte Klänge und Einstellungen sich nicht wie üblich bei digitalen Instrumenten speichern und abrufen lassen. 
+Sollte die Entwicklung eines speziell angefertigten Samplers fortgesetzt werden, könnten diesem auch Elemente des maschinellen Lernens hinzugefügt werden. Beim Spielen unterschiedlicher Noten auf einem Klavier erzeugen diese verschiedene Klangfarben und folglich unterschiedliche Spektren \cite{parker_good_2009}. Es genügt nicht, den Klang lediglich auf die gewünschte Frequenz zu modulieren. Um ein realistischeres Ergebnis zu erzielen, müssen die feinen Unterschiede der Oberschwingungen für jede Tonhöhe angepasst werden. Ein solches Anpassungsverfahren könnte durch ein ML-Modell erlernt werden. Als Eingabe würde ein Audiosignal dienen, aus welchem das Modell Signale für alle möglichen Tonhöhen generiert. Für das Training eines solchen Modells wäre eine umfangreiche Sammlung von Audiosignalen erforderlich, die alle Tonhöhen verschiedener Instrumente abdecken.
 
-Dem Prinzip der Additivensynthese, folgend, könnten dem Instrument mehr als eine Soundquelle beigeführt werden, und diese mit Mixern und Filtern zusammen führen. 
+Einige Musiker bevorzugen es, sich von Computern zu distanzieren und spezialisierte Hardware zu nutzen, die ein haptischeres Feedback bietet. Die in dieser Arbeit präsentierte spielbare Klangsynthese könnte auf ein dediziertes Hardware-Gerät übertragen werden. Lösungen für Deep Learning auf Microcontrollern \cite{saha_machine_2022} können auf dedizierten Hardware-Plattformen, wie den \emph{Coral}-Geräten \cite{noauthor_coral_nodate} von Google oder den \emph{Jetson}-Geräten \cite{noauthor_jetson_nodate} von Nvidia, betrieben werden. Der Code für das Instrument müsste dann lediglich für eine bestimmte Hardware entwickelt und gewartet werden. Dies würde für Musiker, die keine Kenntnisse in \emph{Python} oder \emph{C++} besitzen, den Vorteil bieten, dass sie sich nicht mit der Installation und Betreiben der Software auseinandersetzen müssen. Einige Microcontroller-Lösungen, wie \emph{Coral}, erfordern jedoch, dass das verwendete Modell mit \emph{TensorFlow Lite} \cite{noauthor_tensorflow_nodate} kompatibel ist. Hierbei stellt sich wieder die Frage, ob umfangreiche und komplexe Modelle, wie \emph{AudioLDM} \cite{liu_audioldm_2023} und \emph{AudioLDM2} \cite{liu_audioldm2_2023}, in dieses Format konvertiert werden können.
 
+Weitere Mängel des Instruments, die adressiert und optimiert werden könnten, betreffen beispielsweise das manuelle Stimmen, welches sich automatisierten ließ. Ein weiteres Defizit besteht darin, dass die bisher generierten Klänge und Einstellungen sich nicht, wie bei vielen digitalen Instrumenten üblich, speichern und wieder abrufen lassen. Für die Erstellung dieses ersten Prototyps wurde auf die \emph{Spezifikation und Verifikation} des \emph{Quellcodes} verzichtet. Bei einer Weiterverfolgung der Implementierung sollte dieser Aspekt jedoch berücksichtigt werden, um potenzielle \emph{Bugs} und Fehler im Code zu minimieren.
 
-TODO Ref Roland sytnh with multiple sound sources  
-
-Schwächen:
-
-AudioLDM
-
-Zu wenig Training über Musikproduktions Keywords
-
-Nervige Obertöne
-
-Keine zuordnung zu Genres, Künstler, Epochen
-
-Keine Automatische Pitch Erkennung
-
-16.000 khz 
-
---------------
-
-Stärken:
-
-Neue Soundsynthese
-
-Ambiend Pads
-
-Sound Experimentierung
-
-Happy Little Accidents
-
-
---------------
-
-Verbesserung:
-
-Keine Tests geschrieben
-
-Automatische Pitch Zuordnung
-Filter einbauen
-
-Mehr Zuordnung zu Emotionen 
-
-AudioLDM 2
-
-Schneller Inferenz
-
-Spezielle Hardware 
-
-ML-Sampler
-
-Spektogramm Manipulation 
-
-Loop Points
-
-Modulare Aufbau 
-
-Finetuning auf mehr musikalischen Daten
-
-Indivduelles Finetuning 
-
-Eine Programmiersprache
-
-ONNX
-
-Binäredaten
-
-Envelope Visualiesieren
-
-Additive Synth
-
-Convelution Mixer
-
-Presets speichern 
-
-Schon Präsente Spuren Analysieren und Lücken finden 
-
-ML-Effekte
-
-Mehre Modell Auswahl 
-
-Modell zusammenbauen ? 
-
-
-
-
+Ungeachtet der genannten Defizite und Schwachstellen hat sich gezeigt, dass das digitale Instrument mithilfe der vorgestellten \emph{Diffusions}-Modelle in der Lage ist, spielbare und manipulierbare Klänge aus benutzerspezifischen Eingaben zu generieren. Weiterhin wurde bestätigt, dass das Instrument in moderne Musikproduktionsprozesse und die damit verbundenen Anwendungen integriert werden kann. Es erschließt eine neue Form der Soundsynthese durch künstliche Intelligenz und bietet somit innovative Möglichkeiten, Klanglandschaften zu gestalten. Ein wesentlicher Vorteil gegenüber der Generierung anderer Medien besteht darin, dass auch unerwartete oder minderwertige Ergebnisse weiterverwendet werden können, indem sie durch diverse Effekte und Prozesse umfassend bearbeitet und transformiert werden. Ein Beispiel hierfür liefert der Musiker \glqq Heinbach\grqq, der in \cite{hainbach_how_2021} erläutert, wie er den von \glqq Bob Ross\grqq geprägten Begriff \emph{Happy Little Accidents} in den Musikbereich überträgt und unerwartete Klänge musikalisch aufarbeitet, um neue Klangfarben und -landschaften zu schaffen. Zusammenfassend lässt sich feststellen, dass das entwickelte Instrument in seiner aktuellen Form mit den verfügbaren generativen Modellen weniger zur qualitativ hochwertigen Modellierung spezifischer Klänge geeignet ist, sondern vielmehr zum Experimentieren mit neuen, unerwarteten Klängen verlockt.
 
 \chapter{Schlussfolgerung}
+
+Das in dieser Arbeit erforschte Zusammenbringen musikalischer Konzepte, elektronsicher Klangerzeugung, digitaler Audiorepräsentation sowie Verarbeitung, \emph{generative AI} mittels Latenter Diffusion und Softwareframeworks resultiert in einem digitalen Instrument, mit dem neuartige spielbare und manipulierbare Ergebnisse neuartiger Klang Synthese erzeugt werden können. Sie beweist die Möglichkeit, des Konzepieres und Implementieres eines solchen Instrumentes, jedoch unter gewissen Beinträchtigungen und derzeitigen Deffizieten,  
+
+Das durch die Komplexität der benutzten Modelle \emph{AudioLDM} \cite{liu_audioldm_2023} und \emph{AudioLDM2} \cite{liu_audioldm2_2023} Scheitern einer Konvertierung in eine binäre Repräsentation, limitierte mögliche Implemntierungsverfahren. Eine Lösungsansatz über eine local gehostete \emph{API} wurde verfolgt, welche die vortrainierten Modelle initieren und mit diesen Inferenz betreiben kann. Dieser Ansatz hatte, jedoch zur Folge, dass die Bündelung und Verteilung des Instrumentes verkompliziert wurde. Es entstanden zwei sperate ausführbare Applikationen. 
+
+Die Auswertung der Qualität der Ergebnisse \emph{AudioLDM} \cite{liu_audioldm_2023} und \emph{AudioLDM2} \cite{liu_audioldm2_2023} für \emph{Prompts}, welche im Kontext der Benutzung des digitalen Instrumentes zu erwarten wäre, zeigte Schwächen auf, die die Nutzbarkeit des Instrumentes auf Exploration neuer teils unerwarterer Klänge beschränkt. Hier jedoch liegt auch das Potential diese unerwartenen und möglicherweise befremdende Klänge als Ausgangspunkt für weiter Manipulation und Umformung zu nutzen. Verbesserte und ausgereiftere Modelle wäre zukunftig wahrscheinlich mehr in der Lage bei besserer Soundqualität und Verminderter Artefakte herkömlichen Instrumenten gleich zu kommen.
+
+Fehlende Möglichkeiten Start bzw. Endpunkte von den abgespielten Tönen zu verändern und Loop-Points zu setzen für ein unbeschränkte Anhalten eines Klanges schränkt die Aufarbeitung des erzeugten Klanges ein. Das Instruemnt würde ebenso von weiteren Verbesserungsvorschlägen wie automatisches Stimmen und das Speichern und Abrufen von Klängen profitieren. 
+
+Ausblicke auf mögliche ähnliche Integration generativer Künstlicher Intelligenz in den musikproduktions Ablauf wurden gegeben.
 \label{sec:conclusion}
 
 
@@ -885,7 +820,7 @@ Die README-Datei bietet Anleitungen zur Installation und Ausführung des Codes.
 \includepdf[pages=-]{code/README.pdf}
 
 
-\chapter{Prompts}
+\chapter{Erzeugung der Ergebnisse}
 \label{chap:prompts}
 
 Die in \url{https://suckrowpierre.github.io/TtPS.github.io/}\cite{pierre-louis_suckrow_text-zu-spielbarem-klang_nodate} dargestellten Ergebnisse wurden mittels des auf \url{https://github.com/suckrowPierre/ThesisModelsResultsGenerator/} veröffentlichten Codes generiert.
