@@ -104,7 +104,7 @@ In dieser Arbeit wurde die Integration und Anwendbarkeit generativer künstliche
 
 \section*{Abstract}
 
-In this study, the integration and applicability of generative artificial intelligence in the field of music production was analyzed through the introduction of a digital instrument. Using selected diffusion models, users can define sounds through textual descriptions and play and manipulate them with standardized music production tools. The diffusion models used were evaluated for their suitability in the given context and modified for integration into a digital instrument. Using certain frameworks, the digital instrument was created, resulting in a user interface. This allows users to edit model and instrument-specific parameters. The analysis showed that the models used do not always adequately respond to the context of music production, resulting in unexpected sound patterns or abstract artifacts. Currently, available text-to-audio models do not provide high-quality reproduction of familiar sounds but offer opportunities for experimental applications. The implementation of a prototype of the digital instrument allows for such experiments and the exploration of innovative sound synthesis methods. However, functions are currently missing to reproduce selected areas of the generated sounds or to play them indefinitely. Nevertheless, fascinating and unusual soundscapes can already be produced, which could potentially find application in musical compositions.
+In this work, the integration and applicability of generative artificial intelligence in the field of music production was analyzed through the introduction of a digital instrument. Using selected diffusion models, users can define sounds through textual descriptions and play and manipulate them with standardized music production tools. The diffusion models used were evaluated for their suitability in the given context and modified for integration into a digital instrument. Using certain frameworks, the digital instrument was created, resulting in a user interface. This allows users to edit model and instrument-specific parameters. The analysis showed that the models used do not always adequately respond to the context of music production, resulting in unexpected sound patterns or abstract artifacts. Currently, available text-to-audio models do not provide high-quality reproduction of familiar sounds but offer opportunities for experimental applications. The implementation of a prototype of the digital instrument allows for such experiments and the exploration of innovative sound synthesis methods. However, functions are currently missing to reproduce selected areas of the generated sounds or to play them indefinitely. Nevertheless, fascinating and unusual soundscapes can already be produced, which could potentially find application in musical compositions.
 
 \cleardoublepage
 
@@ -246,11 +246,6 @@ Vereinzelte Projekte, darunter der von Google im Jahr 2017 entwickelte \emph{NSy
 
 In der vorliegenden Arbeit werden die Text-zu-Audio-\emph{Diffusions}-modelle \emph{Audio Latent Diffusion Model} \emph{AudioLDM} \cite{liu_audioldm_2023} und  \emph{Audio Latent Diffusion Model 2} \emph{AudioLDM2} \cite{liu_audioldm2_2023} verwendet, um das Potenzial von künstlicher Intelligenz im Bereich der Audiosynthese in einem musikalischen Kontext aufzuzeigen. Der Fokus liegt dabei auf der Untersuchung dieser neuen Methode zur Klangerzeugung und der Bewertung ihres performativen Potenzials. Insbesondere die Möglichkeit einer interaktiven Bereitstellung von Einstellungsmöglichkeiten für Parameter des jeweiligen Modells und die Klangwiedergabe, welche in vergleichbaren Projekten bisher fehlte, soll dem Instrumentalist zusätzliche Kontrolle über die gewünschten Eigenschaften verleihen.
 
-% Fourth paragraph
-% CORE MESSAGE OF THIS PARAGRAPH:
-\todo{P4.1. What did you find out? What are the concrete results?}
-\todo{P4.2. What are the implications? What does this mean for the bigger picture?}
-
 \chapter{Related Work}
 
 
@@ -262,14 +257,15 @@ Das lokale Ausführen des Modells weist bestimmte Schwachstellen auf (siehe Kapi
 
 Neben \emph{AudioLDM} \cite{liu_audioldm_2023} bieten sich folgende \emph{Machine-Learning} Modelle an, um Klangerzeugung zu betreiben.
 
-\emph{AudioLM} \cite{borsos_audiolm_2022} ermöglicht Audio-Synthese durch eine Kombination von \emph{adversarial neural networks} \cite{goodfellow_generative_2014}, \emph{self-supervised representation learning} \cite{chung_w2v-bert_2021} und \emph{language modeling} \cite{roberts_scaling_2022} besteht. Es wurde auf der tokenisierten Darstellung von Wellenformen trainiert. Obwohl die Hauptfunktion von \emph{AudioLM} in der Stimmgenerierung liegt, zeigte es, durch Training auf Klavieraufnahmen, ebenfalls Potenzial in der musikalischen Synthese.  Das Modell besteht aus drei Kernelementen: einem \emph{Tokenizer-Modell}, dem Decoder eines \emph{Transformers-Sprachmodells} und einem \emph{Detokenizer-Modell}. Der Tokenizer wandelt kontinuierliche Audiowellenformen in eine diskrete Repräsentation um. Dabei verwendet es ein hybrides Tokenisierungsverfahren (siehe Abbildung \ref{fig:tokenizerAudioLM}), das sowohl akustische als auch semantische Charakteristika (wie Sprachinhalte für Sprache oder Melodie und Rhythmus für Musik) der Wellenform erfasst. Während \emph{SoundStream} \cite{zeghidour_soundstream_2021} die akustischen Token generiert, stammen die semantischen Token von den Repräsentationen einer Zwischenschicht des \emph{w2v-BERT} \cite{chung_w2v-bert_2021}. Der Decoder eines \emph{Transformers-Sprachmodells} \cite{vaswani_attention_2017} lernt, Tokens basierend auf ihrem vorherigen Kontext zu antizipieren, indem die Abhängigkeiten und Struktur innerhalb der benutzen Sprache erfasst werden. Während der Inferenz prognostiziert das Modell aus einem gegebenen \emph{Prompt} autoregressiv die Token-Sequenz. Dies impliziert, dass Tokens nacheinander generiert werden, wobei jeweils die zuvor erzeugten Tokens als Kontext dienen. Ein hierarchisches Vorgehen wird dabei angewendet (siehe Abbildung \ref{fig:hierarAudioLM}): Zuerst werden semantische Token für die komplette Sequenz modelliert, welche dann als Konditionen zur Vorhersage der akustischen Token dienen. Abschließend konvertiert das Detokenizer-Modell die Token-Sequenz zurück in ein Audiosignal. \cite{borsos_audiolm_2022}
+\emph{AudioLM} \cite{borsos_audiolm_2022} ermöglicht Audio-Synthese durch eine Kombination von \emph{adversarial neural networks} \cite{goodfellow_generative_2014}, \emph{self-supervised representation learning} \cite{chung_w2v-bert_2021} und \emph{language modeling} \cite{roberts_scaling_2022} besteht. Es wurde auf der tokenisierten Darstellung von Wellenformen trainiert. Obwohl die Hauptfunktion von \emph{AudioLM} in der Stimmgenerierung liegt, zeigte es, durch Training auf Klavieraufnahmen, ebenfalls Potenzial in der musikalischen Synthese.  Das Modell besteht aus drei Kernelementen: einem \emph{Tokenizer-Modell}, dem Decoder eines \emph{Transformers-Sprachmodells} und einem \emph{Detokenizer-Modell}. Der Tokenizer wandelt kontinuierliche Audiowellenformen in eine diskrete Repräsentation um. Dabei verwendet es ein hybrides Tokenisierungsverfahren (siehe Abbildung \ref{fig:tokenizerAudioLM}), das sowohl akustische als auch semantische Charakteristika (wie Sprachinhalte für Sprache oder Melodie und Rhythmus für Musik) der Wellenform erfasst. Während \emph{SoundStream} \cite{zeghidour_soundstream_2021} die akustischen Token generiert, stammen die semantischen Token von den Repräsentationen einer Zwischenschicht des \emph{w2v-BERT} \cite{chung_w2v-bert_2021}. Der Decoder eines \emph{Transformers-Sprachmodells} \cite{vaswani_attention_2017} lernt, Tokens basierend auf ihrem vorherigen Kontext zu antizipieren, indem die Abhängigkeiten und Struktur innerhalb der benutzen Sprache erfasst werden. Während der Inferenz prognostiziert das Modell aus einem gegebenen \emph{Prompt} \emph{autoregressiv} die Token-Sequenz. Dies impliziert, dass Tokens nacheinander generiert werden, wobei jeweils die zuvor erzeugten Tokens als Kontext dienen. Ein hierarchisches Vorgehen wird dabei angewendet (siehe Abbildung \ref{fig:hierarAudioLM}): Zuerst werden semantische Token für die komplette Sequenz modelliert, welche dann als Konditionen zur Vorhersage der akustischen Token dienen. Abschließend konvertiert das Detokenizer-Modell die Token-Sequenz zurück in ein Audiosignal. \cite{borsos_audiolm_2022}
 
 \begin{figure}[h]
 \centering
 \begin{subfigure}{1.0\textwidth}
   \centering
   \includegraphics[width=0.5\textwidth]{tokenizerAudioLM.png}
-  \caption[AudioLM Tokenisierungsverfahren]{Hybrides Tokenisierungsverfahren, in dem semantische Tokens mittels \emph{w2v-BERT} \cite{chung_w2v-bert_2021} und die akustischen mittels \emph{SoundStream} \cite{zeghidour_soundstream_2021} erzeugt werden \cite{borsos_audiolm_2022}}
+  \caption[AudioLM Tokenisierungsverfahren]{Das hybrides Tokenisierungsverfahren zur Generierung semantischer Tokens mittels \emph{w2v-BERT} \cite{chung_w2v-bert_2021} und akustischer Tokens über \emph{SoundStream} \cite{zeghidour_soundstream_2021} \cite{borsos_audiolm_2022}
+}
   \label{fig:tokenizerAudioLM}
 \end{subfigure}
 
@@ -278,10 +274,10 @@ Neben \emph{AudioLDM} \cite{liu_audioldm_2023} bieten sich folgende \emph{Machin
 \begin{subfigure}{1.0\textwidth}
   \centering
   \includegraphics[width=0.7\textwidth]{hierarAudioLM.png}
-  \caption[AudioLM Hierarchische Modellierung der Tokens]{Hierarchische Modellierung der Tokens in drei Stufen: Als erstes werden semantische Token für eine koharänte Struktur modelliert, welche anschließend mit grobe akustischen Tokens erweitert werden. Als letztes werden feine Akustische Details in Tokens modelliert. Die resultierende Tokensequenz wird durch den \emph{Decoder} in ein Audiosignal konvertiert. \cite{borsos_audiolm_2022}}
+  \caption[AudioLM Hierarchische Modellierung der Tokens]{Hierarchische Drei-Stufen-Modellierung von Tokens: Zunächst werden semantische Tokens für eine kohärente Struktur generiert. Diese werden anschließend durch grobe akustische Tokens ergänzt. Schließlich werden feine akustische Details in Tokens umgewandelt. Die abschließende Tokensequenz wird mittels \emph{Decoder} in ein Audiosignal transformiert. \cite{borsos_audiolm_2022}}
   \label{fig:hierarAudioLM}
 \end{subfigure}
-\caption[AudioLM Architektur]{AudioLM Architektur \cite{borsos_audiolm_2022}}
+\caption[AudioLM Architektur]{AudioLM Module zur Extraktion von Tokens und Konstruktion eines Klanges aus diesen. \cite{borsos_audiolm_2022}}
 \label{fig:test}
 \end{figure}
 
@@ -292,7 +288,8 @@ Das Modell \emph{Diffsound} \cite{yang_diffsound_2023} wurde mit der Absicht ent
 \begin{subfigure}{1.0\textwidth}
   \centering
   \includegraphics[width=1\textwidth]{Diffsound1.png}
-  \caption[Diffsound Architektur]{Verarbeitung einer Texteingabe zu einem Audiosignal. Über den \emph{Text Encoder} und den \emph{Token-Decoder} werden aus der Umschreibung Tokens für eine Spektogramm erzeugt, welches anschließend über einen \emph{Vocoder} in ein Audiosignal übertragen werden kann.}
+  \caption[Diffsound Architektur]{Umwandlung einer Texteingabe in ein Audiosignal: Mithilfe des \emph{Text Encoder} und des \emph{Token-Decoder} werden Tokens für ein Spektrogramm generiert. Dieses kann anschließend durch einen \emph{Vocoder} in ein Audiosignal transformiert werden. \cite{yang_diffsound_2023}
+}
   \label{fig:DiffsoundArchitecture}
 \end{subfigure}
 
@@ -301,19 +298,19 @@ Das Modell \emph{Diffsound} \cite{yang_diffsound_2023} wurde mit der Absicht ent
 \begin{subfigure}{1.0\textwidth}
   \centering
   \includegraphics[width=0.7\textwidth]{Diffsound2.png}
-  \caption[Diffsound VQ-VAE]{Diffsound Vector Quantized Variational Autoencoder zum Erlenen einer Latenten Repräsentation von Spektogrammen. Spektogramme werden enkodiert und versucht wieder herzustellen. Der Prozess wird über einen \emph{Discriminator} optimisiert}
+  \caption[Diffsound VQ-VAE]{\emph{Diffsound Vector Quantized Variational Autoencoder} zum Erlenen einer Latenten Repräsentation von Spektogrammen. Spektogramme werden enkodiert und versucht wieder herzustellen. Der Prozess wird über einen \emph{Discriminator} optimisiert. \cite{yang_diffsound_2023}}
   \label{fig:VQVAE}
 \end{subfigure}
-\caption[Diffsound Architektur]{Diffsound Architektur \cite{yang_diffsound_2023}}
+\caption[Diffsound Architektur]{Diffsound Architektur des Netzes und des \emph{Vector Quantized Variational Autoencoders} \cite{yang_diffsound_2023}}
 \label{fig:test}
 \end{figure}
 
-Ebenfalls einen \emph{autoregressiven} Ansatz verfolgend, verspricht \emph{AUDIOGEN} \cite{kreuk_audiogen_2023} eine verbesserte Audiogenerierung auf der Grundlage textueller Eingaben im Vergleich zu \emph{Diffsound}. \emph{AUDIOGEN} operiert auf einer gelernten diskreten Audio-Repräsentation und ist in der Lage daraus Audiosignale zu generieren. Die Architektur dieses Modells besteht aus zwei Hauptkomponenten (siehe Abbildung \ref{fig:audiogen}). Die erste Komponente kodiert Audio mittels \emph{neural audio compression} \cite{zeghidour_soundstream_2021} in eine diskrete Tokensequenz. Das hierfür verwendete Modell wurde darauf trainiert, komprimierte Audiosignale zu rekonstruieren. Auf die durch diese erste Komponente erzeugten Audio-Tokens versucht ein \emph{autoregressiven} \emph{Transformer-decoder} \emph{Sprachmodell}, das dem \emph{GPT2} \cite{alec_radford_jeff_wu_rewon_child_david_luan_dario_amodei_ilya_sutskever_language_2019} ähnelt, unter Berücksichtigung von Textinformationen abzubilden. Während der Inferenz extrahiert das \emph{Transformer}-Modell die zur Eingabe passenden Tokens, die anschließend durch den Decoder der ersten Komponente in Audio umgewandelt werden können. Das entwickelte Modell zeigt jedoch Schwierigkeiten, temporale Umformulierungen korrekt zu verarbeiten. \cite{kreuk_audiogen_2023}
+Einen \emph{autoregressiven} Ansatz verfolgend, verspricht \emph{AudioGen} \cite{kreuk_audiogen_2023} eine verbesserte Audiogenerierung auf der Grundlage textueller Eingaben im Vergleich zu \emph{Diffsound}. \emph{AudioGen} operiert auf einer gelernten diskreten Audio-Repräsentation und ist in der Lage daraus Audiosignale zu generieren. Die Architektur dieses Modells besteht aus zwei Hauptkomponenten (siehe Abbildung \ref{fig:audiogen}). Die erste Komponente kodiert Audio mittels \emph{neural audio compression} \cite{zeghidour_soundstream_2021} in eine diskrete Tokensequenz. Das hierfür verwendete Modell wurde darauf trainiert, komprimierte Audiosignale zu rekonstruieren. Auf die durch diese erste Komponente erzeugten Audio-Tokens versucht ein \emph{autoregressiven} \emph{Transformer-decoder} \emph{Sprachmodell}, das dem \emph{GPT2} \cite{alec_radford_jeff_wu_rewon_child_david_luan_dario_amodei_ilya_sutskever_language_2019} ähnelt, unter Berücksichtigung von Textinformationen abzubilden. Während der Inferenz extrahiert das \emph{Transformer}-Modell die zur Eingabe passenden Tokens, die anschließend durch den Decoder der ersten Komponente in Audio umgewandelt werden können. Das entwickelte Modell zeigt jedoch Schwierigkeiten, temporale Umformulierungen korrekt zu verarbeiten. \cite{kreuk_audiogen_2023}
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=.5\textwidth]{graphics/Audiogen.png}
-  \caption[AUDIOGEN Architektur]{AUDIOGEN Architektur \cite{kreuk_audiogen_2023}}
+  \caption[AudioGen Architektur]{\emph{AudioGen} Architektur zusammengesetzt aus \emph{Encoder} und \emph{Decoder} zur Erlernung des latenten Raum und dem \emph{Transformer}-Modell welches auf diesem agiert. \cite{kreuk_audiogen_2023}}
   \label{fig:audiogen}
 \end{figure}
 
@@ -322,7 +319,7 @@ Das Modell \emph{Tango} \cite{ghosal_text--audio_2023} zieht Inspiration aus \em
 \begin{figure}[h]
   \centering
   \includegraphics[width=.7\textwidth]{graphics/Tango.png}
-  \caption[Tango Architektur]{Tangos Architektur \cite{liu_roberta_2019}}
+  \caption[Tango Architektur]{Tangos Architektur bestehend aus einem Spektogramm-\emph{Encoder} und \emph{Decoder} um eine latente Repräsentation zu schaffen, sowie dem \emph{Diffusions}-Prozess und dem Text-\emph{Encoder} \cite{liu_roberta_2019}}
   \label{fig:tango}
 \end{figure}
 
@@ -334,7 +331,7 @@ Ein zusätzliches Modell, das sich der Methode der \emph{Latenten Diffusion} \ci
 \begin{subfigure}{1.0\textwidth}
   \centering
   \includegraphics[width=1\textwidth]{graphics/Make-An_Audio.png}
-  \caption[Make-An-Audio Architektur]{Make-An-Audio Architektur \cite{huang_make--audio_2023}. Die Parameter der mit einem Schloss gekennzeichnete Module bleiben während Trainings konstant}
+  \caption[Make-An-Audio Architektur]{Make-An-Audio Architektur. Die Parameter der mit einem Schloss gekennzeichnete Module, wie dem Text-\emph{Encoder}, Audio-\emph{Encoder} und \emph{Decoder},\emph{Vocoder} bleiben während Trainings konstant. \emph{U-Net} und \emph{Diffusions}-prozess werden erlernt. \cite{huang_make--audio_2023}\cite{huang_make--audio_2023}}
   \label{fig:Make-An-Audio_Architecture}
 \end{subfigure}
 
@@ -343,20 +340,46 @@ Ein zusätzliches Modell, das sich der Methode der \emph{Latenten Diffusion} \ci
 \begin{subfigure}{1.0\textwidth}
   \centering
   \includegraphics[width=0.7\textwidth]{graphics/Make-An-Audio-Destillation.png}
-  \caption[Make-An-Audio Destillation]{ake-An-Audio Destillation \cite{huang_make--audio_2023}}
+  \caption[Make-An-Audio Destillation]{Make-An-Audio Destillation zur Erweiterung der verfügbaren Trainigsdaten \cite{huang_make--audio_2023}}
   \label{fig:Make-An-Audio_DestillATIon}
 \end{subfigure}
-\caption[Make-An-Audio Module]{Make-An-Audio Module}
+\caption[Make-An-Audio Module]{Make-An-Audio Module für die Audio-Synthisierung und Erweiterung des Datensatzes an Umschriebenen Audioereignissen. \cite{huang_make--audio_2023}}
 \label{fig:test}
 \end{figure}
 
 Die musikalische Anwendung neuronaler Netze beschränkt sich nicht ausschließlich auf die konditionierte Synthese von Klängen. Vielmehr ermöglichen solche Netzwerke auch eine zielgerichtete musikalische Generierung. Modelle wie \emph{MusicLM} \cite{agostinelli_musiclm_2023} und \emph{MusicGen} \cite{copet_simple_2023} stützen sich auf bewährte Modelle und Ansätze der akustischen Klangsynthese. Sie erweitern diese jedoch durch die Fähigkeit, vollständige musikalische Audiosignale zu generieren, die kohärente Strukturen über längere Zeiträume beibehalten. 
 
-Das Modell \emph{MusicLM} basiert auf den Konzepten von \emph{AudioLM}. Es integriert akustische Informationen über \emph{Soundstream} \cite{zeghidour_soundstream_2021}, semantische Informationen mittels \emph{w2v-Bert} \cite{chung_w2v-bert_2021-1} und Audio-Informationen mithilfe von \emph{Mulan} \cite{huang_mulan_2022}. Im Training dieses Modells erfolgte eine Abbildung des latenten Raums von \emph{MuLan} zum latenten Raum von \emph{w2v-Bert} und ebenso eine Abbildung von \emph{w2v-Bert} zu \emph{Soundstream} unter Verwendung von \emph{Transformers}. Während der Inferenz können die erlernten Abbildungen genutzt werden. Eine von \emph{MuLan} generierte Texteingabe wird hierbei in den latenten Raum von \emph{SoundStream} transformiert, um anschließend in ein Audiosignal kodiert zu werden. \cite{agostinelli_musiclm_2023}
+Das Modell \emph{MusicLM} \cite{agostinelli_musiclm_2023} basiert auf den Konzepten von \emph{AudioLM}. Es integriert akustische Informationen über \emph{Soundstream} \cite{zeghidour_soundstream_2021}, semantische Informationen mittels \emph{w2v-Bert} \cite{chung_w2v-bert_2021-1} und Audio-Informationen mithilfe von \emph{Mulan} \cite{huang_mulan_2022} (siehe Abbildung \ref{fig:MusicLM_tokens}). Im Training dieses Modells erfolgte eine Abbildung des latenten Raums von \emph{MuLan} zum latenten Raum von \emph{w2v-Bert} und ebenso eine Abbildung von \emph{w2v-Bert} zu \emph{Soundstream} unter Verwendung von \emph{Transformers}. Während der Inferenz können die erlernten Abbildungen genutzt werden. Eine von \emph{MuLan} generierte Texteingabe wird hierbei in den latenten Raum von \emph{SoundStream} transformiert, um anschließend in ein Audiosignal kodiert zu werden (siehe Abbildung \ref{fig:MusicLM_Inference}). \cite{agostinelli_musiclm_2023}
 
+\begin{figure}[h]
+\centering
+\begin{subfigure}{.8\textwidth}
+  \centering
+  \includegraphics[width=1\textwidth]{graphics/MusicLM1.png}
+  \caption[MusicLM Tokenisierung]{Semantische und akustische Modellierung der Tokens generiert von \emph{MuLan}, \emph{w2v-Bert} und \emph{SoundStream}  \cite{agostinelli_musiclm_2023}}
+  \label{fig:MusicLM_tokens}
+\end{subfigure}
 
-Im Gegensatz zu \emph{MusicLM} setzt \emph{MusicGen} nicht auf mehrere kaskadierende Modelle, sondern verwendet einen \emph{autoregressiven Transformer-basierten Decoder} \cite{vaswani_attention_2017}, der auf Text oder Melodien, wie beispielsweise Summen, konditioniert werden kann. Dieses Modell operiert auf einer komprimierten Darstellung von \emph{gesampelten} Audiosignalen, die durch \emph{EnCodec} \cite{defossez_high_2022} generiert wird. \emph{EnCodec} ist ein \emph{convolutional auto-encoder}, der einen \emph{Latentenraum} mithilfe von \emph{Residual Vector Quantization} \cite{zeghidour_soundstream_2021} erstellt. Abhängig von der Anzahl der in dem Quantifizierungsprozess verwendeten \emph{codebooks} werden entsprechend viele Tokens generiert, die speziell angeordnet und anschließend dem \emph{Decoder} von \emph{EnCodec} übergeben werden. Dieser kann unter der gegebenen Konditionierung eine Audiodatei erstellen. Für die Textkonditionierung wurden Modelle wie \emph{T5} \cite{raffel_exploring_2020}, \emph{FLAN-T5} \cite{roberts_scaling_2022} und \emph{CLAP} evaluiert, während für Melodien eine Konditionierung über ein \emph{Chromagramm} erfolgt.
+\vspace{1em} % Optional: Add some vertical space between the subfigures
 
+\begin{subfigure}{1.0\textwidth}
+  \centering
+  \includegraphics[width=0.5\textwidth]{graphics/MusicLM2.png}
+  \caption[MusicLM Inferenz]{MusicLM Inferenz für Text-zu-Audio durch den Text-\emph{Encoder}\emph{MuLan} und die im Training erlernten Modellierungen \cite{agostinelli_musiclm_2023}}
+  \label{fig:MusicLM_Inference}
+\end{subfigure}
+\caption[MusicLM Module]{MusicLM Module für Inferenz und Training \cite{agostinelli_musiclm_2023}}
+\label{fig:test}
+\end{figure}
+
+Im Gegensatz zu \emph{MusicLM} \cite{copet_simple_2023} setzt \emph{MusicGen} nicht auf mehrere kaskadierende Modelle, sondern verwendet einen \emph{autoregressiven Transformer-basierten Decoder} \cite{vaswani_attention_2017}, der auf Text oder Melodien, wie beispielsweise Summen, konditioniert werden kann. Dieses Modell operiert auf einer komprimierten Darstellung von \emph{gesampelten} Audiosignalen, die durch \emph{EnCodec} \cite{defossez_high_2022} (siehe Abbildung \ref{fig:encodec})generiert wird. \emph{EnCodec} ist ein \emph{convolutional auto-encoder}, der einen \emph{Latentenraum} mithilfe von \emph{Residual Vector Quantization} \cite{zeghidour_soundstream_2021} erstellt. Abhängig von der Anzahl der in dem Quantifizierungsprozess verwendeten \emph{codebooks} werden entsprechend viele Tokens generiert, die speziell angeordnet und anschließend dem \emph{Decoder} von \emph{EnCodec} übergeben werden. Dieser kann unter der gegebenen Konditionierung eine Audiodatei erstellen. Für die Textkonditionierung wurden Modelle wie \emph{T5} \cite{raffel_exploring_2020}, \emph{FLAN-T5} \cite{roberts_scaling_2022} und \emph{CLAP} evaluiert, während für Melodien eine Konditionierung über ein \emph{Chromagramm} erfolgt. \cite{copet_simple_2023}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=.7\textwidth]{graphics/MusicGen.png}
+  \caption[MusicGen EnCodec]{\emph{EnCodec} \cite{defossez_high_2022} benutzt von \emph{MusicGen} \cite{copet_simple_2023}, einer \emph{Encoder}- \emph{Decoder}-Architektur folgendem, mit dem aus einem \emph{Residual Vector Quantization} entstehenden latenten Raum. Optimiert durch einen \emph{Dicriminator} \cite{defossez_high_2022}}
+  \label{fig:encodec}
+\end{figure}
 
 \chapter{Grundlagen}
 
@@ -417,7 +440,7 @@ Die für die Realisierung des Projekts erforderlichen Komponenten werden im Nach
 \begin{figure}[h]
   \centering
   \includegraphics[width=.5\textwidth]{graphics/synthstruc.png}
-  \caption[Synth]{Komponenten eines Synthesizers \cite{russ_sound_2009}}
+  \caption[Synth]{Komponenten eines Synthesizers, zusammengesetzt aus \emph{Erzeuger, Modifikatoren} und \emph{Kontrollinstanzen} \cite{russ_sound_2009}}
   \label{fig:synth}
 \end{figure}
 
@@ -427,7 +450,7 @@ In dem Bestreben, sein fundiertes wissenschaftliches Verständnis und seine Expe
 \begin{figure}[h]
   \centering
   \includegraphics[width=.7\textwidth]{graphics/ADSR.png}
-  \caption[Hüllkurve]{Beispiel einer Hüllkurve \cite{russ_sound_2009}}
+  \caption[Hüllkurve]{Beispiel einer Hüllkurve, definiert aus \emph{Anschwellzeit}, \emph{Abschwellzeit}, abzufallendem \emph{Lautstärkeniveau} und \emph{Ausklingzeit} \cite{russ_sound_2009}}
   \label{fig:adsr}
 \end{figure}
 
@@ -456,7 +479,7 @@ Der Prozess der \emph{Diffusion} im Maschinellen Lernen \cite{sohl-dickstein_dee
 \begin{figure}[h]
   \centering
   \includegraphics[width=.9\textwidth]{forwardDiffusion.png}
-  \caption[Vorwärtsprozess Diffusion]{Vorwärtsprozess Diffusion \cite{machine_learning_at_berkeley_diffusion_2022}}
+  \caption[Vorwärtsprozess Diffusion]{Vorwärtsprozess Diffusion. Betrachtete Daten werden schrittweise zu isotropischen Rauschen korrumpiert. \cite{machine_learning_at_berkeley_diffusion_2022}}
   \label{fig:forwardDiffusion}
 \end{figure} 
 
@@ -476,7 +499,7 @@ Unter Verwendung der Relation \( \alpha_t:=1-\beta_t \) und \( \bar{\alpha}_t:=\
 \begin{figure}[h]
   \centering
   \includegraphics[width=.8\textwidth]{reverseDiffusion.png}
-  \caption[Rückwertsprozess Diffusion]{Rückwertsprozess Diffusion \cite{machine_learning_at_berkeley_diffusion_2022}}
+  \caption[Rückwertsprozess Diffusion]{Rückwertsprozess Diffusion. Daten werden schrittweise entrauscht. \cite{machine_learning_at_berkeley_diffusion_2022}}
   \label{fig:reverseDiffusion}
 \end{figure} 
 
@@ -511,7 +534,7 @@ In \cite{rombach_high-resolution_2022} wurde das \emph{Latente \emph{Diffusions}
 \begin{figure}[h]
   \centering
   \includegraphics[width=.8\textwidth]{LDM.png}
-  \caption[LDM Architektur]{LDM Architektur \cite{rombach_high-resolution_2022}}
+  \caption[LDM Architektur]{LDM Architektur. Diffusion unter der Verwendung eines \emph{U-Net} geschieht auf dem durch den \emph{Encoder} $\mathcal{E}$ erzeugten latenten Raum. Aus diesem können mittel \emph{Decoder} $\mathcal{D}$ wieder Daten in die ursprüngliche Repräsentation konvertiert werden.  \cite{rombach_high-resolution_2022}}
   \label{fig:LDM}
 \end{figure} 
 
@@ -533,8 +556,8 @@ Das \emph{Contrastive Learning}-Modell wurde mit dem spezifisch veröffentlichte
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=.6\textwidth]{Clap.png}
-  \caption[Clap Architektur]{CLAP Architektur \cite{wu_large-scale_2023}}
+  \includegraphics[width=.7\textwidth]{Clap.png}
+  \caption[Clap Architektur]{CLAP Architektur zur Erzeugung einer latenten Repräsentation von Text und Audio Paaren. Der Audio Encoder nimmt die je nach Länge verschieden verarbeitet Signale an und bringt sie in eine für das \emph{MLP} nutzbare Repräsentation. Der Text-\emph{Encoder} macht das gleiche für die textuelle Eingabe, jedoch werden bei Verwendung von Labeln diese erst in eine Umschreibung konvertiert.\cite{wu_large-scale_2023}}
   \label{fig:Clap}
 \end{figure} 
 
@@ -589,7 +612,7 @@ Die Entscheidung, Natürliche Sprache anstelle von Labels für Eingabe und Kondi
 \begin{figure}[h]
   \centering
   \includegraphics[width=.6\textwidth]{AudioLDM.png}
-  \caption[AudioLDM Architektur]{Architektur für die Text-zu-Audio Generierung von AudioLDM \cite{liu_audioldm_2023}}
+  \caption[AudioLDM Architektur]{Architektur für die Text-zu-Audio Generierung von AudioLDM. Die \emph{VAE}-\emph{Encoder} und \emph{Decoder} erzeugen auf Basis von Spektogrammen die Latente Repräsentation, auf welcher \emph{Diffusion} betrieben wird. Für die Konditionierung kommen die Text und Audio \emph{Encoder} zum Einsatz. Der Vocoder dient zu Erzeugung eines Audiosignales aus dem Spektogramm.\cite{liu_audioldm_2023}}
   \label{fig:AudioLDM}
 \end{figure} 
 
@@ -625,8 +648,8 @@ Ferner wurde nachgewiesen, dass der \emph{Cross-Attention}-Mechanismus gemäß \
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=.8\textwidth]{AudioLDM2.png}
-  \caption[AudioLDM2 Architektur]{Architektur von AudioLDM2 \cite{liu_audioldm2_2023}}
+  \includegraphics[width=1.0\textwidth]{AudioLDM2.png}
+  \caption[AudioLDM2 Architektur]{Architektur von AudioLDM2, zusammengesetzt aus dem Diffusionsnetz, welches \emph{U-Net} und \emph{Transformer} Konzepte implementiert, welches auf der \emph{latenten} Repräsentation von Spektogrammen arbeitet. Als Konditionierung wird die \emph{LOA} Repräsentation genutzt, welche aus \emph{AudioMAE} Infomrationen besteht. Sie können aus einem Audiosignal mittels dem Audio zu \emph{LOA} \emph{Encoder} oder dem \emph{Any Modality} zu \emph{LOA} Konverter erzeugt werden. \cite{liu_audioldm2_2023}}
   \label{fig:AudioLDM2}
 \end{figure} 
 
@@ -693,7 +716,7 @@ Das \emph{Juce}-Modul \emph{PluginGuiMagic} \cite{walz_plugin_nodate} erleichter
 \subsection{AudioLDM-Anbindung} \label{sec:api}
 Um ein vom den \emph{Diffusions}-modellen \emph{AudioLDM} und \emph{AudioLDM2} erzeugtes Sample mithilfe des im \emph{JUCE}-Framework entwickelten digitalen Instruments wiederzugeben, muss Inferenz der Modelle aus dem \emph{C++}-Quellcode des Instruments möglich sein.
 
-Eine optimale Methode wäre die Umwandlung des trainierten Modells in ein \emph{ONNX}-Modell \cite{noauthor_onnx_nodate-1}, wodurch eine binäre Repräsentation des Modells generiert würde. Mittels der \emph{ONNX-Runtime} \cite{noauthor_onnx_nodate} ließe sich diese in \emph{C++} integrieren und abrufen, um Inferenzoperationen auszuführen und so die Soundgenerierung zu realisieren. Dieser Ansatz könnte insbesondere das Kompilieren und die Verbreitung des finalisierten Instruments samt des trainierten Modells fördern. Eine alternative Herangehensweise wäre, das Modell in ein \emph{Torchscript}-Modell \cite{noauthor_torchscript_nodate} zu konvertieren und dieses dann in C++ zu laden. \cite{oli_larkin_machine_2023}
+Eine optimale Methode wäre die Umwandlung des trainierten Modells in ein \emph{ONNX}-Modell \cite{noauthor_onnx_nodate}, wodurch eine binäre Repräsentation des Modells generiert würde. Mittels der \emph{ONNX-Runtime} \cite{noauthor_onnx-runtime_nodate} ließe sich diese in \emph{C++} integrieren und abrufen, um Inferenzoperationen auszuführen und so die Soundgenerierung zu realisieren. Dieser Ansatz könnte insbesondere das Kompilieren und die Verbreitung des finalisierten Instruments samt des trainierten Modells fördern. Eine alternative Herangehensweise wäre, das Modell in ein \emph{Torchscript}-Modell \cite{noauthor_torchscript_nodate} zu konvertieren und dieses dann in C++ zu laden. \cite{oli_larkin_machine_2023}
 
 Bislang ließ sich weder ein \emph{ONNX}- noch ein \emph{Torchscript}-Modell für das \emph{AudioLDM}-/\emph{AudioLDM2}-Modell erstellen. Dies liegt an der komplexen Interaktion verschiedener eingesetzter Modelle und Module, von denen einige gegenwärtig weder von \emph{ONNX} noch von \emph{Torchscript} unterstützt werden. Daher wurde für die Realisierung dieses Projekts die Erstellung einer \emph{API (Application Programming Interface)} bevorzugt. Durch definierte Endpunkte ermöglicht diese API die Generierung einer lokalen Instanz des Modells, welche zur Erzeugung benötigter Samples dient. Als Basis für diese Implementierung dient das \emph{FastAPI}-Framework \cite{noauthor_fastapi_nodate}. Auf dem Python-Server wird eine Instanz des \emph{AudioLDM}-/\emph{AudioLDM2}-Modells betrieben, welche mithilfe der \emph{Diffusers}-Bibliothek von \emph{Huggingface} \cite{noauthor_huggingface_nodate-1, noauthor_huggingface_nodate} als \emph{Pipeline} genutzt wird. Die Anwendung dieser Pipeline erlaubt Inferenzen mit einer gewissen Abstraktionsebene und ihre Nutzung auf unterschiedlichen Systemen. Zuvor waren die veröffentlichten Modelle etwa nicht auf Rechnern ohne GPU, wie den M-Modellen von Apple, lauffähig. Doch durch die Konfigurierbarkeit des in der Pipeline genutzten Prozessors ließ sich dieses Hindernis überwinden. Zudem verhindert der Einsatz einer API, dass bei mehreren Synthesizer-Instanzen jeweils ein neues Modell initialisiert werden muss, was eine parallele Nutzung mehrerer Modelle unnötig macht.
 
@@ -710,21 +733,20 @@ Die implementierten Endpunkte beinhalten einen zur Initialisierung eines Modells
 
 Für die Implementierung des Samplers wurde der von \emph{Juce} bereitgestellten Sampler \cite{noauthor_sampler_nodate} verwendet. Darüber hinaus wurde die Funktionalität erweitert, um gezielte Tonverschiebungen durchzuführen und den Pitch-Bender eines Keyboards zu verwenden.
 
-\chapter{Ergebnisse}
-Die Integration der erörterten Komponenten und Elemente resultierte in einem digitalen Instrument mit den Namen \emph{WaveGenSynth}, das entweder als eigenständige Anwendung oder als Erweiterung in den Formaten VST3 oder AU innerhalb einer Digital Audio Workstation (DAW) wie \emph{Ableton} \cite{noauthor_ableton_nodate} oder \emph{Logic} \cite{noauthor_logic_nodate} verwendet werden kann. Das digitale Instrument ist unter \emph{Github} \cite{noauthor_github_nodate} veröffentlicht \footnote{\url{https://github.com/suckrowPierre/WaveGenSynth}} (siehe \ref{chap:git}). 
+\section{Verteilung und Bündelung}
 
 Für \emph{macOS} konnten eine \emph{.app}-Applikationsdatei, eine \emph{VST3}- sowie eine \emph{AU}-Datei generiert werden. Um die Installation der Dateien für den Nutzer zu vereinfachen, wurden diese in eine \emph{pkg}-Installationsdatei gebündelt. 
-
-Auf \emph{Windows} konnte das Instrument mittels \emph{CMake} kompiliert werden; jedoch war es anschließend nicht möglich, die \emph{.exe}-Datei außerhalb der Entwicklungsumgebung zu öffnen.
 
 Der \emph{FastAPI}-Server wurde mittels \emph{pyinstaller} \cite{noauthor_pyinstaller_nodate} zu einer Applikation kompiliert, die der Nutzer unkompliziert öffnen kann. \emph{pyinstaller} integriert alle erforderlichen Abhängigkeiten in einem Paket, sodass der Benutzer die Applikation ausführen kann, ohne einen Python-Interpreter oder sonstige Module installieren zu müssen \cite{noauthor_pyinstaller_nodate}. Da jedoch alle benötigten Module inkludiert werden, resultiert aus einem ursprünglich $5$ KB großen Skript eine Dateigröße von $450$ MB. Die Vergrößerung des Speicheraufwandes ist somit erheblich, jedoch unabdingbar, um den Server und damit ein benutzbares Instrument zu verteilen und zu veröffentlichen. Falls die generierten Server-Applikationen, jedoch auf einem System instabile Performance oder Probleme aufweisen, lässt sich auch das Server-Skript in einer festgelegten \emph{Conda}-Umgebung ausführen. 
 
 Das digitale Instrument wurde sowohl unter \emph{macOS} mit \emph{Silicon}- als auch \emph{Intel}-Chips getestet. Bei der Nutzung der Server-\emph{Applikation} auf Intel-Macs wurde mit zwingendem \emph{torch}-Gerät \emph{cpu} eine mangelhafte und instabile Performance festgestellt. Hierbei empfiehlt sich das Script für den Server, in einer \emph{Cuda}-Umgebung mit den vorgegebenen \emph{Python}-Modulen laufen zu lassen (siehe Kapitel \ref{chap:git})
 
+\section{Benutzeroberfläche}
+
 \begin{figure}[h]
   \centering
   \includegraphics[width=1.0\textwidth]{synth.png}
-  \caption[Benutzeroberfläche]{Benutzeroberfläche}
+  \caption[Benutzeroberfläche]{Entstandene Benutzeroberfläche}
   \label{fig:synth}
 \end{figure} 
 
@@ -738,9 +760,52 @@ Mithilfe eines \emph{MIDI}-Eingabegeräts lassen sich die verschiedene Tonhöhen
 
 Das erzeugte Signal wird mittels einer Wellenform- und Spektrogramm-Anzeige visualisiert. Dies zielt darauf ab, dem Nutzer ein besseres Verständnis der Modellergebnisse zu ermöglichen und das erfolgreiche Generieren zu erkennen. Zudem ermöglicht diese Visualisierung die Identifikation bestimmter Klangstrukturen.
 
+
+\section{Evaluation}
+
+Eine Darstellung des Verhaltens verschiedener Modelle in Reaktion auf spezifische Parameter und Eingaben ist unter \url{https://suckrowpierre.github.io/TtPS.github.io/} \cite{pierre-louis_suckrow_text-zu-spielbarem-klang_nodate} visualisiert ermöglicht eine einfache Evaluierung dieser. Es ist zu beachten, dass diese Zusammenstellung einen Einblick und einen ersten Eindruck in die Nutzbarkeit der verfügbaren Modelle in Kombination verschiedener Parameter und \emph{Prompts} bieten soll. Aufgrund der begrenzten Anzahl an Beispielen und dem Fehlen einer Studie können jedoch keine definitiven Aussagen über Qualität der Modelle getroffen werden. Die Untersuchungen der Modelle und daraus folgende Ergebnisse beziehen sich auf subjektive empfundene Beobachtungen und Eindrücke.  
+
+Die in \url{https://suckrowpierre.github.io/TtPS.github.io/} \cite{pierre-louis_suckrow_text-zu-spielbarem-klang_nodate} dargestellten Ergebnisse wurden mittels des auf \url{https://github.com/suckrowPierre/ThesisModelsResultsGenerator/} veröffentlichten Codes generiert.
+
+Ergebnisse, bei denen die \emph{torch}-Geräte \emph{mps} und \emph{cpu} zum Einsatz kamen, wurden auf einem \emph{Macbook Pro} mit einem \emph{Apple M1 Pro}-Chip unter \emph{macOS Ventura 13.2.1} erzeugt. Ergebnisse, die mithilfe von Cuda erzeugt wurden, entstanden in einem \emph{Google-Colab} unter Verwendung einer \emph{T4 GPU}.
+
+Die verwendeten \emph{Prompts} wurden unter anderem durch \emph{GPT-4} \cite{openai_gpt-4_2023} auf \url{https://chat.openai.com/} mittels des folgenden Prompts (siehe \ref{lst:prompt}) am 8. September 2023 generiert.
+
+\lstdefinestyle{gpt}{
+    basicstyle=\ttfamily\small,
+    breaklines=true
+}
+\begin{Listing}
+\begin{lstlisting}[style=gpt]
+For a scientific work of mine, I'm evaluating the music abilities of diffusion models that can generate audio. For that, I have a script that generates audio for different models based on a list of prompts. My list looks like the following. Please add more prompts to test the musical and instrumental abilities of the models. Keep in mind the people using the models would be musicians, studio engineers, and music producers. 
+
+
+A single kickdrum
+A kickdrum
+A distored kickdrum
+A kickdrum with a lot of reverb
+A clap
+A weird clap
+A snare
+A string orchestra
+A analog synth
+A distorted analog synth
+A string synth
+dreamy nostalgic strings
+Ambient pads
+A guitar string
+A distorted guitar string
+\end{lstlisting}
+    \caption{Benutzer \emph{GPT-4} \emph{Prompt}}
+  \label{lst:prompt}
+\end{Listing}
+
+\chapter{Ergebnisse}
+Die Integration der erörterten Komponenten und Elemente resultierte in einem digitalen Instrument mit den Namen \emph{WaveGenSynth}, das entweder als eigenständige Anwendung oder als Erweiterung in den Formaten VST3 oder AU innerhalb einer Digital Audio Workstation (DAW) wie \emph{Ableton} \cite{noauthor_ableton_nodate} oder \emph{Logic} \cite{noauthor_logic_nodate} verwendet werden kann. Das digitale Instrument ist unter \emph{Github} \cite{noauthor_github_nodate} veröffentlicht \footnote{\url{https://github.com/suckrowPierre/WaveGenSynth}} (siehe \ref{chap:git}). 
+
 Die Soundqualität des Instrumentes und die Fähigkeit die gewünschten musikalischen Merkmale aus der textuellen Eingabe zu generieren hängt von dem zur Verwendung kommenden Modell, und der Nutzer spezifischen Eingabe der Parameter und des Promptes ab. 
 
-Eine Darstellung des Verhaltens verschiedener Modelle in Reaktion auf spezifische Parameter und Eingaben ist unter \url{https://suckrowpierre.github.io/TtPS.github.io/} \cite{pierre-louis_suckrow_text-zu-spielbarem-klang_nodate} visualisiert (siehe \ref{chap:prompts}) und ermöglicht eine einfache Evaluierung dieser. Es ist zu beachten, dass diese Zusammenstellung einen Einblick und einen ersten Eindruck in die Qualität der nutzbaren Modelle in Kombination verschiedener Parameter und \emph{Prompts} bieten soll. Aufgrund der begrenzten Anzahl an Beispielen und dem Fehlen einer Studie können jedoch keine definitiven Aussagen über Qualität und Benutzbarkeit der Modelle getroffen werden. Die folgenden Untersuchungen beziehen sich somit auf persönlich empfundene Beobachtungen und Eindrücke.  
+
 
 Es lässt sich feststellen, dass bei gleichen Parametern und \emph{Prompt} für unterschiedliche \emph{Torch}-Geräte diverse Audiosignale erzeugt werden. Ein großer Unterschied in der Qualität zwischen den Geräten lässt sich anhand der $6$ verwendeten \emph{Prompts} nicht eindeutig ermitteln, jedoch zeigt sich eine Tendenz, dass, wenn ein \emph{Prompt} auf den Geräten \glqq\emph{mps}\grqq und \glqq\emph{cuda}\grqq ein schlechtes Ergebnis erzielt, das mittels \glqq\emph{cpu}\grqq generierte Audiosignal für den gleichen \emph{Prompt} noch mehr unerwünschte Artefakte und unangenehme Geräusche aufweist.
 
@@ -817,40 +882,7 @@ Die README-Datei bietet Anleitungen zur Installation und Ausführung des Codes.
 \chapter{Erzeugung der Ergebnisse}
 \label{chap:prompts}
 
-Die in \url{https://suckrowpierre.github.io/TtPS.github.io/} \cite{pierre-louis_suckrow_text-zu-spielbarem-klang_nodate} dargestellten Ergebnisse wurden mittels des auf \url{https://github.com/suckrowPierre/ThesisModelsResultsGenerator/} veröffentlichten Codes generiert.
 
-Ergebnisse, bei denen die \emph{torch}-Geräte \emph{mps} und \emph{cpu} zum Einsatz kamen, wurden auf einem \emph{Macbook Pro} mit einem \emph{Apple M1 Pro}-Chip unter \emph{macOS Ventura 13.2.1} erzeugt. Ergebnisse, die mithilfe von Cuda erzeugt wurden, entstanden in einem \emph{Google-Colab} unter Verwendung einer \emph{T4 GPU}.
-
-Die verwendeten \emph{Prompts} wurden unter anderem durch \emph{GPT-4} \cite{openai_gpt-4_2023} auf \url{https://chat.openai.com/} mittels des folgenden Prompts (siehe \ref{lst:prompt}) am 8. September 2023 generiert.
-
-\lstdefinestyle{gpt}{
-    basicstyle=\ttfamily\small,
-    breaklines=true
-}
-\begin{Listing}
-\begin{lstlisting}[style=gpt]
-For a scientific work of mine, I'm evaluating the music abilities of diffusion models that can generate audio. For that, I have a script that generates audio for different models based on a list of prompts. My list looks like the following. Please add more prompts to test the musical and instrumental abilities of the models. Keep in mind the people using the models would be musicians, studio engineers, and music producers. 
-
-
-A single kickdrum
-A kickdrum
-A distored kickdrum
-A kickdrum with a lot of reverb
-A clap
-A weird clap
-A snare
-A string orchestra
-A analog synth
-A distorted analog synth
-A string synth
-dreamy nostalgic strings
-Ambient pads
-A guitar string
-A distorted guitar string
-\end{lstlisting}
-    \caption{Benutzer \emph{GPT-4} \emph{Prompt}}
-  \label{lst:prompt}
-\end{Listing}
 
 
 %\input{latexhints/latexhints-english}
